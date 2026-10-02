@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" type="image/x-icon" href="/images/zaki_logo.png">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Transaction Status</title>
+<link rel="stylesheet" href="/css/public.css">
+<link rel="stylesheet" href="/css/details.css">
+<script src="/js/publicTheme.js"></script>
+</head>
+
+<body>
+
+<div class="receipt-page">
+
+    <div class="card">
+
+        <% if(card.transactions.status === 'delivered'){ %>
+
+            <div class="header success">
+
+                <div class="status-icon">
+                    ✔
+                </div>
+
+                <div class="status-label">
+                    TRANSACTION SUCCESSFUL
+                </div>
+
+                <h2>
+                    <%= card.response_description %>
+                </h2>
+
+            </div>
+
+        <% } else if(card.transactions.status === 'failed'){ %>
+
+            <div class="header failed">
+
+                <div class="status-icon">
+                    ✕
+                </div>
+
+                <div class="status-label">
+                    TRANSACTION FAILED
+                </div>
+
+                <h2>
+                    <%= card.response_description %>
+                </h2>
+
+            </div>
+
+        <% } else { %>
+
+            <div class="header pending">
+
+                <div class="status-icon">
+                    ⌛
+                </div>
+
+                <div class="status-label">
+                    TRANSACTION PENDING
+                </div>
+
+                <h2>
+                    <%= card.response_description %>
+                </h2>
+
+            </div>
+
+        <% } %>
+
+
+        <!-- ================= TRANSACTION CONTENT ================= -->
+
+        <div class="content">
+
+            <div class="status-row">
+
+                <span class="status-title">
+                    Transaction Status
+                </span>
+
+                <% if(card.transactions.status === 'delivered'){ %>
+
+                    <span class="status-badge success-badge">
+                        SUCCESSFUL
+                    </span>
+
+                <% } else if(card.transactions.status === 'failed'){ %>
+
+                    <span class="status-badge failed-badge">
+                        FAILED
+                    </span>
+
+                <% } else { %>
+
+                    <span class="status-badge pending-badge">
+                        PENDING
+                    </span>
+
+                <% } %>
+
+            </div>
+
+
+            <div class="divider"></div>
+
+
+            <div class="message-box">
+
+                <div class="message-icon">
+                    ✓
+                </div>
+
+                <div>
+
+                    <h3>
+                        Transaction Information
+                    </h3>
+
+                    <p>
+                        Thank you for using Zaki Sub.
+                        Your transaction status is shown above.
+                        You can return to your dashboard or print
+                        this receipt for your records.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- ================= ACTIONS ================= -->
+
+            <div class="buttons">
+
+                <a href="/" class="btn home">
+                    <span>⌂</span>
+                    Home
+                </a>
+
+                <button
+                    type="button"
+                    class="btn receipt"
+                    onclick="window.print()"
+                >
+                    <span>▣</span>
+                    Print Receipt
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- ================= FOOTER ================= -->
+
+        <div class="footer">
+
+            <div class="footer-brand">
+                ZAKI SUB
+            </div>
+
+            <div>
+                &copy;
+                <%= new Date().getFullYear() %>
+                Zaki Sub. All rights reserved.
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>

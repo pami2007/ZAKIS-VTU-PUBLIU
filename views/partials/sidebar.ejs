@@ -1,0 +1,1124 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+	<style>
+		/* =========================================================
+   ZAKI SUB ADMIN SIDEBAR
+   DARK  : Brown + Gold
+   LIGHT : Emerald + Navy + Gold
+========================================================= */
+
+
+/* =========================================================
+   THEME VARIABLES
+========================================================= */
+
+:root {
+
+    /* DARK MODE */
+
+    --admin-bg: #100909;
+
+    --admin-sidebar: #170707;
+
+    --admin-sidebar-2: #211010;
+
+    --admin-brand: #250D0D;
+
+    --admin-brand-light: #3A1818;
+
+    --admin-accent: #F5C451;
+
+    --admin-accent-dark: #D99A18;
+
+    --admin-text: #FFFFFF;
+
+    --admin-muted: #B9AFAF;
+
+    --admin-border: rgba(255,255,255,.08);
+
+    --admin-hover: rgba(245,196,81,.08);
+
+    --admin-active:
+        linear-gradient(
+            135deg,
+            rgba(245,196,81,.16),
+            rgba(245,196,81,.05)
+        );
+
+    --admin-shadow:
+        8px 0 30px rgba(0,0,0,.25);
+}
+
+
+/* =========================================================
+   LIGHT MODE
+========================================================= */
+
+[data-theme="light"] {
+
+    --admin-bg: #F4F8F6;
+
+    --admin-sidebar: #FFFFFF;
+
+    --admin-sidebar-2: #F0F7F5;
+
+    --admin-brand: #0B1F33;
+
+    --admin-brand-light: #163B5C;
+
+    --admin-accent: #0F766E;
+
+    --admin-accent-dark: #0B5F59;
+
+    --admin-text: #10202F;
+
+    --admin-muted: #64748B;
+
+    --admin-border: rgba(11,31,51,.10);
+
+    --admin-hover: rgba(15,118,110,.07);
+
+    --admin-active:
+        linear-gradient(
+            135deg,
+            rgba(15,118,110,.13),
+            rgba(15,118,110,.04)
+        );
+
+    --admin-shadow:
+        8px 0 30px rgba(11,31,51,.08);
+}
+
+
+/* =========================================================
+   SIDEBAR
+========================================================= */
+
+.admin-sidebar {
+
+    position: fixed;
+
+    left: 0;
+
+    top: 0;
+
+    width: 250px;
+
+    height: 100vh;
+
+    background: var(--admin-sidebar);
+
+    border-right: 1px solid var(--admin-border);
+
+    box-shadow: var(--admin-shadow);
+
+    display: flex;
+
+    flex-direction: column;
+
+    z-index: 1000;
+
+    transition:
+        background .3s ease,
+        transform .3s ease,
+        box-shadow .3s ease;
+}
+
+
+/* =========================================================
+   LOGO
+========================================================= */
+
+.admin-sidebar-logo {
+
+    height: 75px;
+
+    padding: 0 20px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    border-bottom: 1px solid var(--admin-border);
+}
+
+
+.admin-sidebar-logo a {
+
+    color: var(--admin-text);
+
+    text-decoration: none;
+
+    font-size: 21px;
+
+    font-weight: 800;
+
+    letter-spacing: .5px;
+}
+
+
+.admin-sidebar-logo a span {
+
+    color: var(--admin-accent);
+}
+
+
+/* =========================================================
+   NAVIGATION
+========================================================= */
+
+.admin-nav {
+
+    flex: 1;
+
+    overflow-y: auto;
+
+    padding: 18px 12px;
+}
+
+
+/* Scrollbar */
+
+.admin-nav::-webkit-scrollbar {
+
+    width: 4px;
+}
+
+
+.admin-nav::-webkit-scrollbar-thumb {
+
+    background: var(--admin-border);
+
+    border-radius: 10px;
+}
+
+
+/* =========================================================
+   NAV TITLE
+========================================================= */
+
+.admin-nav-title {
+
+    font-size: 10px;
+
+    font-weight: 700;
+
+    letter-spacing: 1px;
+
+    color: var(--admin-muted);
+
+    padding: 12px 10px 7px;
+
+    margin-top: 4px;
+}
+
+
+/* =========================================================
+   NAV LINK
+========================================================= */
+
+.admin-nav-link {
+
+    width: 100%;
+
+    min-height: 44px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    padding: 10px 12px;
+
+    margin-bottom: 3px;
+
+    border-radius: 10px;
+
+    color: var(--admin-muted);
+
+    text-decoration: none;
+
+    font-size: 14px;
+
+    transition:
+        background .25s ease,
+        color .25s ease,
+        transform .25s ease;
+}
+
+
+.admin-nav-link:hover {
+
+    background: var(--admin-hover);
+
+    color: var(--admin-text);
+
+    transform: translateX(2px);
+}
+
+
+/* =========================================================
+   ACTIVE LINK
+========================================================= */
+
+.admin-nav-link.active {
+
+    background: var(--admin-active);
+
+    color: var(--admin-accent);
+
+    border-left: 3px solid var(--admin-accent);
+
+    padding-left: 9px;
+}
+
+
+/* =========================================================
+   ICON
+========================================================= */
+
+.admin-nav-icon {
+
+    width: 25px;
+
+    min-width: 25px;
+
+    height: 25px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 15px;
+
+    border-radius: 7px;
+
+    color: var(--admin-muted);
+}
+
+
+.admin-nav-link:hover .admin-nav-icon,
+.admin-nav-link.active .admin-nav-icon {
+
+    color: var(--admin-accent);
+}
+
+
+/* =========================================================
+   SIDEBAR BOTTOM
+========================================================= */
+
+.admin-sidebar-bottom {
+
+    padding: 12px;
+
+    border-top: 1px solid var(--admin-border);
+
+    background: var(--admin-sidebar);
+}
+
+
+/* =========================================================
+   THEME BUTTON
+========================================================= */
+
+.admin-theme-btn {
+
+    width: 100%;
+
+    min-height: 43px;
+
+    border: 1px solid var(--admin-border);
+
+    border-radius: 10px;
+
+    background: var(--admin-hover);
+
+    color: var(--admin-text);
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    padding: 10px 12px;
+
+    cursor: pointer;
+
+    font-size: 13px;
+
+    margin-bottom: 7px;
+
+    transition: .25s ease;
+}
+
+
+.admin-theme-btn:hover {
+
+    background: var(--admin-active);
+
+    color: var(--admin-accent);
+}
+
+
+.admin-theme-icon {
+
+    width: 25px;
+
+    min-width: 25px;
+
+    text-align: center;
+
+    font-size: 18px;
+}
+
+
+/* =========================================================
+   LOGOUT
+========================================================= */
+
+.admin-logout {
+
+    width: 100%;
+
+    min-height: 43px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    padding: 10px 12px;
+
+    border-radius: 10px;
+
+    color: var(--admin-muted);
+
+    text-decoration: none;
+
+    font-size: 13px;
+
+    transition: .25s ease;
+}
+
+
+.admin-logout:hover {
+
+    color: #EF4444;
+
+    background: rgba(239,68,68,.08);
+}
+
+
+/* =========================================================
+   MOBILE HEADER
+========================================================= */
+
+.admin-mobile-header {
+
+    display: none;
+
+    position: fixed;
+
+    top: 0;
+
+    left: 0;
+
+    right: 0;
+
+    height: 62px;
+
+    background: var(--admin-sidebar);
+
+    border-bottom: 1px solid var(--admin-border);
+
+    align-items: center;
+
+    padding: 0 15px;
+
+    z-index: 900;
+
+    transition:
+        background .3s ease;
+}
+
+
+.admin-mobile-logo {
+
+    margin-left: 14px;
+
+    color: var(--admin-text);
+
+    font-size: 18px;
+
+    font-weight: 800;
+}
+
+
+.admin-mobile-logo span {
+
+    color: var(--admin-accent);
+}
+
+
+/* =========================================================
+   MENU BUTTON
+========================================================= */
+
+.admin-menu-btn {
+
+    width: 40px;
+
+    height: 40px;
+
+    border: 1px solid var(--admin-border);
+
+    border-radius: 9px;
+
+    background: var(--admin-hover);
+
+    color: var(--admin-text);
+
+    font-size: 20px;
+
+    cursor: pointer;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+}
+
+
+/* =========================================================
+   CLOSE BUTTON
+========================================================= */
+
+.admin-close-btn {
+
+    display: none;
+
+    width: 34px;
+
+    height: 34px;
+
+    border: none;
+
+    background: transparent;
+
+    color: var(--admin-muted);
+
+    font-size: 28px;
+
+    cursor: pointer;
+}
+
+
+.admin-close-btn:hover {
+
+    color: var(--admin-accent);
+}
+
+
+/* =========================================================
+   OVERLAY
+========================================================= */
+
+.admin-sidebar-overlay {
+
+    display: none;
+
+    position: fixed;
+
+    inset: 0;
+
+    background: rgba(0,0,0,.55);
+
+    z-index: 950;
+
+    backdrop-filter: blur(2px);
+}
+
+
+/* =========================================================
+   PAGE CONTENT HELPER
+=========================================================
+
+   Add this class to your admin main content:
+
+   <main class="admin-main">
+       ...
+   </main>
+
+========================================================= */
+
+.admin-main {
+
+    margin-left: 250px;
+
+    min-height: 100vh;
+
+    padding: 25px;
+
+    background: var(--admin-bg);
+
+    color: var(--admin-text);
+
+    transition:
+        margin .3s ease,
+        background .3s ease,
+        color .3s ease;
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 900px) {
+
+    .admin-sidebar {
+
+        width: 230px;
+    }
+
+
+    .admin-main {
+
+        margin-left: 230px;
+
+        padding: 20px;
+    }
+}
+
+
+/* =========================================================
+   PHONE / SMALL TABLET
+========================================================= */
+
+@media (max-width: 700px) {
+
+    .admin-sidebar {
+
+        width: 260px;
+
+        transform: translateX(-100%);
+
+        box-shadow: none;
+    }
+
+
+    .admin-sidebar.open {
+
+        transform: translateX(0);
+
+        box-shadow: 8px 0 30px rgba(0,0,0,.30);
+    }
+
+
+    .admin-sidebar-overlay {
+
+        display: block;
+
+        opacity: 0;
+
+        visibility: hidden;
+
+        transition:
+            opacity .3s ease,
+            visibility .3s ease;
+    }
+
+
+    .admin-sidebar-overlay.open {
+
+        opacity: 1;
+
+        visibility: visible;
+    }
+
+
+    .admin-mobile-header {
+
+        display: flex;
+    }
+
+
+    .admin-close-btn {
+
+        display: block;
+    }
+
+
+    .admin-main {
+
+        margin-left: 0;
+
+        padding: 82px 15px 20px;
+    }
+}
+
+
+/* =========================================================
+   SMALL PHONE
+========================================================= */
+
+@media (max-width: 400px) {
+
+    .admin-sidebar {
+
+        width: 85%;
+    }
+
+
+    .admin-main {
+
+        padding-left: 12px;
+
+        padding-right: 12px;
+    }
+}
+
+
+/* =========================================================
+   THEME TRANSITIONS
+========================================================= */
+
+.admin-sidebar,
+.admin-sidebar-logo,
+.admin-sidebar-bottom,
+.admin-mobile-header,
+.admin-nav-link,
+.admin-theme-btn,
+.admin-logout {
+
+    transition:
+        background .3s ease,
+        color .3s ease,
+        border-color .3s ease,
+        box-shadow .3s ease;
+}
+	</style>
+</head>
+<body>
+	<!--
+=========================================================
+ZAKI SUB ADMIN SIDEBAR
+Reusable EJS Partial
+=========================================================
+-->
+
+<!-- Mobile Overlay -->
+<div class="admin-sidebar-overlay" id="adminSidebarOverlay"></div>
+
+
+<!-- Mobile Header -->
+<div class="admin-mobile-header">
+
+    <button
+        type="button"
+        class="admin-menu-btn"
+        id="adminMenuBtn"
+        aria-label="Open menu"
+    >
+        ☰
+    </button>
+
+    <div class="admin-mobile-logo">
+        ZAKI <span>SUB</span>
+    </div>
+
+</div>
+
+
+<!-- Sidebar -->
+<aside class="admin-sidebar" id="adminSidebar">
+
+    <!-- Logo -->
+
+    <div class="admin-sidebar-logo">
+
+        <a href="/">
+            ZAKI <span>SUB</span>
+        </a>
+
+        <button
+            type="button"
+            class="admin-close-btn"
+            id="adminCloseBtn"
+            aria-label="Close menu"
+        >
+            ×
+        </button>
+
+    </div>
+
+
+    <!-- Navigation -->
+
+    <nav class="admin-nav">
+
+        <!-- MAIN -->
+
+        <p class="admin-nav-title">
+            MAIN
+        </p>
+
+
+        <a
+            href="/admin/dashboard"
+            class="admin-nav-link"
+        >
+            <span class="admin-nav-icon">⌂</span>
+
+            <span>
+                Dashboard
+            </span>
+        </a>
+
+
+        <!-- USERS -->
+
+        <p class="admin-nav-title">
+            USERS
+        </p>
+
+
+        <a
+            href="/admin/users"
+            class="admin-nav-link"
+        >
+            <span class="admin-nav-icon">👤</span>
+
+            <span>
+                Users
+            </span>
+        </a>
+
+
+        <!-- TRANSACTIONS -->
+
+        <p class="admin-nav-title">
+            TRANSACTIONS
+        </p>
+
+
+        <a
+            href="/admin/transactions"
+            class="admin-nav-link"
+        >
+            <span class="admin-nav-icon">↔</span>
+
+            <span>
+                Transactions
+            </span>
+        </a>
+
+
+        <a
+            href="/admin/deposits"
+            class="admin-nav-link"
+        >
+            <span class="admin-nav-icon">₦</span>
+
+            <span>
+                Deposits
+            </span>
+        </a>
+
+
+        <!-- SERVICES -->
+
+        <p class="admin-nav-title">
+            SERVICES
+        </p>
+
+
+        <a
+            href="/admin/airtime"
+            class="admin-nav-link"
+        >
+            <span class="admin-nav-icon">☎</span>
+
+            <span>
+                Airtime
+            </span>
+        </a>
+
+
+        <a
+            href="/admin/data"
+            class="admin-nav-link"
+        >
+            <span class="admin-nav-icon">▥</span>
+
+            <span>
+                Data
+            </span>
+        </a>
+
+
+        <!-- FINANCE -->
+
+        <p class="admin-nav-title">
+            FINANCE
+        </p>
+
+
+        <a
+            href="/admin/profits"
+            class="admin-nav-link"
+        >
+            <span class="admin-nav-icon">₦</span>
+
+            <span>
+                Profits
+            </span>
+        </a>
+
+
+        <!-- SYSTEM -->
+
+        <p class="admin-nav-title">
+            SYSTEM
+        </p>
+
+
+        <a
+            href="/admin/notifications"
+            class="admin-nav-link"
+        >
+            <span class="admin-nav-icon">●</span>
+
+            <span>
+                Notifications
+            </span>
+        </a>
+
+
+        <a
+            href="/admin/settings"
+            class="admin-nav-link"
+        >
+            <span class="admin-nav-icon">⚙</span>
+
+            <span>
+                Settings
+            </span>
+        </a>
+
+    </nav>
+
+
+    <!-- Bottom -->
+
+    <div class="admin-sidebar-bottom">
+
+        <button
+            type="button"
+            class="admin-theme-btn"
+            id="adminThemeBtn"
+        >
+
+            <span class="admin-theme-icon">
+                ◐
+            </span>
+
+            <span>
+                Change Theme
+            </span>
+
+        </button>
+
+
+        <a
+            href="/logout"
+            class="admin-logout"
+        >
+
+            <span class="admin-nav-icon">
+                ↪
+            </span>
+
+            <span>
+                Logout
+            </span>
+
+        </a>
+
+    </div>
+
+</aside>
+<script>
+	/* =========================================================
+   ZAKI SUB ADMIN SIDEBAR
+========================================================= */
+
+const adminSidebar =
+    document.getElementById("adminSidebar");
+
+const adminMenuBtn =
+    document.getElementById("adminMenuBtn");
+
+const adminCloseBtn =
+    document.getElementById("adminCloseBtn");
+
+const adminOverlay =
+    document.getElementById("adminSidebarOverlay");
+
+const adminThemeBtn =
+    document.getElementById("adminThemeBtn");
+
+
+/* =========================================================
+   OPEN SIDEBAR
+========================================================= */
+
+function openAdminSidebar() {
+
+    adminSidebar.classList.add("open");
+
+    adminOverlay.classList.add("open");
+}
+
+
+/* =========================================================
+   CLOSE SIDEBAR
+========================================================= */
+
+function closeAdminSidebar() {
+
+    adminSidebar.classList.remove("open");
+
+    adminOverlay.classList.remove("open");
+}
+
+
+/* =========================================================
+   MOBILE BUTTON
+========================================================= */
+
+if (adminMenuBtn) {
+
+    adminMenuBtn.addEventListener(
+        "click",
+        openAdminSidebar
+    );
+}
+
+
+/* =========================================================
+   CLOSE BUTTON
+========================================================= */
+
+if (adminCloseBtn) {
+
+    adminCloseBtn.addEventListener(
+        "click",
+        closeAdminSidebar
+    );
+}
+
+
+/* =========================================================
+   OVERLAY
+========================================================= */
+
+if (adminOverlay) {
+
+    adminOverlay.addEventListener(
+        "click",
+        closeAdminSidebar
+    );
+}
+
+
+/* =========================================================
+   THEME
+========================================================= */
+
+function getAdminTheme() {
+
+    return localStorage.getItem("zaki-theme") || "dark";
+}
+
+
+function setAdminTheme(theme) {
+
+    document.documentElement.setAttribute(
+        "data-theme",
+        theme
+    );
+
+    localStorage.setItem(
+        "zaki-theme",
+        theme
+    );
+}
+
+
+/* =========================================================
+   LOAD SAVED THEME
+========================================================= */
+
+setAdminTheme(getAdminTheme());
+
+
+/* =========================================================
+   CHANGE THEME
+========================================================= */
+
+if (adminThemeBtn) {
+
+    adminThemeBtn.addEventListener(
+        "click",
+        function () {
+
+            const currentTheme =
+                document.documentElement.getAttribute(
+                    "data-theme"
+                ) || "dark";
+
+
+            const newTheme =
+                currentTheme === "dark"
+                    ? "light"
+                    : "dark";
+
+
+            setAdminTheme(newTheme);
+
+        }
+    );
+}
+
+
+/* =========================================================
+   CLOSE SIDEBAR AFTER CLICKING A LINK ON MOBILE
+========================================================= */
+
+document
+    .querySelectorAll(".admin-nav-link")
+    .forEach(link => {
+
+        link.addEventListener(
+            "click",
+            closeAdminSidebar
+        );
+
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,610 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Profile | Zaki Sub</title>
+<link rel="icon" type="image/x-icon" href="/images/zaki_logo.png">
+    <!-- Profile CSS -->
+
+    <link
+        rel="stylesheet"
+        href="/css/profile.css"
+    >
+
+    <link rel="stylesheet" href="/css/public.css">
+
+
+    <!-- Font Awesome -->
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    >
+
+<script src="/js/publicTheme.js"></script>
+    <!-- =====================================================
+         CASHBACK CLAIM LOADER CSS
+    ====================================================== -->
+
+    <style>
+        .theme-btn {
+
+            width: 40px;
+
+            height: 40px;
+
+            border-radius: 10px;
+
+            border:
+                1px solid var(--border);
+
+            background: var(--card);
+
+            color: var(--text);
+
+            cursor: pointer;
+
+            font-size: 17px;
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<%- include('partials/profile_header') %>
+
+
+<%- include('partials/alerts') %>
+
+
+<div class="profile-card">
+
+
+    <!-- =====================================================
+         PROFILE HEADER
+    ====================================================== -->
+
+    <div class="top">
+
+        <div class="avatar">
+
+            <i class="fa-solid fa-user"></i>
+
+        </div>
+
+
+        <h2>
+            <%= user.fname %>
+        </h2>
+
+
+        <p>
+            Zaki Sub Account
+        </p>
+
+
+        <!-- WALLET -->
+
+        <div class="wallet">
+
+            <span>
+                Wallet Balance
+            </span>
+
+            <h1>
+                ₦<%= Number(user.bal).toLocaleString() %>
+            </h1>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =====================================================
+         ACCOUNT INFORMATION
+    ====================================================== -->
+
+    <div class="section">
+
+        <h4>
+            Account Information
+        </h4>
+
+
+        <div class="item">
+
+            <span>
+                Full Name
+            </span>
+
+            <span>
+                <%= user.fname %>
+                <%= user.lname %>
+            </strong>
+
+        </div>
+
+
+        <div class="item">
+
+            <span>
+                Email
+            </span>
+
+            <strong>
+                <%= user.email %>
+            </strong>
+
+        </div>
+
+
+        <div class="item">
+
+            <span>
+                Phone
+            </span>
+
+            <strong>
+                <%= user.phone %>
+            </strong>
+
+        </div>
+
+
+        <% if(user.created_at){ %>
+
+        <div class="item">
+
+            <span>
+                Joined
+            </span>
+
+            <strong>
+                <%= new Date(user.created_at).toDateString() %>
+            </strong>
+
+        </div>
+
+        <% } %>
+
+    </div>
+
+
+
+    <!-- =====================================================
+         CASHBACK
+    ====================================================== -->
+
+    <div class="section cashback-section">
+
+
+        <!-- HEADER -->
+
+        <div class="cashback-heading">
+
+            <h3>
+                Cashback
+            </h3>
+
+            <span>
+                REWARDS
+            </span>
+
+        </div>
+
+
+
+        <!-- MAIN CASHBACK CARD -->
+
+        <div class="cashback-main">
+
+
+            <span class="cashback-label">
+                Available Cashback
+            </span>
+
+
+            <div class="cashback-balance">
+
+                <h2>
+                    ₦<%= Number( user.cashBack).toLocaleString() %>
+                </h2>
+
+
+                <div class="cashback-icon">
+
+                    <i class="fa-solid fa-gift"></i>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- CASHBACK STATS -->
+
+            <div class="cashback-stats">
+
+
+                <div class="cashback-stat">
+
+                    <span>
+                        Today earning
+                    </span>
+
+                    <strong>
+                        ₦<%= Number( today.cb).toLocaleString() %>
+                    </strong>
+
+                </div>
+
+
+                <div class="cashback-stat">
+
+                    <span>
+                        Available to Claim
+                    </span>
+
+                    <% if(100 > Number(user.cashBack)){ %>
+
+                        <strong style="color: red;">
+                            0.00
+                        </strong>
+
+                    <% } else { %>
+
+                        <strong style="color: green;">
+                            ₦<%= Number( user.cashBack).toLocaleString() %>
+                        </strong>
+
+                    <% } %>
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- =================================================
+                 CLAIM FORM
+            ================================================== -->
+
+            <form
+                action="/claim/<%= user.id %>/cashback"
+                method="post"
+                class="claim-form"
+                id="cashbackClaimForm"
+            >
+
+                <button
+                    type="submit"
+                    class="claim-btn"
+                    id="claimCashbackBtn"
+                >
+
+                    <span id="claimNormalContent">
+
+                        <i class="fa-solid fa-wallet"></i>
+
+                        <span>
+                            Claim Cashback
+                        </span>
+
+                    </span>
+
+
+                    <!-- LOADING CONTENT -->
+
+                    <span
+                        id="claimLoadingContent"
+                        class="claiming-text"
+                        style="display:none;"
+                    >
+
+                        <span class="claim-loader"></span>
+
+                        <span>
+                            Claiming...
+                        </span>
+
+                    </span>
+
+                </button>
+
+            </form>
+
+        </div>
+
+
+
+        <!-- =================================================
+             CASHBACK HISTORY
+        ================================================== -->
+
+        <div class="cashback-history">
+
+
+            <div class="cashback-history-header">
+
+                <h4>
+                    Cashback History
+                </h4>
+
+
+                <a href="/cashback/history">
+                    View All
+                </a>
+
+            </div>
+
+
+
+            <% if (
+                typeof cashbackHistory !== 'undefined'
+                && cashbackHistory.length > 0
+            ) { %>
+
+
+                <% cashbackHistory.slice(0, 5).forEach(item => { %>
+
+
+                    <div class="cashback-history-item">
+
+
+                        <div class="cashback-history-icon">
+
+                            <i class="fa-solid fa-coins"></i>
+
+                        </div>
+
+
+                        <div class="cashback-history-info">
+
+                            <strong>
+                                <%= item.description || 'Cashback Reward' %>
+                            </strong>
+
+                            <span>
+
+                                <%= new Date(
+                                    item.dates
+                                ).toLocaleString() %>
+
+                            </span>
+
+                        </div>
+
+
+                        <div class="cashback-history-amount">
+                            +₦<%= Number( item.amount).toLocaleString() %>
+                        </div>
+
+
+                    </div>
+
+
+                <% }) %>
+
+
+            <% } else { %>
+
+
+                <div class="cashback-empty">
+
+                    <i class="fa-solid fa-gift"></i>
+
+                    <p>
+                        No cashback history yet.
+                    </p>
+
+                </div>
+
+
+            <% } %>
+
+
+        </div>
+
+
+
+        <!-- =================================================
+             PLATFORM TOTAL CASHBACK
+        ================================================== -->
+
+        <div class="platform-cashback">
+
+
+            <div class="platform-cashback-icon">
+
+                <i class="fa-solid fa-chart-line"></i>
+
+            </div>
+
+
+            <div class="platform-cashback-info">
+
+                <span>
+                    Total Cashback earn on Zaki Sub
+                </span>
+
+                <strong>
+                    ₦<%= Number(user.total_cb).toLocaleString() %>
+                    
+                </strong>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- =====================================================
+         ACCOUNT SETTINGS
+    ====================================================== -->
+
+   <!-- <div class="section">
+
+        <h4>
+            Account
+        </h4>
+
+
+        <a
+            href="/change-password"
+            class="link"
+        >
+
+            <i class="fa-solid fa-lock"></i>
+
+            <span>
+                Change Password
+            </span>
+
+            <i class="fa-solid fa-chevron-right"></i>
+
+        </a>
+
+    </div>-->
+
+
+
+    <!-- =====================================================
+         TRANSACTIONS
+    ====================================================== -->
+
+    <div class="section">
+
+        <h4>
+            Transactions
+        </h4>
+
+
+        <a
+            href="/history/list"
+            class="link"
+        >
+
+            <i class="fa-solid fa-clock-rotate-left"></i>
+
+            <span>
+                Transaction History
+            </span>
+
+            <i class="fa-solid fa-chevron-right"></i>
+
+        </a>
+
+    </div>
+
+
+    <!-- =====================================================
+         THEME
+    ====================================================== -->
+
+    <div class="section">
+
+        <h4>
+            Theme colour
+        </h4>
+        <button
+                    class="theme-btn   theme-toggle"
+                    id="themeBtn"
+                    type="button"
+                    title="Change theme"
+                    onclick="toggleTheme()"
+                >
+                    ◐
+                </button>
+
+    </div>
+
+
+
+    <!-- =====================================================
+         SUPPORT
+    ====================================================== -->
+
+    <div class="section">
+
+        <h4>
+            Support
+        </h4>
+
+
+        <a
+            href="/support"
+            class="link"
+        >
+
+            <i class="fa-solid fa-headset"></i>
+
+            <span>
+                Contact Support
+            </span>
+
+            <i class="fa-solid fa-chevron-right"></i>
+
+        </a>
+
+    </div>
+
+
+
+    <!-- =====================================================
+         LOGOUT
+    ====================================================== -->
+
+    <a
+        href="/logout"
+        class="logout"
+    >
+
+        <i class="fa-solid fa-right-from-bracket"></i>
+
+        &nbsp;
+
+        Logout
+
+    </a>
+
+
+</div>
+<p style="text-align: center;"><strong >version 1.0</strong></p>
+<p style="text-align: center;">© Unicorn ICT Academy. All Rights Reserved. </p>
+<!-- =========================================================
+     YOUR EXISTING JAVASCRIPT
+========================================================= -->
+
+<script src="/js/pub.js"></script>
+
+<script src="/js/disable.js"></script>
+
+
+<!-- =========================================================
+     CASHBACK CLAIM PROTECTION
+========================================================= -->
+
+<script src="/js/claim.js"></script>
+
+
+</body>
+
+</html>

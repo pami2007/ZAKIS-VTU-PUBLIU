@@ -1,0 +1,1168 @@
+/* =========================================================
+   ZAKI SUB
+   DATA PLANS PAGE
+
+   DARK  : Brown + Gold
+   LIGHT : Emerald + Navy + Gold
+
+   RESPONSIVE:
+   DESKTOP  = 3 CARDS
+   TABLET   = 2 CARDS
+   PHONE    = 2 CARDS
+========================================================= */
+
+
+/* =========================================================
+   RESET
+========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+
+/* =========================================================
+   DATA PAGE VARIABLES
+========================================================= */
+
+.data-page {
+
+    --data-bg: rgba(0, 0, 0, .15);
+
+    --data-card: #170707;
+
+    --data-card-header-1: #250D0D;
+    --data-card-header-2: #3A1616;
+    --data-card-header-3: #170707;
+
+    --data-text: #333333;
+
+    --data-muted: #777777;
+
+    --data-border: rgba(37, 13, 13, .10);
+
+    --data-input-bg: #FFFFFF;
+
+    --data-input-border: #D9D9D9;
+
+    --data-accent: #F5C451;
+
+    --data-button: #250D0D;
+
+    --data-button-hover: #3C1616;
+
+    --data-shadow:
+        0 8px 25px rgba(0, 0, 0, .12);
+}
+
+
+/* =========================================================
+   LIGHT MODE
+========================================================= */
+
+[data-theme="light"] .data-page {
+
+    --data-bg: #F4F8F6;
+
+    --data-card: #FFFFFF;
+
+    --data-card-header-1: #0B1F33;
+    --data-card-header-2: #0F766E;
+    --data-card-header-3: #071522;
+
+    --data-text: #10202F;
+
+    --data-muted: #64748B;
+
+    --data-border: rgba(11, 31, 51, .10);
+
+    --data-input-bg: #FFFFFF;
+
+    --data-input-border: #CBD5E1;
+
+    --data-accent: #0F766E;
+
+    --data-button: #0F766E;
+
+    --data-button-hover: #0B5F59;
+
+    --data-shadow:
+        0 8px 25px rgba(11, 31, 51, .08);
+}
+
+
+/* =========================================================
+   PAGE
+========================================================= */
+
+.data-page {
+
+    width: 100%;
+
+    min-height: 100vh;
+
+    padding: 20px 18px 100px;
+
+    background: var(--data-bg);
+
+    transition:
+        background .35s ease;
+}
+
+
+/* =========================================================
+   PAGE HEADING
+========================================================= */
+
+.data-heading {
+
+    width: 100%;
+
+    max-width: 1400px;
+
+    margin: 0 auto 20px;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+}
+
+
+.data-eyebrow {
+
+    display: inline-block;
+
+    color: var(--data-accent);
+
+    font-size: 10px;
+
+    font-weight: 800;
+
+    letter-spacing: 1.5px;
+
+    margin-bottom: 5px;
+}
+
+
+.data-heading h1 {
+
+    color: var(--data-text);
+
+    font-size: 25px;
+
+    font-weight: 800;
+
+    margin-bottom: 5px;
+}
+
+
+.data-heading p {
+
+    color: var(--data-muted);
+
+    font-size: 13px;
+}
+
+
+/* =========================================================
+   GRID
+========================================================= */
+
+.data-page .service-grid {
+
+    width: 100%;
+
+    max-width: 1400px;
+
+    margin: 0 auto;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+
+    gap: 18px;
+}
+
+
+/* =========================================================
+   CARD
+========================================================= */
+
+.data-page .service-card {
+
+    width: 100%;
+
+    min-width: 0;
+
+    background: var(--data-card);
+
+    border: 1px solid var(--data-border);
+
+    border-radius: 18px;
+
+    overflow: hidden;
+
+    box-shadow: var(--data-shadow);
+
+    color: var(--data-text);
+
+    position: relative;
+
+    transition:
+        transform .25s ease,
+        box-shadow .25s ease,
+        border-color .3s ease;
+}
+
+
+/* =========================================================
+   CARD HOVER
+========================================================= */
+
+.data-page .service-card:hover {
+
+    transform: translateY(-5px);
+
+    box-shadow:
+        0 15px 35px rgba(0, 0, 0, .18);
+
+    border-color:
+        rgba(245, 196, 81, .25);
+}
+
+
+/* =========================================================
+   FORM
+========================================================= */
+
+.data-page .service-card form {
+
+    width: 100%;
+
+    height: 100%;
+
+    display: flex;
+
+    flex-direction: column;
+}
+
+
+/* =========================================================
+   CARD TOP
+========================================================= */
+
+.data-page .card-top {
+
+    width: 100%;
+
+    min-height: 65px;
+
+    padding: 12px 14px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--data-card-header-1),
+            var(--data-card-header-2),
+            var(--data-card-header-3)
+        );
+
+    color: #FFFFFF;
+
+    position: relative;
+
+    overflow: hidden;
+}
+
+
+/* =========================================================
+   HEADER DECORATION
+========================================================= */
+
+.data-page .card-top::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 150px;
+
+    height: 150px;
+
+    right: -75px;
+
+    top: -85px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(255,255,255,.06);
+
+    pointer-events: none;
+}
+
+
+.data-page .card-top::after {
+
+    content: "";
+
+    position: absolute;
+
+    width: 80px;
+
+    height: 80px;
+
+    left: -40px;
+
+    bottom: -45px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(245,196,81,.10);
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   NETWORK
+========================================================= */
+
+.data-page .network {
+
+    position: relative;
+
+    z-index: 2;
+}
+
+
+.data-page .network span {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    color: #FFFFFF;
+
+    font-size: 14px;
+}
+
+
+.data-page .network img {
+
+    width: 34px;
+
+    height: 34px;
+
+    object-fit: cover;
+
+    border-radius: 50%;
+
+    background: #FFFFFF;
+
+    padding: 2px;
+
+    flex-shrink: 0;
+}
+
+
+/* =========================================================
+   PLAN TYPE
+========================================================= */
+
+.data-page .plan-type {
+
+    position: relative;
+
+    z-index: 2;
+
+    padding: 5px 9px;
+
+    border-radius: 30px;
+
+    background:
+        rgba(255,255,255,.14);
+
+    border: 1px solid
+        rgba(255,255,255,.12);
+
+    color: #FFFFFF;
+
+    font-size: 10px;
+
+    font-weight: 600;
+
+    white-space: nowrap;
+}
+
+
+/* =========================================================
+   CARD BODY
+========================================================= */
+
+.data-page .card-body {
+
+    padding: 16px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    flex: 1;
+
+    background: var(--data-card);
+
+    color: var(--data-text);
+}
+
+
+/* =========================================================
+   PLAN NAME
+========================================================= */
+
+.data-page .plan-name {
+
+    margin-bottom: 10px;
+}
+
+
+.data-page .plan-name span {
+
+    display: block;
+
+    color: var(--data-muted);
+
+    font-size: 9px;
+
+    font-weight: 700;
+
+    letter-spacing: 1px;
+
+    margin-bottom: 4px;
+}
+
+
+.data-page .plan-name h2 {
+
+    color: var(--data-accent);
+
+    font-size: 19px;
+
+    font-weight: 800;
+
+    line-height: 1.25;
+}
+
+
+/* =========================================================
+   VALIDITY
+========================================================= */
+
+.data-page .validity {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    padding: 9px 10px;
+
+    margin-bottom: 10px;
+
+    border-radius: 9px;
+
+    background:
+        rgba(128,128,128,.07);
+
+    border: 1px solid var(--data-border);
+}
+
+
+.data-page .validity span {
+
+    color: var(--data-muted);
+
+    font-size: 11px;
+}
+
+
+.data-page .validity strong {
+
+    color: var(--data-accent);
+
+    font-size: 11px;
+}
+
+
+/* =========================================================
+   CASHBACK
+========================================================= */
+
+.data-page .cashback {
+
+    display: flex;
+
+    width:200px;
+
+    align-items: center;
+
+    gap: 9px;
+
+    padding: 9px 10px;
+
+    margin-bottom: 13px;
+
+    border-radius: 10px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(245,196,81,.12),
+            rgba(245,196,81,.04)
+        );
+
+    border: 1px solid
+        rgba(245,196,81,.18);
+}
+
+
+.data-page .cashback-icon {
+
+    width: 28px;
+
+    height: 28px;
+
+    min-width: 28px;
+
+    border-radius: 8px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background: var(--data-accent);
+
+    color: #171010;
+
+    font-size: 13px;
+
+    font-weight: 900;
+}
+
+
+.data-page .cashback div:last-child {
+
+    min-width: 0;
+}
+
+
+.data-page .cashback strong {
+
+    display: block;
+
+    color: var(--data-text);
+
+    font-size: 10px;
+
+    margin-bottom: 2px;
+}
+
+
+.data-page .cashback small {
+
+    display: block;
+
+    color: var(--data-text);
+
+    font-size: 9px;
+
+    white-space: nowrap;
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+}
+
+
+/* =========================================================
+   PRICE SECTION
+========================================================= */
+
+.data-page .price-section {
+
+    display: flex;
+
+    align-items: flex-end;
+
+    justify-content: space-between;
+
+    margin-bottom: 12px;
+}
+
+
+.data-page .price-section > span {
+
+    color: var(--data-muted);
+
+    font-size: 11px;
+
+    margin-bottom: 3px;
+}
+
+
+.data-page .price {
+
+    color: var(--data-accent);
+
+    font-size: 23px;
+
+    font-weight: 900;
+
+    line-height: 1;
+}
+
+
+/* =========================================================
+   PHONE INPUT
+========================================================= */
+
+.data-page .phone-input {
+
+    margin-bottom: 10px;
+}
+
+
+.data-page .phone-input > span {
+
+    display: block;
+
+    color: var(--data-muted);
+
+    font-size: 10px;
+
+    font-weight: 600;
+
+    margin-bottom: 5px;
+}
+
+
+.data-page .card-body input {
+
+    width: 100%;
+
+    height: 42px;
+
+    padding: 0 11px;
+
+    border-radius: 9px;
+
+    border: 1px solid var(--data-input-border);
+
+    background: var(--data-input-bg);
+
+    color: var(--data-text);
+
+    outline: none;
+
+    font-size: 12px;
+
+    transition:
+        border-color .25s ease,
+        box-shadow .25s ease;
+}
+
+
+.data-page .card-body input::placeholder {
+
+    color: var(--data-muted);
+
+    opacity: .7;
+}
+
+
+.data-page .card-body input:focus {
+
+    border-color: var(--data-accent);
+
+    box-shadow:
+        0 0 0 3px
+        rgba(245,196,81,.10);
+}
+
+
+/* =========================================================
+   BUY BUTTON
+========================================================= */
+
+.data-page .buy-btn {
+
+    width: 100%;
+
+    min-height: 43px;
+
+    margin-top: auto;
+
+    border: none;
+
+    border-radius: 10px;
+
+    padding: 10px 12px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--data-button),
+            var(--data-button-hover)
+        );
+
+    color: #FFFFFF;
+
+    cursor: pointer;
+
+    font-size: 12px;
+
+    font-weight: 800;
+
+    transition:
+        transform .25s ease,
+        box-shadow .25s ease;
+}
+
+
+.data-page .buy-btn b {
+
+    font-size: 17px;
+
+    transition: transform .25s ease;
+}
+
+
+.data-page .buy-btn:hover {
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 8px 18px rgba(0,0,0,.18);
+}
+
+
+.data-page .buy-btn:hover b {
+
+    transform: translateX(4px);
+}
+
+
+.data-page .buy-btn:active {
+
+    transform: translateY(0);
+}
+
+
+.data-page .buy-btn:disabled {
+
+    background: #777;
+
+    cursor: not-allowed;
+
+    opacity: .7;
+
+    transform: none;
+
+    box-shadow: none;
+}
+
+
+/* =========================================================
+   LOADER
+========================================================= */
+
+.data-page #loader {
+
+    position: fixed;
+
+    inset: 0;
+
+    display: none;
+
+    align-items: center;
+
+    justify-content: center;
+
+    flex-direction: column;
+
+    background:
+        rgba(0,0,0,.68);
+
+    z-index: 99999;
+
+    backdrop-filter: blur(5px);
+}
+
+
+.data-page #loader.show {
+
+    display: flex;
+}
+
+
+.data-page .spinner {
+
+    width: 55px;
+
+    height: 55px;
+
+    border-radius: 50%;
+
+    border: 5px solid
+        rgba(255,255,255,.2);
+
+    border-top-color:
+        var(--data-accent);
+
+    animation:
+        dataSpin .8s linear infinite;
+}
+
+
+.data-page #loader p {
+
+    margin-top: 15px;
+
+    color: #FFFFFF;
+
+    font-size: 15px;
+
+    font-weight: 700;
+}
+
+
+@keyframes dataSpin {
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 1000px) {
+
+    .data-page .service-grid {
+
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+
+        gap: 15px;
+    }
+}
+
+
+/* =========================================================
+   PHONE
+   IMPORTANT: 2 CARDS
+========================================================= */
+
+@media (max-width: 600px) {
+
+    .data-page {
+
+        padding: 15px 10px 90px;
+    }
+
+
+    .data-heading {
+
+        margin-bottom: 15px;
+    }
+
+
+    .data-heading h1 {
+
+        font-size: 21px;
+    }
+
+
+    .data-heading p {
+
+        font-size: 11px;
+    }
+
+
+    .data-page .service-grid {
+
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+
+        gap: 10px;
+    }
+
+
+    .data-page .service-card {
+
+        border-radius: 14px;
+    }
+
+
+    .data-page .card-top {
+
+        min-height: 51px;
+
+        padding: 8px;
+    }
+
+
+    .data-page .network span {
+
+        gap: 5px;
+
+        font-size: 10px;
+    }
+
+
+    .data-page .network img {
+
+        width: 25px;
+
+        height: 25px;
+    }
+
+
+    .data-page .plan-type {
+
+        font-size: 8px;
+
+        padding: 4px 6px;
+    }
+
+
+    .data-page .card-body {
+
+        padding: 10px 9px;
+    }
+
+
+    .data-page .plan-name {
+
+        margin-bottom: 8px;
+    }
+
+
+    .data-page .plan-name span {
+
+        font-size: 7px;
+
+        margin-bottom: 3px;
+    }
+
+
+    .data-page .plan-name h2 {
+
+        font-size: 14px;
+    }
+
+
+    .data-page .validity {
+
+        padding: 7px 8px;
+
+        margin-bottom: 8px;
+    }
+
+
+    .data-page .validity span,
+    .data-page .validity strong {
+
+        font-size: 8px;
+    }
+
+
+    .data-page .cashback {
+
+        gap: 6px;
+
+        padding: 7px;
+
+        margin-bottom: 9px;
+    }
+
+
+    .data-page .cashback-icon {
+
+        width: 22px;
+
+        height: 22px;
+
+        min-width: 22px;
+
+        border-radius: 6px;
+
+        font-size: 10px;
+    }
+
+
+    .data-page .cashback strong {
+
+        font-size: 7px;
+    }
+
+
+    .data-page .cashback small {
+
+        font-size: 6.5px;
+    }
+
+
+    .data-page .price-section {
+
+        margin-bottom: 9px;
+    }
+
+
+    .data-page .price-section > span {
+
+        font-size: 8px;
+    }
+
+
+    .data-page .price {
+
+        font-size: 16px;
+    }
+
+
+    .data-page .phone-input {
+
+        margin-bottom: 8px;
+    }
+
+
+    .data-page .phone-input > span {
+
+        font-size: 7px;
+
+        margin-bottom: 4px;
+    }
+
+
+    .data-page .card-body input {
+
+        height: 35px;
+
+        padding: 0 7px;
+
+        font-size: 9px;
+
+        border-radius: 7px;
+    }
+
+
+    .data-page .buy-btn {
+
+        min-height: 35px;
+
+        padding: 7px 8px;
+
+        font-size: 9px;
+
+        border-radius: 8px;
+    }
+
+
+    .data-page .buy-btn b {
+
+        font-size: 13px;
+    }
+}
+
+
+/* =========================================================
+   VERY SMALL PHONES
+========================================================= */
+
+@media (max-width: 350px) {
+
+    .data-page {
+
+        padding-left: 7px;
+
+        padding-right: 7px;
+    }
+
+
+    .data-page .service-grid {
+
+        gap: 7px;
+    }
+
+
+    .data-page .card-body {
+
+        padding: 8px;
+    }
+
+
+    .data-page .plan-name h2 {
+
+        font-size: 13px;
+    }
+
+
+    .data-page .price {
+
+        font-size: 15px;
+    }
+
+
+    .data-page .cashback small {
+
+        display: none;
+    }
+}
+
+
+/* =========================================================
+   THEME TRANSITIONS
+========================================================= */
+
+.data-page,
+.data-page .service-card,
+.data-page .card-top,
+.data-page .card-body,
+.data-page .validity,
+.data-page .cashback,
+.data-page .card-body input {
+
+    transition:
+        background .35s ease,
+        background-color .35s ease,
+        color .35s ease,
+        border-color .35s ease,
+        box-shadow .35s ease;
+}

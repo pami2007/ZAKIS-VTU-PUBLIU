@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" type="image/x-icon" href="/images/zaki_logo.png">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Transaction Receipt</title>
+<link rel=" stylesheet"  href="/css/historyDetail.css">
+<link rel="stylesheet" href="/css/public.css">
+<script src="/js/publicTheme.js"></script>
+</head>
+<body>
+   <div class="receipt">
+
+    <%if(item.description === 'Wallet Funding'){%>
+        <div class="header">
+        <h2>ZAKI SUB</h2>
+        <p>Transaction Receipt</p>
+    </div>
+
+    <div class="amount">
+        <h1>₦<%= Number(item.amount).toLocaleString() %>.00</h1>
+        <span><%= item.ser_type %></span>
+    </div>
+
+    <div class="details">
+
+        <div class="row">
+            <div class="label">Transaction ID</div>
+            <div class="value"><%= item.id %></div>
+        </div>
+
+        <div class="row">
+            <div class="label">Reference</div>
+            <div class="value"><%= item.ref_id %></div>
+        </div>
+
+        <div class="row">
+            <div class="label">Payment reference</div>
+            <div class="value"><%= item.payment_reference %></div>
+        </div>
+
+        <div class="row">
+            <div class="label">Transaction reference</div>
+            <div class="value"><%= item.transactionReference %></div>
+        </div>
+
+        <div class="row">
+            <div class="label">Amount</div>
+            <div class="value">₦<%= Number(item.amount).toLocaleString() %>.00</div>
+            
+        </div>
+
+        <div class="row">
+            <div class="label">Description</div>
+            <div class="value"><%= item.description %></div>
+        </div>
+
+        <div class="row">
+            <div class="label">Date</div>
+            <div class="value">
+                <%= new Date(item.dates).toLocaleString() %>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="status">
+
+        <% if(item.status === "SUCCESSFUL"){ %>
+
+            <span class="badge success">
+                ✔ Successful
+            </span>
+
+        <% }else if(item.status === "FAILED"){ %>
+
+            <span class="badge failed">
+                ✖ Failed
+            </span>
+
+        <% }else{ %>
+
+            <span class="badge pending">
+                ⏳ Pending
+            </span>
+
+        <% } %>
+    </div>
+    <div class="footer">
+        Thank you for choosing ZAKI SUB.
+    </div>
+    <%}else{%>
+
+        <%if(item.ser_type === 'eletricity'){%>
+        <div class="header">
+        <h2>ZAKI SUB</h2>
+        <p>Transaction Receipt</p>
+    </div>
+
+    <div class="amount">
+        <h1>₦<%= item.amount %></h1>
+        <span><%= item.ser_type %> PURCHASE</span>
+    </div>
+
+    <div class="details">
+
+        <div class="row">
+            <div class="label">Token</div>
+            <div class="value"><%= item.token %></div>
+        </div>
+
+
+        <div class="row">
+            <div class="label">Service provider</div>
+            <div class="value"><%= item.eletric_provider %></div>
+        </div>
+
+        <div class="row">
+            <div class="label">Meter number</div>
+            <div class="value"><%= item.meter_number %></div>
+        </div>
+
+        <div class="row">
+            <div class="label">Meter type</div>
+            <div class="value"><%= item.meter_type %></div>
+        </div>
+
+        <div class="row">
+            <div class="label">Customer Name</div>
+            <div class="value"><%= item.customer_name %></div>
+        </div>
+
+        <div class="row">
+            <div class="label">Phone Number</div>
+            <div class="value"><%= item.phone %></div>
+        </div>
+
+        <div class="row">
+            <div class="label">Transaction ID</div>
+            <div class="value"><%= item.id %></div>
+        </div>
+
+        <div class="row">
+            <div class="label">Reference</div>
+            <div class="value"><%= item.ref_id %></div>
+        </div>
+
+         <div class="row">
+            <div class="label">Receipt No</div>
+            <div class="value"><%= item.token_amount %></div>
+        </div>
+
+        <div class="row">
+            <div class="label">Amount</div>
+            <div class="value">₦<%= item.amount %></div>
+        </div>        
+
+        <div class="row">
+            <div class="label">Customer Address</div>
+            <div class="value"><%= item.address %></div>
+        </div>
+
+        <div class="row">
+            <div class="label">Description</div>
+            <div class="value"><%= item.description %></div>
+        </div>
+
+        <div class="row">
+            <div class="label">Date</div>
+            <div class="value">
+                <%= new Date(item.dates).toLocaleString() %>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="status">
+
+        <% if(item.status === "SUCCESSFUL"){ %>
+
+            <span class="badge success">
+                ✔ Successful
+            </span>
+
+        <% }else if(item.status === "FAILED"){ %>
+
+            <span class="badge failed">
+                ✖ Failed
+            </span>
+
+        <% }else{ %>
+
+            <span class="badge pending">
+                ⏳ Pending
+            </span>
+
+        <% } %>
+
+    </div>
+
+    <div class="footer">
+        Thank you for choosing ZAKI SUB.
+    </div>
+    <%}else{%>
+
+<%if(item.description === 'Cashback withdrawal'){%>
+        <div class="header">
+        <h2>ZAKI SUB</h2>
+        <p>Transaction Receipt</p>
+    </div>
+
+    <div class="amount">
+        <h1>₦<%= Number(item.amount).toLocaleString() %>.00</h1>
+        <span><%= item.ser_type %></span>
+    </div>
+
+    <div class="details">
+
+        <div class="row">
+            <div class="label">Transaction ID</div>
+            <div class="value"><%= item.id %></div>
+        </div>
+
+        <div class="row">
+            <div class="label">Reference</div>
+            <strong class="value"><%= item.ref_id %></strong>
+        </div>
+
+        <div class="row">
+            <div class="label">Amount Withdrawn</div>
+            <div class="value">₦<%= Number(item.amount).toLocaleString() %>.00</div>
+        </div>
+
+        <div class="row">
+            <div class="label">Total Cashback Earn</div>
+            <div class="value">₦<%= user.total_cb %></div>
+        </div>
+
+        <div class="row">
+            <div class="label">Total Balance after Cashback </div>
+            <div class="value">₦<%= item.total_cb_claim %></div>
+        </div>
+
+        <div class="row">
+            <div class="label">Description</div>
+            <div class="value"><%= item.description %></div>
+        </div>
+
+        <div class="row">
+            <div class="label">Date</div>
+            <div class="value">
+                <%= new Date(item.dates).toLocaleString() %>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="status">
+
+        <% if(item.status === "SUCCESSFUL"){ %>
+
+            <span class="badge success">
+                ✔ Successful
+            </span>
+
+        <% }else if(item.status === "FAILED"){ %>
+
+            <span class="badge failed">
+                ✖ Failed
+            </span>
+
+        <% }else{ %>
+
+            <span class="badge pending">
+                ⏳ Pending
+            </span>
+
+        <% } %>
+
+    </div>
+
+    <div class="footer">
+        Thank you for choosing ZAKI SUB.
+    </div>
+    <%}else{%>
+
+
+
+
+
+
+<%if(item.ser_type === 'DATA'){%>
+        <div class="header">
+        <h2>ZAKI SUB</h2>
+        <p>Transaction Receipt</p>
+    </div>
+
+    <div class="amount">
+        <h1>₦<%= Number(item.amount).toLocaleString() %>.00</h1>
+        <span><%= item.ser_type %> PURCHASE</span>
+    </div>
+
+    <div class="details">
+
+        <div class="row">
+            <div class="label">Transaction ID</div>
+            <div class="value"><%= item.id %></div>
+        </div>
+
+        <div class="row">
+            <div class="label">Reference</div>
+            <div class="value"><%= item.ref_id %></div>
+        </div>
+
+        <div class="row">
+            <div class="label">Network</div>
+            <div class="value"><%= item.network %></div>
+        </div>
+
+        <div class="row">
+            <div class="label">Phone Number</div>
+            <div class="value"><%= item.phone %></div>
+        </div>
+
+        
+      
+
+
+        <div class="row">
+            <div class="label">Amount</div>
+            <div class="value">₦<%= Number(item.amount).toLocaleString() %>.00</div>
+        </div>
+
+        <div class="row">
+            <div class="label">Amount paid</div>
+            <div class="value">₦ Coming soon</div>
+        </div>
+
+        <div class="row">
+            <div class="label">Cash back</div>
+            <div class="value">+ ₦<%= item.user_profit %></div>
+        </div>
+
+        <div class="row">
+            <div class="label">Description</div>
+            <div class="value"><%= item.description %></div>
+        </div>
+
+        <div class="row">
+            <div class="label">Date</div>
+            <div class="value">
+                <%= new Date(item.dates).toLocaleString() %>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="status">
+
+        <% if(item.status === "SUCCESSFUL"){ %>
+
+            <span class="badge success">
+                ✔ Successful
+            </span>
+
+        <% }else if(item.status === "FAILED"){ %>
+
+            <span class="badge failed">
+                ✖ Failed
+            </span>
+
+        <% }else{ %>
+
+            <span class="badge pending">
+                ⏳ Pending
+            </span>
+
+        <% } %>
+
+    </div>
+
+    <div class="footer">
+        Thank you for choosing ZAKI SUB.
+    </div>
+    <%}else{%>
+
+
+
+
+    <div class="header">
+        <h2>ZAKI SUB</h2>
+        <p>Transaction Receipt</p>
+    </div>
+
+    <div class="amount">
+        <h1>₦<%= Number(item.amount).toLocaleString() %>.00</h1>
+         
+        <span><%= item.ser_type %> PURCHASE</span>
+    </div>
+
+    <div class="details">
+
+        <div class="row">
+            <div class="label">Transaction ID</div>
+            <div class="value"><%= item.id %></div>
+        </div>
+
+        <div class="row">
+            <div class="label">Reference</div>
+            <div class="value"><%= item.ref_id %></div>
+        </div>
+
+        <div class="row">
+            <div class="label">Network</div>
+            <div class="value"><%= item.network %></div>
+        </div>
+
+        <div class="row">
+            <div class="label">Phone Number</div>
+            <div class="value"><%= item.phone %></div>
+        </div>
+
+        <div class="row">
+            <div class="label">Amount</div>
+            <div class="value">₦<%= Number(item.amount).toLocaleString() %>.00</div>
+        </div>
+
+        <div class="row">
+            <div class="label">Amount paid</div>
+            <div class="value">₦ Coming soon</div>
+        </div>
+
+        <div class="row">
+            <div class="label">Cash back</div>
+            <div class="value">+ ₦<%= item.user_profit %></div>
+        </div>
+
+        <div class="row">
+            <div class="label">Description</div>
+            <div class="value"><%= item.description %></div>
+        </div>
+
+        <div class="row">
+            <div class="label">Date</div>
+            <div class="value">
+                <%= new Date(item.dates).toLocaleString() %>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="status">
+
+        <% if(item.status === "SUCCESSFUL"){ %>
+
+            <span class="badge success">
+                ✔ Successful
+            </span>
+
+        <% }else if(item.status === "FAILED"){ %>
+
+            <span class="badge failed">
+                ✖ Failed
+            </span>
+
+        <% }else{ %>
+
+            <span class="badge pending">
+                ⏳ Pending
+            </span>
+
+        <% } %>
+
+    </div>
+
+    <div class="footer">
+        Thank you for choosing ZAKI SUB.
+    </div>
+
+          <%}%>
+          <%}%>
+     <%}%>
+    <%}%>
+
+</div>
+
+<a href="#" class="download" onclick="window.print()">
+    Download Receipt
+</a>
+<a href="#" onclick="window.history.back()" class="download">back</a>
+<script src="/js/pub.js"></script>
+</body>
+</html>

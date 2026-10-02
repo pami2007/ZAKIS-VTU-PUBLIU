@@ -1,0 +1,2487 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <link rel="icon" type="image/x-icon" href="/images/zaki_logo.png">
+
+    <meta charset="utf-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1"
+    >
+
+    <title>Data Plans</title>
+
+    <link rel="stylesheet" href="/css/diable.css">
+
+    <script src="/js/publicTheme.js"></script>
+    <style>
+        /* =========================================================
+   ZAKI SUB
+   DATA PLANS PAGE
+
+   DARK  : Brown + Gold
+   LIGHT : Emerald + Navy + Gold
+
+   RESPONSIVE:
+   DESKTOP  = 3 CARDS
+   TABLET   = 2 CARDS
+   PHONE    = 2 CARDS
+========================================================= */
+
+
+/* =========================================================
+   RESET
+========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+
+/* =========================================================
+   DATA PAGE VARIABLES
+========================================================= */
+
+.data-page {
+
+    --data-bg: rgba(0, 0, 0, .15);
+
+    --data-card: #170707;
+
+    --data-card-header-1: #250D0D;
+    --data-card-header-2: #3A1616;
+    --data-card-header-3: #170707;
+
+    --data-text: #333333;
+
+    --data-muted: #777777;
+
+    --data-border: rgba(37, 13, 13, .10);
+
+    --data-input-bg: #FFFFFF;
+
+    --data-input-border: #D9D9D9;
+
+    --data-accent: #F5C451;
+
+    --data-button: #250D0D;
+
+    --data-button-hover: #3C1616;
+
+    --data-shadow:
+        0 8px 25px rgba(0, 0, 0, .12);
+}
+
+
+/* =========================================================
+   LIGHT MODE
+========================================================= */
+
+[data-theme="light"] .data-page {
+
+    --data-bg: #F4F8F6;
+
+    --data-card: #FFFFFF;
+
+    --data-card-header-1: #0B1F33;
+    --data-card-header-2: #0F766E;
+    --data-card-header-3: #071522;
+
+    --data-text: #10202F;
+
+    --data-muted: #64748B;
+
+    --data-border: rgba(11, 31, 51, .10);
+
+    --data-input-bg: #FFFFFF;
+
+    --data-input-border: #CBD5E1;
+
+    --data-accent: #0F766E;
+
+    --data-button: #0F766E;
+
+    --data-button-hover: #0B5F59;
+
+    --data-shadow:
+        0 8px 25px rgba(11, 31, 51, .08);
+}
+
+
+/* =========================================================
+   PAGE
+========================================================= */
+
+.data-page {
+
+    width: 100%;
+
+    min-height: 100vh;
+
+    padding: 20px 18px 100px;
+
+    background: var(--data-bg);
+
+    transition:
+        background .35s ease;
+}
+
+
+/* =========================================================
+   PAGE HEADING
+========================================================= */
+
+.data-heading {
+
+    width: 100%;
+
+    max-width: 1400px;
+
+    margin: 0 auto 20px;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+}
+
+
+.data-eyebrow {
+
+    display: inline-block;
+
+    color: var(--data-accent);
+
+    font-size: 10px;
+
+    font-weight: 800;
+
+    letter-spacing: 1.5px;
+
+    margin-bottom: 5px;
+}
+
+
+.data-heading h1 {
+
+    color: var(--data-text);
+
+    font-size: 25px;
+
+    font-weight: 800;
+
+    margin-bottom: 5px;
+}
+
+
+.data-heading p {
+
+    color: var(--data-muted);
+
+    font-size: 13px;
+}
+
+
+/* =========================================================
+   GRID
+========================================================= */
+
+.data-page .service-grid {
+
+    width: 100%;
+
+    max-width: 1400px;
+
+    margin: 0 auto;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+
+    gap: 18px;
+}
+
+
+/* =========================================================
+   CARD
+========================================================= */
+
+.data-page .service-card {
+
+    width: 100%;
+
+    min-width: 0;
+
+    background: var(--data-card);
+
+    border: 1px solid var(--data-border);
+
+    border-radius: 18px;
+
+    overflow: hidden;
+
+    box-shadow: var(--data-shadow);
+
+    color: var(--data-text);
+
+    position: relative;
+
+    transition:
+        transform .25s ease,
+        box-shadow .25s ease,
+        border-color .3s ease;
+}
+
+
+/* =========================================================
+   CARD HOVER
+========================================================= */
+
+.data-page .service-card:hover {
+
+    transform: translateY(-5px);
+
+    box-shadow:
+        0 15px 35px rgba(0, 0, 0, .18);
+
+    border-color:
+        rgba(245, 196, 81, .25);
+}
+
+
+/* =========================================================
+   FORM
+========================================================= */
+
+.data-page .service-card form {
+
+    width: 100%;
+
+    height: 100%;
+
+    display: flex;
+
+    flex-direction: column;
+}
+
+
+/* =========================================================
+   CARD TOP
+========================================================= */
+
+.data-page .card-top {
+
+    width: 100%;
+
+    min-height: 65px;
+
+    padding: 12px 14px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--data-card-header-1),
+            var(--data-card-header-2),
+            var(--data-card-header-3)
+        );
+
+    color: #FFFFFF;
+
+    position: relative;
+
+    overflow: hidden;
+}
+
+
+/* =========================================================
+   HEADER DECORATION
+========================================================= */
+
+.data-page .card-top::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 150px;
+
+    height: 150px;
+
+    right: -75px;
+
+    top: -85px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(255,255,255,.06);
+
+    pointer-events: none;
+}
+
+
+.data-page .card-top::after {
+
+    content: "";
+
+    position: absolute;
+
+    width: 80px;
+
+    height: 80px;
+
+    left: -40px;
+
+    bottom: -45px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(245,196,81,.10);
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   NETWORK
+========================================================= */
+
+.data-page .network {
+
+    position: relative;
+
+    z-index: 2;
+}
+
+
+.data-page .network span {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    color: #FFFFFF;
+
+    font-size: 14px;
+}
+
+
+.data-page .network img {
+
+    width: 34px;
+
+    height: 34px;
+
+    object-fit: cover;
+
+    border-radius: 50%;
+
+    background: #FFFFFF;
+
+    padding: 2px;
+
+    flex-shrink: 0;
+}
+
+
+/* =========================================================
+   PLAN TYPE
+========================================================= */
+
+.data-page .plan-type {
+
+    position: relative;
+
+    z-index: 2;
+
+    padding: 5px 9px;
+
+    border-radius: 30px;
+
+    background:
+        rgba(255,255,255,.14);
+
+    border: 1px solid
+        rgba(255,255,255,.12);
+
+    color: #FFFFFF;
+
+    font-size: 10px;
+
+    font-weight: 600;
+
+    white-space: nowrap;
+}
+
+
+/* =========================================================
+   CARD BODY
+========================================================= */
+
+.data-page .card-body {
+
+    padding: 16px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    flex: 1;
+
+    background: var(--data-card);
+
+    color: var(--data-text);
+}
+
+
+/* =========================================================
+   PLAN NAME
+========================================================= */
+
+.data-page .plan-name {
+
+    margin-bottom: 10px;
+}
+
+
+.data-page .plan-name span {
+
+    display: block;
+
+    color: var(--data-muted);
+
+    font-size: 9px;
+
+    font-weight: 700;
+
+    letter-spacing: 1px;
+
+    margin-bottom: 4px;
+}
+
+
+.data-page .plan-name h2 {
+
+    color: var(--data-text);
+
+    font-size: 19px;
+
+    font-weight: 800;
+
+    line-height: 1.25;
+}
+
+
+/* =========================================================
+   VALIDITY
+========================================================= */
+
+.data-page .validity {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    padding: 9px 10px;
+
+    margin-bottom: 10px;
+
+    border-radius: 9px;
+
+    background:
+        rgba(128,128,128,.07);
+
+    border: 1px solid var(--data-border);
+}
+
+
+.data-page .validity span {
+
+    color: var(--data-muted);
+
+    font-size: 11px;
+}
+
+
+.data-page .validity strong {
+
+    color: var(--data-text);
+
+    font-size: 11px;
+}
+
+
+/* =========================================================
+   CASHBACK
+========================================================= */
+
+.data-page .cashback {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 9px;
+
+    padding: 9px 10px;
+
+    margin-bottom: 13px;
+
+    border-radius: 10px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(245,196,81,.12),
+            rgba(245,196,81,.04)
+        );
+
+    border: 1px solid
+        rgba(245,196,81,.18);
+}
+
+
+.data-page .cashback-icon {
+
+    width: 28px;
+
+    height: 28px;
+
+    min-width: 28px;
+
+    border-radius: 8px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background: var(--data-accent);
+
+    color: #171010;
+
+    font-size: 13px;
+
+    font-weight: 900;
+}
+
+
+.data-page .cashback div:last-child {
+
+    min-width: 0;
+}
+
+
+.data-page .cashback strong {
+
+    display: block;
+
+    color: var(--data-text);
+
+    font-size: 10px;
+
+    margin-bottom: 2px;
+}
+
+
+.data-page .cashback small {
+
+    display: block;
+
+    color: var(--data-muted);
+
+    font-size: 9px;
+
+    white-space: nowrap;
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+}
+
+
+/* =========================================================
+   PRICE SECTION
+========================================================= */
+
+.data-page .price-section {
+
+    display: flex;
+
+    align-items: flex-end;
+
+    justify-content: space-between;
+
+    margin-bottom: 12px;
+}
+
+
+.data-page .price-section > span {
+
+    color: var(--data-muted);
+
+    font-size: 11px;
+
+    margin-bottom: 3px;
+}
+
+
+.data-page .price {
+
+    color: var(--data-accent);
+
+    font-size: 23px;
+
+    font-weight: 900;
+
+    line-height: 1;
+}
+
+
+/* =========================================================
+   PHONE INPUT
+========================================================= */
+
+.data-page .phone-input {
+
+    margin-bottom: 10px;
+}
+
+
+.data-page .phone-input > span {
+
+    display: block;
+
+    color: var(--data-muted);
+
+    font-size: 10px;
+
+    font-weight: 600;
+
+    margin-bottom: 5px;
+}
+
+
+.data-page .card-body input {
+
+    width: 100%;
+
+    height: 42px;
+
+    padding: 0 11px;
+
+    border-radius: 9px;
+
+    border: 1px solid var(--data-input-border);
+
+    background: var(--data-input-bg);
+
+    color: var(--data-text);
+
+    outline: none;
+
+    font-size: 12px;
+
+    transition:
+        border-color .25s ease,
+        box-shadow .25s ease;
+}
+
+
+.data-page .card-body input::placeholder {
+
+    color: var(--data-muted);
+
+    opacity: .7;
+}
+
+
+.data-page .card-body input:focus {
+
+    border-color: var(--data-accent);
+
+    box-shadow:
+        0 0 0 3px
+        rgba(245,196,81,.10);
+}
+
+
+/* =========================================================
+   BUY BUTTON
+========================================================= */
+
+.data-page .buy-btn {
+
+    width: 100%;
+
+    min-height: 43px;
+
+    margin-top: auto;
+
+    border: none;
+
+    border-radius: 10px;
+
+    padding: 10px 12px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--data-button),
+            var(--data-button-hover)
+        );
+
+    color: #FFFFFF;
+
+    cursor: pointer;
+
+    font-size: 12px;
+
+    font-weight: 800;
+
+    transition:
+        transform .25s ease,
+        box-shadow .25s ease;
+}
+
+
+.data-page .buy-btn b {
+
+    font-size: 17px;
+
+    transition: transform .25s ease;
+}
+
+
+.data-page .buy-btn:hover {
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 8px 18px rgba(0,0,0,.18);
+}
+
+
+.data-page .buy-btn:hover b {
+
+    transform: translateX(4px);
+}
+
+
+.data-page .buy-btn:active {
+
+    transform: translateY(0);
+}
+
+
+.data-page .buy-btn:disabled {
+
+    background: #777;
+
+    cursor: not-allowed;
+
+    opacity: .7;
+
+    transform: none;
+
+    box-shadow: none;
+}
+
+
+/* =========================================================
+   LOADER
+========================================================= */
+
+.data-page #loader {
+
+    position: fixed;
+
+    inset: 0;
+
+    display: none;
+
+    align-items: center;
+
+    justify-content: center;
+
+    flex-direction: column;
+
+    background:
+        rgba(0,0,0,.68);
+
+    z-index: 99999;
+
+    backdrop-filter: blur(5px);
+}
+
+
+.data-page #loader.show {
+
+    display: flex;
+}
+
+
+.data-page .spinner {
+
+    width: 55px;
+
+    height: 55px;
+
+    border-radius: 50%;
+
+    border: 5px solid
+        rgba(255,255,255,.2);
+
+    border-top-color:
+        var(--data-accent);
+
+    animation:
+        dataSpin .8s linear infinite;
+}
+
+
+.data-page #loader p {
+
+    margin-top: 15px;
+
+    color: #FFFFFF;
+
+    font-size: 15px;
+
+    font-weight: 700;
+}
+
+
+@keyframes dataSpin {
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 1000px) {
+
+    .data-page .service-grid {
+
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+
+        gap: 15px;
+    }
+}
+
+
+/* =========================================================
+   PHONE
+   IMPORTANT: 2 CARDS
+========================================================= */
+
+@media (max-width: 600px) {
+
+    .data-page {
+
+        padding: 15px 10px 90px;
+    }
+
+
+    .data-heading {
+
+        margin-bottom: 15px;
+    }
+
+
+    .data-heading h1 {
+
+        font-size: 21px;
+    }
+
+
+    .data-heading p {
+
+        font-size: 11px;
+    }
+
+
+    .data-page .service-grid {
+
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+
+        gap: 10px;
+    }
+
+
+    .data-page .service-card {
+
+        border-radius: 14px;
+    }
+
+
+    .data-page .card-top {
+
+        min-height: 51px;
+
+        padding: 8px;
+    }
+
+
+    .data-page .network span {
+
+        gap: 5px;
+
+        font-size: 10px;
+    }
+
+
+    .data-page .network img {
+
+        width: 25px;
+
+        height: 25px;
+    }
+
+
+    .data-page .plan-type {
+
+        font-size: 8px;
+
+        padding: 4px 6px;
+    }
+
+
+    .data-page .card-body {
+
+        padding: 10px 9px;
+    }
+
+
+    .data-page .plan-name {
+
+        margin-bottom: 8px;
+    }
+
+
+    .data-page .plan-name span {
+
+        font-size: 7px;
+
+        margin-bottom: 3px;
+    }
+
+
+    .data-page .plan-name h2 {
+
+        font-size: 14px;
+    }
+
+
+    .data-page .validity {
+
+        padding: 7px 8px;
+
+        margin-bottom: 8px;
+    }
+
+
+    .data-page .validity span,
+    .data-page .validity strong {
+
+        font-size: 8px;
+    }
+
+
+    .data-page .cashback {
+
+        gap: 6px;
+
+        padding: 7px;
+
+        margin-bottom: 9px;
+    }
+
+
+    .data-page .cashback-icon {
+
+        width: 22px;
+
+        height: 22px;
+
+        min-width: 22px;
+
+        border-radius: 6px;
+
+        font-size: 10px;
+    }
+
+
+    .data-page .cashback strong {
+
+        font-size: 7px;
+    }
+
+
+    .data-page .cashback small {
+
+        font-size: 6.5px;
+    }
+
+
+    .data-page .price-section {
+
+        margin-bottom: 9px;
+    }
+
+
+    .data-page .price-section > span {
+
+        font-size: 8px;
+    }
+
+
+    .data-page .price {
+
+        font-size: 16px;
+    }
+
+
+    .data-page .phone-input {
+
+        margin-bottom: 8px;
+    }
+
+
+    .data-page .phone-input > span {
+
+        font-size: 7px;
+
+        margin-bottom: 4px;
+    }
+
+
+    .data-page .card-body input {
+
+        height: 35px;
+
+        padding: 0 7px;
+
+        font-size: 9px;
+
+        border-radius: 7px;
+    }
+
+
+    .data-page .buy-btn {
+
+        min-height: 35px;
+
+        padding: 7px 8px;
+
+        font-size: 9px;
+
+        border-radius: 8px;
+    }
+
+
+    .data-page .buy-btn b {
+
+        font-size: 13px;
+    }
+}
+
+
+/* =========================================================
+   VERY SMALL PHONES
+========================================================= */
+
+@media (max-width: 350px) {
+
+    .data-page {
+
+        padding-left: 7px;
+
+        padding-right: 7px;
+    }
+
+
+    .data-page .service-grid {
+
+        gap: 7px;
+    }
+
+
+    .data-page .card-body {
+
+        padding: 8px;
+    }
+
+
+    .data-page .plan-name h2 {
+
+        font-size: 13px;
+    }
+
+
+    .data-page .price {
+
+        font-size: 15px;
+    }
+
+
+    .data-page .cashback small {
+
+        display: none;
+    }
+}
+
+
+/* =========================================================
+   THEME TRANSITIONS
+========================================================= */
+
+.data-page,
+.data-page .service-card,
+.data-page .card-top,
+.data-page .card-body,
+.data-page .validity,
+.data-page .cashback,
+.data-page .card-body input {
+
+    transition:
+        background .35s ease,
+        background-color .35s ease,
+        color .35s ease,
+        border-color .35s ease,
+        box-shadow .35s ease;
+}
+
+
+/* =========================================================
+   ZAKI SUB
+   DATA / DETAIL LISTING PAGE
+
+   DARK MODE  : Brown + Gold
+   LIGHT MODE : Emerald + Navy + Gold
+
+   IMPORTANT:
+   All data-page styles are scoped to .data-page
+   so they don't conflict with the footer, dashboard,
+   or other pages.
+========================================================= */
+
+
+/* ========================================================
+   RESET
+========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+
+/* =========================================================
+   DATA PAGE VARIABLES
+   These are intentionally page-specific.
+   They will NOT overwrite your global footer variables.
+========================================================= */
+
+.data-page {
+
+    --data-bg: rgba(0, 0, 0, .15);
+
+    --data-card: #170707;
+
+    --data-card-header-1: #250D0D;
+    --data-card-header-2: #3A1616;
+    --data-card-header-3: #170707;
+
+    --data-text: #333333;
+
+    --data-muted: #777777;
+
+    --data-border: rgba(37, 13, 13, .10);
+
+    --data-input-bg: #FFFFFF;
+
+    --data-input-border: #D9D9D9;
+
+    --data-accent: #F5C451;
+
+    --data-button: #250D0D;
+
+    --data-button-hover: #3C1616;
+
+    --data-shadow:
+        0 5px 18px rgba(0, 0, 0, .15);
+}
+
+
+/* =========================================================
+   LIGHT MODE
+========================================================= */
+
+[data-theme="light"] .data-page {
+
+    --data-bg: #F4F8F6;
+
+    --data-card: #FFFFFF;
+
+    --data-card-header-1: #0B1F33;
+    --data-card-header-2: #0F766E;
+    --data-card-header-3: #071522;
+
+    --data-text: #10202F;
+
+    --data-muted: #64748B;
+
+    --data-border: rgba(11, 31, 51, .10);
+
+    --data-input-bg: #FFFFFF;
+
+    --data-input-border: #CBD5E1;
+
+    --data-accent: #D99A18;
+
+    --data-button: #0F766E;
+
+    --data-button-hover: #0B5F59;
+
+    --data-shadow:
+        0 5px 18px rgba(11, 31, 51, .10);
+}
+
+
+/* =========================================================
+   PAGE BACKGROUND
+========================================================= */
+
+body {
+
+    background: var(--data-bg);
+
+}
+
+
+/*
+   We give the listing its own background wrapper.
+   This prevents the data page from changing the global
+   body/background used by your footer and other pages.
+*/
+
+.data-page {
+
+    width: 100%;
+
+    min-height: 100vh;
+
+    padding: 15px;
+
+    background: var(--data-bg);
+
+    transition:
+        background .35s ease;
+}
+
+
+/* =========================================================
+   GRID
+========================================================= */
+
+.data-page .service-grid {
+
+    width: 100%;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+
+    gap: 15px;
+
+    margin-bottom: 100px;
+}
+
+
+/* =========================================================
+   CARD
+========================================================= */
+
+.data-page .service-card {
+
+    width: 100%;
+
+    min-width: 0;
+
+    background: var(--data-card);
+
+    border-radius: 14px;
+
+    overflow: hidden;
+
+    border: 1px solid var(--data-border);
+
+    box-shadow: var(--data-shadow);
+
+    transition:
+        transform .25s ease,
+        box-shadow .25s ease,
+        background .35s ease,
+        border-color .35s ease;
+
+    text-align: center;
+
+    color: var(--data-text);
+}
+
+
+/* =========================================================
+   CARD HOVER
+========================================================= */
+
+.data-page .service-card:hover {
+
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 8px 22px rgba(0, 0, 0, .18);
+}
+
+
+/* =========================================================
+   FORM
+========================================================= */
+
+.data-page .service-card form {
+
+    display: flex;
+
+    flex-direction: column;
+
+    width: 100%;
+
+    height: 100%;
+}
+
+
+/* =========================================================
+   CARD HEADER
+   FULL WIDTH
+========================================================= */
+
+.data-page .card-top {
+
+    width: 100%;
+
+    min-height: 58px;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--data-card-header-1) 0%,
+            var(--data-card-header-2) 55%,
+            var(--data-card-header-3) 100%
+        );
+
+    color: #FFFFFF;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    padding: 10px 12px;
+
+    border: none;
+
+    box-shadow: none;
+
+    position: relative;
+
+    overflow: hidden;
+
+    flex-shrink: 0;
+}
+
+
+/* =========================================================
+   HEADER DECORATIVE CIRCLE
+========================================================= */
+
+.data-page .card-top::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 150px;
+
+    height: 150px;
+
+    background:
+        rgba(255, 255, 255, .06);
+
+    border-radius: 50%;
+
+    right: -70px;
+
+    top: -80px;
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   SECOND HEADER DECORATION
+========================================================= */
+
+.data-page .card-top::after {
+
+    content: "";
+
+    position: absolute;
+
+    width: 70px;
+
+    height: 70px;
+
+    background:
+        rgba(245, 196, 81, .08);
+
+    border-radius: 50%;
+
+    left: -30px;
+
+    bottom: -40px;
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   NETWORK
+========================================================= */
+
+.data-page .network {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    position: relative;
+
+    z-index: 2;
+
+    min-width: 0;
+}
+
+
+/* =========================================================
+   NETWORK IMAGE
+========================================================= */
+
+.data-page .network img {
+
+    width: 32px;
+
+    height: 32px;
+
+    border-radius: 50%;
+
+    background: #FFFFFF;
+
+    object-fit: cover;
+
+    flex-shrink: 0;
+}
+
+
+/* =========================================================
+   NETWORK NAME
+========================================================= */
+
+.data-page .network span {
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    color: #FFFFFF;
+
+    white-space: nowrap;
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+}
+
+
+/* =========================================================
+   PLAN TYPE
+========================================================= */
+
+.data-page .plan-type {
+
+    font-size: 11px;
+
+    padding: 5px 8px;
+
+    border-radius: 20px;
+
+    background:
+        rgba(255, 255, 255, .15);
+
+    color: #FFFFFF;
+
+    position: relative;
+
+    z-index: 3;
+
+    white-space: nowrap;
+
+    margin-left: 8px;
+
+    flex-shrink: 0;
+}
+
+
+/* =========================================================
+   CARD BODY
+========================================================= */
+
+.data-page .card-body {
+
+    width: 100%;
+
+    padding: 14px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    flex: 1;
+
+    background: var(--data-card);
+
+    color: var(--data-text);
+
+    transition:
+        background .35s ease,
+        color .35s ease;
+}
+
+
+/* =========================================================
+   PLAN NAME
+========================================================= */
+
+.data-page .card-body h2 {
+
+    width: 100%;
+
+    font-size: 16px;
+
+    color: var(--data-accent);
+
+    margin-bottom: 6px;
+
+    line-height: 1.3;
+
+    font-weight: 700;
+
+    word-break: break-word;
+}
+
+
+/* =========================================================
+   DURATION / DESCRIPTION
+========================================================= */
+
+.data-page .card-body h3 {
+
+    width: 100%;
+
+    font-size: 14px;
+
+    color: var(--data-muted);
+
+    margin-bottom: 8px;
+
+    line-height: 1.3;
+
+    font-weight: 500;
+}
+
+
+/* =========================================================
+   PRICE
+========================================================= */
+
+.data-page .price {
+
+    width: 100%;
+
+    font-size: 24px;
+
+    font-weight: bold;
+
+    color: var(--data-accent);
+
+    margin-bottom: 12px;
+
+    line-height: 1.2;
+}
+
+
+/* =========================================================
+   PHONE INPUT
+========================================================= */
+
+.data-page .card-body input {
+
+    width: 100%;
+
+    height: 42px;
+
+    padding: 10px;
+
+    border: 1px solid var(--data-input-border);
+
+    border-radius: 8px;
+
+    outline: none;
+
+    margin-bottom: 12px;
+
+    background: var(--data-input-bg);
+
+    color: var(--data-text);
+
+    font-size: 14px;
+
+    transition:
+        border-color .3s ease,
+        box-shadow .3s ease,
+        background .3Ls ease;
+}
+
+
+/* =========================================================
+   INPUT PLACEHOLDER
+========================================================= */
+
+.data-page .card-body input::placeholder {
+
+    color: var(--data-muted);
+
+    opacity: .8;
+}
+
+
+/* =========================================================
+   INPUT FOCUS
+========================================================= */
+
+.data-page .card-body input:focus {
+
+    border-color: var(--data-accent);
+
+    box-shadow:
+        0 0 0 3px
+        rgba(245, 196, 81, .12);
+}
+
+
+/* =========================================================
+   BUY BUTTON
+========================================================= */
+
+.data-page .buy-btn {
+
+    width: 100%;
+
+    min-height: 42px;
+
+    padding: 11px;
+
+    border: none;
+
+    border-radius: 8px;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--data-button),
+            var(--data-button-hover)
+        );
+
+    color: #FFFFFF;
+
+    cursor: pointer;
+
+    font-weight: bold;
+
+    margin-top: auto;
+
+    transition:
+        background .3s ease,
+        transform .3s ease,
+        box-shadow .3s ease;
+
+    box-shadow:
+        0 5px 12px rgba(0, 0, 0, .12);
+}
+
+
+/* =========================================================
+   BUY BUTTON HOVER
+========================================================= */
+
+.data-page .buy-btn:hover {
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 8px 18px rgba(0, 0, 0, .18);
+}
+
+
+/* =========================================================
+   BUY BUTTON ACTIVE
+========================================================= */
+
+.data-page .buy-btn:active {
+
+    transform: translateY(0);
+}
+
+
+/* =========================================================
+   DISABLED BUTTON
+========================================================= */
+
+.data-page .buy-btn:disabled {
+
+    background: #777777;
+
+    color: #FFFFFF;
+
+    cursor: not-allowed;
+
+    opacity: .8;
+
+    transform: none;
+
+    box-shadow: none;
+}
+
+
+/* =========================================================
+   LOADER
+========================================================= */
+
+.data-page #loader {
+
+    position: fixed;
+
+    top: 0;
+
+    left: 0;
+
+    width: 100%;
+
+    height: 100%;
+
+    background:
+        rgba(0, 0, 0, .65);
+
+    display: none;
+
+    justify-content: center;
+
+    align-items: center;
+
+    flex-direction: column;
+
+    z-index: 99999;
+}
+
+
+/* =========================================================
+   SHOW LOADER
+========================================================= */
+
+.data-page #loader.show {
+
+    display: flex;
+}
+
+
+/* =========================================================
+   LOADER SPINNER
+========================================================= */
+
+.data-page .spinner {
+
+    width: 60px;
+
+    height: 60px;
+
+    border: 6px solid
+        rgba(255, 255, 255, .30);
+
+    border-top: 6px solid
+        var(--data-accent);
+
+    border-radius: 50%;
+
+    animation:
+        dataSpin .8s linear infinite;
+}
+
+
+/* =========================================================
+   LOADER TEXT
+========================================================= */
+
+.data-page #loader p {
+
+    margin-top: 18px;
+
+    color: #FFFFFF;
+
+    font-size: 18px;
+
+    font-weight: bold;
+}
+
+
+/* =========================================================
+   SPINNER ANIMATION
+========================================================= */
+
+@keyframes dataSpin {
+
+    from {
+
+        transform: rotate(0deg);
+    }
+
+    to {
+
+        transform: rotate(360deg);
+    }
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 900px) {
+
+    .data-page {
+
+        padding: 15px;
+    }
+
+
+    .data-page .service-grid {
+
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+
+        gap: 15px;
+    }
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+    .data-page {
+
+        padding: 15px;
+    }
+
+
+    .data-page .service-grid {
+
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+
+        gap: 12px;
+
+        margin-bottom: 100px;
+    }
+
+
+    .data-page .card-top {
+
+        width: 100%;
+
+        min-height: 55px;
+
+        padding: 10px;
+    }
+
+
+    .data-page .network {
+
+        gap: 6px;
+    }
+
+
+    .data-page .network img {
+
+        width: 28px;
+
+        height: 28px;
+    }
+
+
+    .data-page .network span {
+
+        font-size: 12px;
+    }
+
+
+    .data-page .plan-type {
+
+        font-size: 10px;
+
+        padding: 4px 6px;
+    }
+
+
+    .data-page .card-body {
+
+        width: 100%;
+
+        padding: 10px;
+    }
+
+
+    .data-page .card-body h2 {
+
+        font-size: 14px;
+
+        margin-bottom: 5px;
+    }
+
+
+    .data-page .card-body h3 {
+
+        font-size: 12px;
+
+        margin-bottom: 7px;
+    }
+
+
+    .data-page .price {
+
+        font-size: 18px;
+
+        margin-bottom: 10px;
+    }
+
+
+    .data-page .card-body input {
+
+        height: 38px;
+
+        padding: 8px;
+
+        font-size: 12px;
+
+        margin-bottom: 10px;
+    }
+
+
+    .data-page .buy-btn {
+
+        min-height: 38px;
+
+        padding: 9px;
+
+        font-size: 12px;
+    }
+}
+
+
+/* =========================================================
+   VERY SMALL PHONES
+========================================================= */
+
+@media (max-width: 380px) {
+
+    .data-page .service-grid {
+
+        gap: 10px;
+    }
+
+
+    .data-page .card-top {
+
+        padding: 8px;
+    }
+
+
+    .data-page .card-body {
+
+        padding: 9px;
+    }
+
+
+    .data-page .network span {
+
+        font-size: 11px;
+    }
+
+
+    .data-page .plan-type {
+
+        font-size: 9px;
+
+        padding: 3px 5px;
+    }
+
+
+    .data-page .price {
+
+        font-size: 17px;
+    }
+}
+
+
+/* =========================================================
+   THEME TRANSITION
+========================================================= */
+
+.data-page,
+.data-page .service-card,
+.data-page .card-top,
+.data-page .card-body,
+.data-page .card-body input,
+.data-page .buy-btn {
+
+    transition:
+        background .35s ease,
+        background-color .35s ease,
+        color .35s ease,
+        border-color .35s ease,
+        box-shadow .35s ease,
+        transform .25s ease;
+}
+    </style>
+</head>
+
+<body>
+
+    <%- include('headerdata') %>
+
+    <%- include('partials/alerts') %>
+
+
+    <div class="data-page">
+
+        <!-- PAGE INTRO -->
+
+        <div class="data-heading">
+
+            <div>
+                <span class="data-eyebrow">
+                    ZAKI SUB
+                </span>
+
+                <h1>
+                    Data Plans
+                </h1>
+
+                <p>
+                    Choose a plan that works best for you.
+                </p>
+            </div>
+
+        </div>
+
+
+        <!-- DATA GRID -->
+
+        <div class="service-grid">
+
+            <% card.forEach(item => { %>
+
+                <div class="service-card">
+
+                    <form
+                        class="buyForm"
+                        action="/<%= item.id %>/data/purchase"
+                        method="post"
+                    >
+
+                        <!-- CARD HEADER -->
+
+                        <div class="card-top">
+
+                            <div class="network">
+
+                                <% if(item.network === 'MTN'){ %>
+
+                                    <span>
+                                        <img
+                                            src="/images/mtn.png"
+                                            alt="MTN"
+                                        >
+
+                                        <b>MTN</b>
+                                    </span>
+
+                                <% } else if(item.network === 'AIRTEL') { %>
+
+                                    <span>
+                                        <img
+                                            src="/images/airtel.png"
+                                            alt="Airtel"
+                                        >
+
+                                        <b>Airtel</b>
+                                    </span>
+
+                                <% } else if(item.network === 'GLO'){ %>
+
+                                    <span>
+                                        <img
+                                            src="/images/glo.png"
+                                            alt="Glo"
+                                        >
+
+                                        <b>Glo</b>
+                                    </span>
+
+                                <% } %>
+
+                            </div>
+
+
+                            <span class="plan-type">
+                                <%= item.type %>
+                            </span>
+
+                        </div>
+
+
+                        <!-- CARD BODY -->
+
+                        <div class="card-body">
+
+
+                            <!-- PLAN -->
+
+                            <div class="plan-name">
+
+                                <span>
+                                    DATA PLAN
+                                </span>
+
+                                <h2>
+                                    <%= item.plan %>
+                                </h2>
+
+                            </div>
+
+
+                            <!-- VALIDITY -->
+
+                            <div class="validity">
+
+                                <span>
+                                    Valid for
+                                </span>
+
+                                <strong>
+                                    <%= item.duration %>
+                                </strong>
+
+                            </div>
+
+
+                            <!-- CASHBACK -->
+
+                            <div class="cashback">
+
+                                <div class="cashback-icon">
+                                    %
+                                </div>
+
+                                <div>
+
+                                    <strong>
+                                        Cashback Available
+                                    </strong>
+
+                                    <small>
+                                        Get cashback after purchase
+                                    </small>
+
+                                </div>
+
+                            </div>
+
+
+                            <!-- PRICE -->
+
+                            <div class="price-section">
+
+                                <span>
+                                    Price
+                                </span>
+
+                                <div class="price">
+
+                                    ₦<%= Number(item.zd_price).toLocaleString() %>.00
+
+                                </div>
+
+                            </div>
+
+
+                            <!-- PHONE -->
+
+                            <div class="phone-input">
+
+                                <span>
+                                    Phone Number
+                                </span>
+
+                                <input
+                                    type="tel"
+                                    name="phone"
+                                    placeholder="08012345678"
+                                    value="<%= user.phone %>"
+                                    required
+                                    inputmode="numeric"
+                                >
+
+                            </div>
+
+
+                            <!-- BUY -->
+
+                            <button
+                                type="submit"
+                                class="buy-btn buyBtn"
+                            >
+
+                                <span>
+                                    BUY DATA
+                                </span>
+
+                                <b>
+                                    →
+                                </b>
+
+                            </button>
+
+                        </div>
+
+                    </form>
+
+                </div>
+
+            <% }) %>
+
+        </div>
+
+
+        <!-- PURCHASE LOADER -->
+
+        <div id="loader">
+
+            <div class="spinner"></div>
+
+            <p>
+                Processing...
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <script src="/js/disable.js"></script>
+
+    <%- include('footer') %>
+
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="icon" type="image/x-icon" href="/images/zaki_logo.png">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Data Plan</title>
+<link rel="stylesheet" href="/css/diable.css">
+<script src="/js/publicTheme.js"></script>
+ 
+</head>
+<body>
+    <%-include('headerdata') %>
+
+    <%- include('partials/alerts') %>
+
+    <div class="data-page">
+
+    <div class="service-grid">
+
+        <% card.forEach(item => { %>
+
+            <div class="service-card">
+
+                <form
+                    class="buyForm"
+                    action="/<%= item.id %>/data/purchase"
+                    method="post"
+                >
+
+                    <div class="card-top">
+                        
+                        <div class="network">
+                                    <%if(item.network === 'MTN'){%>
+                                    <span>
+                                        <img src="/images/mtn.png">
+                                        <%= item.network %>
+                                    </span>
+                                    <%}else if(item.network === 'AIRTEL') {%>
+                                        <span>
+                                            <img src="/images/airtel.png">
+                                            <%= item.network %>
+                                        </span>
+                                    <%}else if(item.network === 'GLO'){%>
+                                        <span>
+                                            <img src="/images/glo.png">
+                                            <%= item.network %>
+                                        </span>
+                                    <%}%>
+                                   
+                        
+                        </div>
+
+                        <span class="plan-type">
+                            <%= item.type %>
+                        </span>
+
+                    </div>
+
+
+                    <div class="card-body">
+                         <small style="color: black;"><b>cash back available</b></small>
+                        <h2>
+                           <small>Plan:</small>   <%= item.plan %>
+                        </h2>
+
+                        <h3>
+                            <small>Validaty:</small> <%= item.duration %>
+                        </h3>
+
+                        <div class="price">
+                           
+                            ₦<%= Number(item.zd_price).toLocaleString() %>.00
+                        </div>
+
+                        <input
+                            type="number"
+                            name="phone"
+                            placeholder="Enter phone number"
+                            value="<%= user.phone %>"
+                        >
+
+                        <button
+                            type="submit"
+                            class="buy-btn buyBtn"
+                        >
+                            BUY
+                        </button>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+        <% }) %>
+
+    </div>
+
+
+    <!-- =========================================
+         PURCHASE LOADER
+    ========================================== -->
+
+    <div id="loader">
+
+        <div class="spinner"></div>
+
+        <p>
+            Processing...
+        </p>
+
+    </div>
+
+</div>
+
+
+<script src="/js/disable.js" ></script>
+
+<%- include('footer') %>
+</body>
+</html>

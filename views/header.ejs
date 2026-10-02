@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link rel="icon" type="image/x-icon" href="/images/zaki_logo.png">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Header</title>
+<link rel="stylesheet" href="/css/public.css">
+<link rel="stylesheet" href="/css/Header.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"/>
+
+<link rel="stylesheet" href="/css/style.css">
+<script src="/js/publicTheme.js"></script>
+
+</head>
+
+<body>
+
+<header class="top-header">
+    <%if(admin === 'admin'){%>
+    <div class="logo">
+
+        <a href="/admin/dashboard" class="logo-circle">
+            <img src="/images/zaki_logo.png" style="width: 50px; height: 50px; border-radius: 100px;">
+        </a>
+         <small >Welcome back<br> <%=user.fname%></small>
+    </div>
+
+    <div class="header-right">
+       
+      <!--  <a href="/status/pending" class="icon-btn">
+
+            <i class="fa-solid fa-bell"></i>
+
+        </a>-->
+
+        <a href="/user/profile" class="profile">
+
+            <i class="fa-solid fa-user"></i>
+
+        </a>
+
+    </div>
+    <%}else{%>
+        <div class="logo">
+
+        <a href="/" class="logo-circle">
+            <img src="/images/zaki_logo.png" style="width: 50px; height: 50px; border-radius: 100px;">
+        </a>
+         <small >Welcome back<br> <%=user.fname%></small>
+    </div>
+
+    <div class="header-right">
+       
+        <!-----<a href="/status/pending" class="icon-btn">
+
+            <i class="fa-solid fa-bell"></i>
+
+        </a>-->
+
+        <a href="/user/profile" class="profile">
+
+            <i class="fa-solid fa-user"></i>
+
+        </a>
+
+    </div>
+
+    <%}%>
+<script src="/js/pub.js"></script>
+</header>

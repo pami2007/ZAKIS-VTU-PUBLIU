@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="icon" type="image/x-icon" href="/images/zaki_logo.png">
+</head>
+<body>
+    <% if (locals.user) { %>
+    <%- include('homes',{
+        user: locals.user,
+        history:history
+    }) %>
+    <% } else { %>
+        <%- include('blog') %>
+    <% } %>
+    
+</body>
+</html>

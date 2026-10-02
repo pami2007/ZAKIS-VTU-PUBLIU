@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" type="image/x-icon" href="/images/zaki_logo.png">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ZakiSub - Login</title>
+<link rel="stylesheet" href="/css/public.css">
+<link rel="stylesheet" href="css/login.css">
+<script src="/js/publicTheme.js"></script>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="logo">
+        <h1>ZakiSub</h1>
+        <p>Welcome back. Kindly login below.</p>
+    </div>
+
+    <div class="card">
+
+        <%- include('partials/alerts') %>
+
+        <h2>Login</h2>
+
+        <form action="/login" method="post">
+
+            <label>Email Address</label>
+            <input
+                type="text"
+                name="email"
+                placeholder="Enter your email"
+                required
+            >
+
+            <label>Password</label>
+            <input
+                type="password"
+                name="password"
+                placeholder="Enter your password"
+                required
+            >
+
+            <div class="forgot">
+                <a href="forgot-password">Forgot Password?</a>
+            </div>
+
+            <button class="btn">
+                LOGIN
+            </button>
+
+        </form>
+
+        <div class="register">
+            Don't have an account?
+            <a href="/register">Create Account</a>
+        </div>
+
+    </div>
+
+    <div class="footer">
+        <a href="/term_condition">Terms</a> |
+        <a href="/term_condition">Conditions</a> |
+        <a href="/privacy_policy">Privacy Policy</a>
+    </div>
+
+</div>
+<script src="/js/pub.js"></script>
+</body>
+</html>

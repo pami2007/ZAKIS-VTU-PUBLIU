@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" type="image/x-icon" href="/images/zaki_logo.png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link
+        rel="stylesheet"
+        href="/css/profile.css"
+    >
+
+    <link rel="stylesheet" href="/css/public.css">
+
+
+    <!-- Font Awesome -->
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    >
+    <script src="/js/publicTheme.js"></script>
+
+    <style>
+        .cash{
+            padding: 15px;
+            height: auto;
+            text-decoration: none;
+            color: gold;
+        }
+    </style>
+
+</head>
+<body>
+    <%- include('partials/cashback_header') %>
+
+
+<%- include('partials/alerts') %>
+
+     <div class="cashback-history">
+
+
+            <div class="cashback-history-header">
+
+                <h4>
+                    Cashback History
+                </h4>
+
+            </div>
+
+
+
+            <% if (
+                typeof cashbackHistory !== 'undefined'
+                && cashbackHistory.length > 0
+            ) { %>
+
+
+                <% cashbackHistory.forEach(item => { %>
+
+
+                    <div class="cashback-history-item">
+
+
+                        <div class="cashback-history-icon">
+
+                            <i class="fa-solid fa-coins"></i>
+
+                        </div>
+
+
+                        <div class="cashback-history-info">
+
+                            <strong>
+                                <%= item.description || 'Cashback Reward' %>
+                            </strong>
+
+                            <span>
+
+                                <%= new Date(
+                                    item.dates
+                                ).toLocaleString() %>
+
+                            </span>
+
+                        </div>
+
+
+                        <div class="cashback-history-amount">
+
+                            +₦<%=
+                                item.amount || 0
+                             %>
+
+                        </div>
+                        <div class="cash">
+                            <a href="/<%=item.id%>/history/details">
+                                 Receipt
+                            </a>
+                        </div>
+
+                    </div>
+
+
+                <% }) %>
+
+
+            <% } else { %>
+
+
+                <div class="cashback-empty">
+
+                    <i class="fa-solid fa-gift"></i>
+
+                    <p>
+                        No cashback history yet.
+                    </p>
+
+                </div>
+
+
+            <% } %>
+
+
+        </div>
+        <script src="/js/pub.js"></script>
+ 
+</body>
+</html>

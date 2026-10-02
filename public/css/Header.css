@@ -1,0 +1,527 @@
+/* =========================================================
+   ZAKI SUB HEADER
+   GLOBAL THEME COMPATIBLE
+   DARK  : Brown + Gold
+   LIGHT : Emerald + Navy + Gold
+========================================================= */
+
+
+/* =========================================================
+   GLOBAL
+========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: var(--bg);
+    color: var(--text);
+
+    transition:
+        background 0.35s ease,
+        color 0.35s ease;
+}
+
+a {
+    text-decoration: none;
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.top-header {
+
+    position: sticky;
+    top: 0;
+
+    width: 100%;
+    height: 75px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 0 25px;
+
+    /*
+       Same global background family.
+       Transparency keeps your glass effect.
+    */
+
+    background: color-mix(
+        in srgb,
+        var(--bg) 92%,
+        transparent
+    );
+
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+
+    border-bottom: 1px solid var(--border);
+
+    z-index: 999;
+
+    transition:
+        background 0.35s ease,
+        border-color 0.35s ease;
+}
+
+
+/* =========================================================
+   LOGO
+========================================================= */
+
+.logo {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+}
+
+
+/* =========================================================
+   LOGO CIRCLE
+========================================================= */
+
+.logo-circle {
+
+    width: 48px;
+    height: 48px;
+
+    border-radius: 50%;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    font-size: 22px;
+    font-weight: 700;
+
+    /*
+       Gold becomes the main brand accent.
+    */
+
+    color: var(--brand-dark);
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--accent),
+            var(--accent-dark)
+        );
+
+    border: 1px solid
+        color-mix(
+            in srgb,
+            var(--accent) 70%,
+            transparent
+        );
+
+    box-shadow:
+        0 6px 18px
+        color-mix(
+            in srgb,
+            var(--accent) 18%,
+            transparent
+        );
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+
+.logo-circle:hover {
+
+    transform: rotate(10deg);
+
+    box-shadow:
+        0 10px 25px
+        color-mix(
+            in srgb,
+            var(--accent) 28%,
+            transparent
+        );
+}
+
+
+/* =========================================================
+   WELCOME TEXT
+========================================================= */
+
+.logo small {
+
+    color: var(--muted);
+
+    font-size: 12px;
+
+    line-height: 1.5;
+
+    transition:
+        color 0.35s ease;
+}
+
+
+/* =========================================================
+   RIGHT SECTION
+========================================================= */
+
+.header-right {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+}
+
+
+/* =========================================================
+   ICON BUTTONS
+========================================================= */
+
+.icon-btn {
+
+    width: 45px;
+    height: 45px;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    border-radius: 15px;
+
+    text-decoration: none;
+
+    color: var(--text);
+
+    /*
+       Uses the same surface as the rest
+       of the global UI.
+    */
+
+    background: var(--surface);
+
+    border: 1px solid var(--border);
+
+    box-shadow:
+        0 5px 15px
+        rgba(0, 0, 0, 0.08);
+
+    transition:
+        background 0.3s ease,
+        color 0.3s ease,
+        transform 0.3s ease,
+        border-color 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+
+.icon-btn:hover {
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--accent),
+            var(--accent-dark)
+        );
+
+    color: var(--brand-dark);
+
+    border-color: var(--accent);
+
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 10px 25px
+        color-mix(
+            in srgb,
+            var(--accent) 20%,
+            transparent
+        );
+}
+
+
+/* =========================================================
+   NOTIFICATION ICON
+========================================================= */
+
+.icon-btn i {
+
+    font-size: 17px;
+
+    transition:
+        transform 0.3s ease;
+}
+
+
+.icon-btn:hover i {
+
+    transform: scale(1.08);
+}
+
+
+/* =========================================================
+   PROFILE
+========================================================= */
+
+.profile {
+
+    width: 48px;
+    height: 48px;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    border-radius: 50%;
+
+    text-decoration: none;
+
+    color: var(--text);
+
+    font-size: 20px;
+
+    /*
+       Gold outline keeps the brand
+       visible in both themes.
+    */
+
+    border: 2px solid
+        color-mix(
+            in srgb,
+            var(--accent) 45%,
+            var(--border)
+        );
+
+    background: var(--surface);
+
+    box-shadow:
+        0 5px 15px
+        rgba(0, 0, 0, 0.08);
+
+    transition:
+        background 0.3s ease,
+        color 0.3s ease,
+        transform 0.3s ease,
+        border-color 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+
+.profile:hover {
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--accent),
+            var(--accent-dark)
+        );
+
+    color: var(--brand-dark);
+
+    border-color: var(--accent);
+
+    transform: scale(1.08);
+
+    box-shadow:
+        0 10px 25px
+        color-mix(
+            in srgb,
+            var(--accent) 20%,
+            transparent
+        );
+}
+
+
+/* =========================================================
+   PROFILE ICON
+========================================================= */
+
+.profile i {
+
+    transition:
+        transform 0.3s ease;
+}
+
+
+.profile:hover i {
+
+    transform: scale(1.08);
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 768px) {
+
+    .top-header {
+
+        padding: 0 15px;
+
+        height: 70px;
+    }
+
+
+    .logo {
+
+        gap: 10px;
+    }
+
+
+    .logo-circle {
+
+        width: 42px;
+        height: 42px;
+
+        font-size: 18px;
+    }
+
+
+    .logo small {
+
+        font-size: 11px;
+    }
+
+
+    .icon-btn,
+    .profile {
+
+        width: 42px;
+        height: 42px;
+    }
+
+
+    .header-right {
+
+        gap: 10px;
+    }
+}
+
+
+/* =========================================================
+   SMALL PHONES
+========================================================= */
+
+@media (max-width: 400px) {
+
+    .top-header {
+
+        padding: 0 10px;
+    }
+
+
+    .logo {
+
+        gap: 8px;
+    }
+
+
+    .logo-circle {
+
+        width: 40px;
+        height: 40px;
+
+        font-size: 17px;
+    }
+
+
+    .logo small {
+
+        font-size: 10px;
+    }
+
+
+    .header-right {
+
+        gap: 7px;
+    }
+
+
+    .icon-btn,
+    .profile {
+
+        width: 39px;
+        height: 39px;
+    }
+
+
+    .icon-btn i {
+
+        font-size: 15px;
+    }
+
+
+    .profile {
+
+        font-size: 17px;
+    }
+}
+
+
+/* =========================================================
+   THEME TRANSITION
+========================================================= */
+
+.top-header,
+.logo-circle,
+.logo small,
+.icon-btn,
+.profile {
+
+    transition:
+        background 0.35s ease,
+        background-color 0.35s ease,
+        color 0.35s ease,
+        border-color 0.35s ease,
+        box-shadow 0.35s ease,
+        transform 0.3s ease;
+}
+
+
+/* =========================================================
+   ACCESSIBILITY
+========================================================= */
+
+.logo-circle:focus-visible,
+.icon-btn:focus-visible,
+.profile:focus-visible {
+
+    outline: 2px solid var(--accent);
+
+    outline-offset: 3px;
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+
+        transition: none !important;
+
+        animation: none !important;
+    }
+}

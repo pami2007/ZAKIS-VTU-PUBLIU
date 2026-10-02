@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard</title>
+<link rel="stylesheet" href="/css/public.css">
+<link rel="icon" type="image/x-icon" href="/images/zaki_logo.png">
+<script src="/js/publicTheme.js"></script>
+</head>
+<body style="margin-bottom: 50px;">
+<%-include('header', { user: user,admin }) %>
+<%- include('partials/alerts') %>
+
+
+<div class="dashboard">
+
+    <!-- Balance -->
+
+    <div class="balance-card">
+
+    <p class="balance-label">
+        Total Balance
+    </p>
+
+    <h2>
+        
+         ₦<%= Number(user.bal).toLocaleString() %>
+    </h2>
+
+
+    <!-- CASHBACK -->
+
+    <div class="cashback-box">
+
+        <div class="cashback-left">
+
+            <div class="cashback-icon">
+                ₦
+            </div>
+
+            <div class="cashback-info">
+
+                <span>
+                    Available Cash Back
+                </span>
+
+                <strong>
+                    ₦<%= user.cashBack %>
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <a
+            href="/user/profile"
+            class="cashback-details"
+        >
+            Details →
+        </a>
+
+    </div>
+
+</div>
+
+   
+    <!-- Buttons -->
+
+    <div class="quick-actions">
+        <a href="/deposit">FUND WALLET</a>
+        <a href="/history/list">HISTORY</a>
+    </div>
+
+    <div class="dashboard-content" style="margin-bottom: 50px;">
+
+        <!-- LEFT -->
+
+        <section class="services-grid">
+
+            <a href="/airtime/mtn" class="service-card">
+
+                <div class="icon-box">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M22 16.92v3a2 2 0 0 1-2.18 2A19.8 19.8 0 0 1 3.09 4.18 2 2 0 0 1 5.11 2h3a2 2 0 0 1 2 1.72c.12.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L9.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.58 2.81.7A2 2 0 0 1 22 16.92z"/>
+                    </svg>
+                </div>
+
+                <span>AIRTIME</span>
+
+            </a>
+
+            <a href="/data/mtn" class="service-card">
+
+                <div class="icon-box">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path d="M2 20h.01"/>
+                        <path d="M7 20v-4"/>
+                        <path d="M12 20v-8"/>
+                        <path d="M17 20v-12"/>
+                        <path d="M22 20V4"/>
+                    </svg>
+                </div>
+
+                <span>DATA</span>
+
+            </a>
+
+            <a href="/electricity/purchase" class="service-card">
+
+    <div class="icon-box">
+
+        <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            stroke-width="2"
+        >
+            <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"
+            />
+        </svg>
+
+    </div>
+
+    <span>ELECTRICITY</span>
+
+</a>
+
+           <a href="#" class="service-card">
+
+    <div class="icon-box">
+
+        <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            stroke-width="1.8"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+        >
+
+            <!-- Antenna -->
+            <path d="M12 3v2"/>
+
+            <circle cx="12" cy="2.5" r=".8" fill="currentColor" stroke="none"/>
+
+            <!-- Bot Head -->
+            <rect
+                x="4"
+                y="6"
+                width="16"
+                height="13"
+                rx="3"
+            />
+
+            <!-- Eyes -->
+            <circle
+                cx="9"
+                cy="11"
+                r="1"
+                fill="currentColor"
+                stroke="none"
+            />
+
+            <circle
+                cx="15"
+                cy="11"
+                r="1"
+                fill="currentColor"
+                stroke="none"
+            />
+
+            <!-- Mouth -->
+            <path d="M9 15h6"/>
+
+            <!-- Side Details -->
+            <path d="M4 10H2.5"/>
+            <path d="M20 10h1.5"/>
+
+        </svg>
+
+    </div>
+
+    <span>ZAKI BOT</span>
+    <small>Coming soon</small>
+
+</a>
+            <!-- Add more cards here -->
+
+        </section>
+
+        <!-- RIGHT -->
+
+        <aside class="history">
+
+            <div class="history-header">
+                <h3>Recent Transactions</h3>
+                <a href="/history/list">View All</a>
+            </div>
+            <div class="history-list">
+                <% if(history.length===0){ %>
+
+            <div class="empty">
+
+                <h3>No Transactions</h3>
+
+                <p>Your purchases will appear here.</p>
+
+            </div>
+
+        <% } %>
+
+        <% history.forEach(item=>{ %>
+            <section class="history-section">
+               <div class="history-item">
+
+    <div class="tx-icon">
+
+        <% if(item.status === 'SUCCESSFUL'){ %>
+
+            ✓
+
+        <% }else if(item.status === 'FAILED'){ %>
+
+            ✕
+
+        <% }else{ %>
+
+            ⏳
+
+        <% } %>
+
+    </div>
+
+    <div class="history-info">
+
+        <h4>
+            <%= item.network %>
+            <%= item.description %>
+        </h4>
+
+        <span>
+            <%= new Date(item.dates).toLocaleString() %>
+        </span>
+
+    </div>
+
+    <div class="history-right">
+
+        <% if(item.status === 'SUCCESSFUL'){ %>
+
+            <span class="success-tag">
+                SUCCESS
+            </span>
+
+        <% }else if(item.status === 'FAILED'){ %>
+
+            <span class="failed-tag">
+                FAILED
+            </span>
+
+        <% }else{ %>
+
+            <span class="pending-tag">
+                PENDING
+            </span>
+
+        <% } %>
+
+        <a href="/<%=item.id%>/history/details">
+
+            Receipt →
+
+        </a>
+
+    </div>
+
+</div>
+            </section>    
+        <% }) %>
+
+            </div>
+            
+        </aside>
+
+    </div>
+
+</div>
+
+       <script src="/js/publicTheme.js"></script> 
+
+<%- include('footer') %>
+</body>
+</html>

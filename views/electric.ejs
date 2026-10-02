@@ -1,0 +1,2060 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Electricity Payment</title>
+
+    <link rel="stylesheet" href="/css/public.css">
+<link rel="icon" type="image/x-icon" href="/images/zaki_logo.png">
+<script src="/js/publicTheme.js"></script>
+
+    <style>
+
+        /* =====================================================
+           RESET
+        ===================================================== */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+
+        /* =====================================================
+           DARK MODE
+        ===================================================== */
+
+        :root {
+
+            --bg: #100909;
+
+            --surface: #1b1111;
+
+            --surface-2: #241616;
+
+            --brand: #250d0d;
+
+            --brand-light: #3a1818;
+
+            --brand-dark: #170707;
+
+            --accent: #f5c451;
+
+            --accent-dark: #d99a18;
+
+            --text: #ffffff;
+
+            --text-soft: #eadfdf;
+
+            --muted: #b9afaf;
+
+            --border: rgba(255,255,255,.09);
+
+            --input-bg: rgba(255,255,255,.06);
+
+            --input-border: rgba(255,255,255,.12);
+
+            --success: #22c55e;
+
+            --danger: #ef4444;
+
+            --warning: #f59e0b;
+
+            --shadow:
+                0 15px 40px rgba(0,0,0,.35);
+        }
+
+
+        /* =====================================================
+           LIGHT MODE
+        ===================================================== */
+
+        [data-theme="light"] {
+
+            --bg: #f4f8f6;
+
+            --surface: #ffffff;
+
+            --surface-2: #f0f7f5;
+
+            --brand: #0b1f33;
+
+            --brand-light: #163b5c;
+
+            --brand-dark: #071522;
+
+            --accent: #0f766e;
+
+            --accent-dark: #0b5f59;
+
+            --text: #10202f;
+
+            --text-soft: #243746;
+
+            --muted: #64748b;
+
+            --border: rgba(11,31,51,.10);
+
+            --input-bg: #f8faf9;
+
+            --input-border: rgba(11,31,51,.14);
+
+            --success: #16a34a;
+
+            --danger: #dc2626;
+
+            --warning: #d97706;
+
+            --shadow:
+                0 15px 40px rgba(11,31,51,.10);
+        }
+
+
+        /* =====================================================
+           BODY
+        ===================================================== */
+
+        body {
+
+            min-height: 100vh;
+
+            background:
+                radial-gradient(
+                    circle at top left,
+                    rgba(245,196,81,.07),
+                    transparent 35%
+                ),
+
+                radial-gradient(
+                    circle at bottom right,
+                    rgba(15,118,110,.06),
+                    transparent 35%
+                ),
+
+                var(--bg);
+
+            color: var(--text);
+
+            padding: 30px 15px;
+
+            transition:
+                background .3s ease,
+                color .3s ease;
+        }
+
+
+        /* =====================================================
+           MAIN CONTAINER
+        ===================================================== */
+
+        .electricity-container {
+
+            width: 100%;
+
+            max-width: 560px;
+
+            margin: auto;
+        }
+
+
+        /* =====================================================
+           HEADER
+        ===================================================== */
+
+        .page-header {
+
+            margin-bottom: 20px;
+        }
+
+
+        .page-header h1 {
+
+            font-size: 27px;
+
+            margin-bottom: 7px;
+
+            color: var(--text);
+        }
+
+
+        .page-header p {
+
+            color: var(--muted);
+
+            font-size: 14px;
+
+            line-height: 1.5;
+        }
+
+
+        /* =====================================================
+           MAIN CARD
+        ===================================================== */
+
+        .electricity-card {
+
+            background:
+                linear-gradient(
+                    145deg,
+                    var(--surface),
+                    var(--surface-2)
+                );
+
+            border: 1px solid var(--border);
+
+            border-radius: 22px;
+
+            padding: 24px;
+
+            box-shadow: var(--shadow);
+
+            transition:
+                background .3s ease,
+                border-color .3s ease;
+        }
+
+
+        /* =====================================================
+           FORM GROUP
+        ===================================================== */
+
+        .form-group {
+
+            margin-bottom: 20px;
+        }
+
+
+        .form-group label {
+
+            display: block;
+
+            color: var(--text);
+
+            font-size: 13px;
+
+            font-weight: 700;
+
+            margin-bottom: 8px;
+        }
+
+
+        /* =====================================================
+           SELECT / INPUT
+        ===================================================== */
+
+        select,
+        input {
+
+            width: 100%;
+
+            height: 48px;
+
+            padding: 0 14px;
+
+            border-radius: 11px;
+
+            border: 1px solid var(--input-border);
+
+            background: var(--input-bg);
+
+            color: var(--text);
+
+            outline: none;
+
+            font-size: 14px;
+
+            transition:
+                border .25s ease,
+                box-shadow .25s ease,
+                background .25s ease;
+        }
+
+
+        select {
+
+            cursor: pointer;
+        }
+
+
+        select option {
+
+            background: var(--surface);
+
+            color: var(--text);
+        }
+
+
+        select:focus,
+        input:focus {
+
+            border-color: var(--accent);
+
+            box-shadow:
+                0 0 0 3px rgba(15,118,110,.10);
+        }
+
+
+        input::placeholder {
+
+            color: var(--muted);
+        }
+
+
+        /* =====================================================
+           METER ROW
+        ===================================================== */
+
+        .meter-row {
+
+            display: flex;
+
+            gap: 10px;
+        }
+
+
+        .meter-row input {
+
+            flex: 1;
+
+            min-width: 0;
+        }
+
+
+        /* =====================================================
+           VERIFY BUTTON
+        ===================================================== */
+
+        .verify-btn {
+
+            min-width: 105px;
+
+            border: none;
+
+            border-radius: 11px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    var(--brand-light),
+                    var(--brand)
+                );
+
+            color: #fff;
+
+            font-weight: 700;
+
+            cursor: pointer;
+
+            transition:
+                transform .25s ease,
+                opacity .25s ease,
+                box-shadow .25s ease;
+        }
+
+
+        .verify-btn:hover {
+
+            transform: translateY(-2px);
+
+            box-shadow:
+                0 8px 20px rgba(0,0,0,.20);
+        }
+
+
+        .verify-btn:disabled {
+
+            cursor: not-allowed;
+
+            opacity: .65;
+
+            transform: none;
+        }
+
+
+        /* =====================================================
+           CUSTOMER VERIFIED BOX
+        ===================================================== */
+
+        .customer-box {
+
+            display: none;
+
+            margin-bottom: 20px;
+
+            padding: 16px;
+
+            border-radius: 15px;
+
+            background:
+                rgba(34,197,94,.08);
+
+            border: 1px solid rgba(34,197,94,.22);
+        }
+
+
+        .customer-top {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 10px;
+
+            margin-bottom: 12px;
+        }
+
+
+        .verified-icon {
+
+            width: 36px;
+
+            height: 36px;
+
+            border-radius: 50%;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            background: rgba(34,197,94,.15);
+
+            color: var(--success);
+
+            font-weight: bold;
+
+            font-size: 17px;
+        }
+
+
+        .customer-top strong {
+
+            color: var(--success);
+
+            font-size: 14px;
+        }
+
+
+        .customer-details {
+
+            display: grid;
+
+            grid-template-columns: 1fr 1fr;
+
+            gap: 10px;
+        }
+
+
+        .customer-detail {
+
+            background: var(--surface);
+
+            border: 1px solid var(--border);
+
+            border-radius: 10px;
+
+            padding: 10px;
+        }
+
+
+        .customer-detail span {
+
+            display: block;
+
+            color: var(--muted);
+
+            font-size: 10px;
+
+            margin-bottom: 4px;
+        }
+
+
+        .customer-detail strong {
+
+            color: var(--text);
+
+            font-size: 13px;
+
+            word-break: break-word;
+        }
+
+
+        /* =====================================================
+           AMOUNT SECTION
+        ===================================================== */
+
+        .amount-section {
+
+            margin-top: 5px;
+        }
+
+
+        .amount-label-row {
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            margin-bottom: 8px;
+        }
+
+
+        .amount-label-row label {
+
+            margin-bottom: 0;
+        }
+
+
+        .amount-label-row span {
+
+            color: var(--muted);
+
+            font-size: 11px;
+        }
+
+
+        /* =====================================================
+           AMOUNT INPUT
+        ===================================================== */
+
+        .amount-input-wrapper {
+
+            position: relative;
+        }
+
+
+        .naira-symbol {
+
+            position: absolute;
+
+            left: 15px;
+
+            top: 50%;
+
+            transform: translateY(-50%);
+
+            color: var(--accent);
+
+            font-size: 17px;
+
+            font-weight: bold;
+
+            pointer-events: none;
+        }
+
+
+        #amount {
+
+            padding-left: 35px;
+
+            font-size: 17px;
+
+            font-weight: 700;
+        }
+
+
+        /* =====================================================
+           QUICK AMOUNT TITLE
+        ===================================================== */
+
+        .quick-title {
+
+            margin-top: 13px;
+
+            margin-bottom: 9px;
+
+            color: var(--muted);
+
+            font-size: 11px;
+
+            font-weight: 600;
+        }
+
+
+        /* =====================================================
+           AMOUNT OPTIONS
+        ===================================================== */
+
+        .amount-options {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(5, 1fr);
+
+            gap: 8px;
+        }
+
+
+        .amount-btn {
+
+            min-height: 40px;
+
+            padding: 8px 5px;
+
+            border-radius: 9px;
+
+            border: 1px solid var(--border);
+
+            background: var(--surface-2);
+
+            color: var(--text);
+
+            font-size: 11px;
+
+            font-weight: 700;
+
+            cursor: pointer;
+
+            transition:
+                background .2s ease,
+                color .2s ease,
+                border .2s ease,
+                transform .2s ease;
+        }
+
+
+        .amount-btn:hover {
+
+            transform: translateY(-2px);
+
+            border-color: var(--accent);
+
+            color: var(--accent);
+        }
+
+
+        .amount-btn.selected {
+
+            background:
+                linear-gradient(
+                    135deg,
+                    var(--accent),
+                    var(--accent-dark)
+                );
+
+            color: #fff;
+
+            border-color: var(--accent);
+
+            box-shadow:
+                0 5px 15px rgba(15,118,110,.15);
+        }
+
+
+        /* =====================================================
+           PAYMENT SUMMARY
+        ===================================================== */
+
+        .summary {
+
+            margin-top: 22px;
+
+            padding: 16px;
+
+            background: var(--surface-2);
+
+            border: 1px solid var(--border);
+
+            border-radius: 14px;
+        }
+
+
+        .summary-title {
+
+            font-size: 13px;
+
+            font-weight: 700;
+
+            margin-bottom: 13px;
+
+            color: var(--text);
+        }
+
+
+        .summary-row {
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            margin-bottom: 10px;
+
+            color: var(--muted);
+
+            font-size: 13px;
+        }
+
+
+        .summary-row:last-child {
+
+            margin-bottom: 0;
+
+            padding-top: 10px;
+
+            border-top: 1px solid var(--border);
+
+            color: var(--text);
+
+            font-size: 15px;
+
+            font-weight: 700;
+        }
+
+
+        /* =====================================================
+           PAY BUTTON
+        ===================================================== */
+
+        .pay-btn {
+
+            width: 100%;
+
+            height: 50px;
+
+            margin-top: 18px;
+
+            border: none;
+
+            border-radius: 13px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    var(--accent),
+                    var(--accent-dark)
+                );
+
+            color: #fff;
+
+            font-size: 15px;
+
+            font-weight: 700;
+
+            cursor: pointer;
+
+            box-shadow:
+                0 8px 22px rgba(15,118,110,.15);
+
+            transition:
+                transform .25s ease,
+                opacity .25s ease,
+                box-shadow .25s ease;
+        }
+
+
+        .pay-btn:hover {
+
+            transform: translateY(-2px);
+
+            box-shadow:
+                0 12px 28px rgba(15,118,110,.20);
+        }
+
+
+        .pay-btn:disabled {
+
+            opacity: .65;
+
+            cursor: not-allowed;
+
+            transform: none;
+
+            box-shadow: none;
+        }
+
+
+        /* =====================================================
+           NOTE
+        ===================================================== */
+
+        .note {
+
+            margin-top: 14px;
+
+            color: var(--muted);
+
+            font-size: 11px;
+
+            line-height: 1.6;
+
+            text-align: center;
+        }
+
+
+        /* =====================================================
+           FULL SCREEN PROCESSING LOADER
+        ===================================================== */
+
+        .payment-loader {
+
+            position: fixed;
+
+            inset: 0;
+
+            display: none;
+
+            align-items: center;
+
+            justify-content: center;
+
+            background:
+                rgba(0,0,0,.72);
+
+            backdrop-filter: blur(7px);
+
+            -webkit-backdrop-filter: blur(7px);
+
+            z-index: 99999;
+        }
+
+
+        .payment-loader.show {
+
+            display: flex;
+        }
+
+
+        .loader-box {
+
+            width: min(90%, 350px);
+
+            padding: 30px 25px;
+
+            text-align: center;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    var(--surface),
+                    var(--surface-2)
+                );
+
+            border: 1px solid var(--border);
+
+            border-radius: 20px;
+
+            box-shadow:
+                0 25px 60px rgba(0,0,0,.35);
+        }
+
+
+        /* =====================================================
+           LOADER SPINNER
+        ===================================================== */
+
+        .spinner {
+
+            width: 55px;
+
+            height: 55px;
+
+            margin: 0 auto 18px;
+
+            border-radius: 50%;
+
+            border: 4px solid var(--border);
+
+            border-top-color: var(--accent);
+
+            border-right-color: var(--accent);
+
+            animation:
+                electricitySpin .8s linear infinite;
+        }
+
+
+        @keyframes electricitySpin {
+
+            from {
+
+                transform: rotate(0deg);
+            }
+
+            to {
+
+                transform: rotate(360deg);
+            }
+        }
+
+
+        .loader-box h3 {
+
+            color: var(--text);
+
+            font-size: 17px;
+
+            margin-bottom: 7px;
+        }
+
+
+        .loader-box p {
+
+            color: var(--muted);
+
+            font-size: 12px;
+
+            line-height: 1.5;
+        }
+
+
+        .loader-warning {
+
+            margin-top: 15px;
+
+            padding: 9px 10px;
+
+            border-radius: 8px;
+
+            background: rgba(245,158,11,.08);
+
+            color: var(--warning);
+
+            font-size: 10px;
+        }
+
+
+        /* =====================================================
+           RESPONSIVE
+        ===================================================== */
+
+        @media (max-width: 600px) {
+
+            body {
+
+                padding:
+                    20px 12px;
+            }
+
+
+            .electricity-card {
+
+                padding: 19px;
+
+                border-radius: 18px;
+            }
+
+
+            .page-header h1 {
+
+                font-size: 24px;
+            }
+
+
+            .amount-options {
+
+                grid-template-columns:
+                    repeat(3, 1fr);
+            }
+
+
+            .amount-btn {
+
+                min-height: 42px;
+
+                font-size: 12px;
+            }
+
+
+            .customer-details {
+
+                grid-template-columns: 1fr;
+            }
+        }
+
+
+        @media (max-width: 400px) {
+
+            .meter-row {
+
+                flex-direction: column;
+            }
+
+
+            .verify-btn {
+
+                height: 45px;
+
+                width: 100%;
+            }
+
+
+            .electricity-card {
+
+                padding: 16px;
+            }
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+    <%- include('partials/eleHeader') %>
+
+    <!-- =====================================================
+         ALERTS
+    ====================================================== -->
+
+    <%- include('partials/alerts') %>
+
+
+
+    <!-- =====================================================
+         ELECTRICITY PAGE
+    ====================================================== -->
+
+    <main class="electricity-container">
+
+
+        <!-- HEADER 
+
+        <header class="pacge-header">
+
+            <h1>
+                Electricity Payment
+            </h1>
+
+            <p>
+                Verify your meter and purchase electricity
+                securely from your wallet.
+            </p>
+
+        </header>-->
+
+
+
+        <!-- CARD -->
+
+        <section class="electricity-card">
+
+
+            <form
+                id="electricityForm"
+                action="/electricity/purchase"
+                method="POST"
+            >
+
+
+                <!-- =================================================
+                     PROVIDER
+                ================================================== -->
+
+                <div class="form-group">
+
+                    <label for="provider">
+                        Electricity Provider
+                    </label>
+
+                    <select
+                        id="provider"
+                        name="meter_provider"
+                        required
+                    >
+
+                        <option value="">
+                            Select provider
+                        </option>
+
+                        <option value="kaduna-electric">
+                            Kaduna Electric - KAEDCO
+                        </option>
+
+                        <option value="ikeja-electric">
+                            Ikeja Electric Payment - IKEDC
+                        </option>
+
+                         <option value="eko-electric">
+                           Eko Electricity Distribution Company (EKEDC) 
+                        </option>
+
+                         <option value="kano-electric">
+                            Kano Electricity Distribution Company (KEDCO) 
+                        </option>
+
+                         <option value="portharcourt-electric">
+                            Port Harcourt Electricity Distribution Company (PHED) 
+                        </option>
+
+                         <option value="jos-electric">
+                           Jos Electricity Distribution Company (JED) 
+                        </option>
+
+                         <option value="ibadan-electric">
+                            Ibadan Electricity Distribution Company (IBEDC)
+                        </option>
+
+                         <option value="abuja-electric">
+                            Abuja Electricity Distribution Company (AEDC)
+                        </option>
+
+                        <option value="enugu-electric">
+                            EEDC
+                        </option>
+
+                        <option value="benin-electric">
+                            Benin Electricity Distribution Company (BEDC) 
+                        </option>
+
+                        <option value="aba-electric">
+                            ABA  Electricity Distribution Company (ABA)
+                        </option>
+
+                        <option value="yola-electric">
+                            YOLA Electricity Distribution Company (YEDC)
+                        </option>
+
+
+                    </select>
+
+                </div>
+
+
+
+                <!-- =================================================
+                     METER TYPE
+                ================================================== -->
+
+                <div class="form-group">
+
+                    <label for="meterType">
+                        Meter Type
+                    </label>
+
+                    <select
+                        id="meterType"
+                        name="meter_type"
+                        required
+                    >
+
+                        <option value="">
+                            Select meter type
+                        </option>
+
+                        <option value="prepaid">
+                            Prepaid
+                        </option>
+
+                        <option value="postpaid">
+                            Postpaid
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+
+                <!-- =================================================
+                     METER NUMBER
+                ================================================== -->
+
+                <div class="form-group">
+
+                    <label for="meterNumber">
+                        Meter Number
+                    </label>
+
+                    <div class="meter-row">
+
+                        <input
+                            type="number"
+                            name="meter_number"
+                            id="meterNumber"
+                            required
+                            placeholder="Enter meter number"
+                            autocomplete="off"
+                        >
+
+                        <button
+                            type="button"
+                            class="verify-btn"
+                            id="verifyBtn"
+                        >
+                            Verify
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- =================================================
+                     CUSTOMER INFORMATION
+                ================================================== -->
+
+                <div
+                    class="customer-box"
+                    id="customerBox"
+                >
+
+                    <div class="customer-top">
+
+                        <div class="verified-icon">
+                            ✓
+                        </div>
+
+                        <strong>
+                            Meter Verified Successfully
+                        </strong>
+
+                    </div>
+
+
+                    <div class="customer-details">
+
+                        <div class="customer-detail">
+
+                            <span>
+                                Customer
+                            </span>
+
+                            <strong id="customerName">
+                            </strong>
+
+                        </div>
+
+
+                        <div class="customer-detail">
+
+                            <span>
+                                Meter Number
+                            </span>
+
+                            <strong id="verifiedMeter">
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- =================================================
+                     PHONE
+                ================================================== -->
+
+                <div class="form-group">
+
+                    <label for="phone">
+                        Phone Number
+                    </label>
+
+                    <input
+                        type="number"
+                        name="phone"
+                        id="phone"
+                        required
+                        placeholder="Enter phone number"
+                        autocomplete="tel"
+                    >
+
+                </div>
+
+
+
+                <!-- =================================================
+                     AMOUNT
+                ================================================== -->
+
+                <div class="form-group amount-section">
+
+                    <div class="amount-label-row">
+
+                        <label for="amount">
+                            Amount
+                        </label>
+
+                        <span>
+                            Minimum ₦2000
+                        </span>
+
+                    </div>
+
+
+                    <div class="amount-input-wrapper">
+
+                        <span class="naira-symbol">
+                            ₦
+                        </span>
+
+                        <input
+                            type="number"
+                            name="amount"
+                            id="amount"
+                            min="2000"
+                            required
+                            placeholder="Enter amount"
+                        >
+
+                    </div>
+
+
+
+                    <!-- QUICK AMOUNTS -->
+
+                    <p class="quick-title">
+                        Quick amount
+                    </p>
+
+
+                    <div class="amount-options">
+
+
+                        <button
+                            type="button"
+                            class="amount-btn"
+                            data-amount="2000"
+                        >
+                            ₦2,000
+                        </button>
+
+                        <button
+                            type="button"
+                            class="amount-btn"
+                            data-amount="3000"
+                        >
+                            ₦3,000
+                        </button>
+
+                        <button
+                            type="button"
+                            class="amount-btn"
+                            data-amount="4000"
+                        >
+                            ₦4,000
+                        </button>
+
+                        <button
+                            type="button"
+                            class="amount-btn"
+                            data-amount="5000"
+                        >
+                            ₦5,000
+                        </button>
+
+                        <button
+                            type="button"
+                            class="amount-btn"
+                            data-amount="6000"
+                        >
+                            ₦6,000
+                        </button>
+
+                        <button
+                            type="button"
+                            class="amount-btn"
+                            data-amount="7000"
+                        >
+                            ₦7,000
+                        </button>
+
+                        <button
+                            type="button"
+                            class="amount-btn"
+                            data-amount="8000"
+                        >
+                            ₦8,000
+                        </button>
+
+                        <button
+                            type="button"
+                            class="amount-btn"
+                            data-amount="9000"
+                        >
+                            ₦9,000
+                        </button>
+
+                        <button
+                            type="button"
+                            class="amount-btn"
+                            data-amount="10000"
+                        >
+                            ₦10,000
+                        </button>
+
+                        <button
+                            type="button"
+                            class="amount-btn"
+                            data-amount="15000"
+                        >
+                            ₦15,000
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- =================================================
+                     SUMMARY
+                ================================================== -->
+
+                <div class="summary">
+
+                    <div class="summary-title">
+                        Payment Summary
+                    </div>
+
+
+                    <div class="summary-row">
+
+                        <span>
+                            Electricity
+                        </span>
+
+                        <strong id="summaryAmount">
+                            ₦0
+                        </strong>
+
+                    </div>
+
+
+                    <div class="summary-row">
+
+                        <span>
+                            Payment Method
+                        </span>
+
+                        <span>
+                            Wallet
+                        </span>
+
+                    </div>
+
+
+                    <div class="summary-row">
+
+                        <span>
+                            Total
+                        </span>
+
+                        <strong id="summaryTotal">
+                            ₦0
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- =================================================
+                     PAY BUTTON
+                ================================================== -->
+
+                <button
+                    type="submit"
+                    class="pay-btn"
+                    id="payBtn"
+                >
+                    Purchase Electricity Token
+                </button>
+
+
+                <p class="note">
+
+                    Make sure your meter number and
+                    customer information are correct before
+                    making payment.
+
+                </p>
+
+
+            </form>
+
+        </section>
+
+    </main>
+
+
+
+    <!-- =====================================================
+         FULL SCREEN PROCESSING LOADER
+    ====================================================== -->
+
+    <div
+        class="payment-loader"
+        id="paymentLoader"
+    >
+
+        <div class="loader-box">
+
+            <div class="spinner"></div>
+
+            <h3>
+                Processing Electricity Payment
+            </h3>
+
+            <p>
+                Please wait while we process your
+                electricity purchase.
+            </p>
+
+            <div class="loader-warning">
+
+                Do not close this page or click the
+                payment button again.
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =====================================================
+         JAVASCRIPT
+    ====================================================== -->
+
+    <script>
+
+
+        /* =====================================================
+           ELEMENTS
+        ===================================================== */
+
+        const verifyBtn =
+            document.getElementById("verifyBtn");
+
+        const provider =
+            document.getElementById("provider");
+
+        const meterType =
+            document.getElementById("meterType");
+
+        const meterNumber =
+            document.getElementById("meterNumber");
+
+        const customerBox =
+            document.getElementById("customerBox");
+
+        const customerName =
+            document.getElementById("customerName");
+
+        const verifiedMeter =
+            document.getElementById("verifiedMeter");
+
+        const amount =
+            document.getElementById("amount");
+
+        const electricityForm =
+            document.getElementById("electricityForm");
+
+        const payBtn =
+            document.getElementById("payBtn");
+
+        const paymentLoader =
+            document.getElementById("paymentLoader");
+
+        const summaryAmount =
+            document.getElementById("summaryAmount");
+
+        const summaryTotal =
+            document.getElementById("summaryTotal");
+
+        const amountButtons =
+            document.querySelectorAll(".amount-btn");
+
+
+
+        /* =====================================================
+           AMOUNT FORMAT
+        ===================================================== */
+
+        function formatNaira(value) {
+
+            const number =
+                Number(value) || 0;
+
+            return "₦" +
+                number.toLocaleString("en-NG");
+        }
+
+
+
+        /* =====================================================
+           QUICK AMOUNT BUTTONS
+        ===================================================== */
+
+        amountButtons.forEach(button => {
+
+            button.addEventListener(
+                "click",
+                function () {
+
+                    const selectedAmount =
+                        this.dataset.amount;
+
+
+                    /* Put amount into input */
+
+                    amount.value =
+                        selectedAmount;
+
+
+                    /* Remove previous selection */
+
+                    amountButtons.forEach(btn => {
+
+                        btn.classList.remove(
+                            "selected"
+                        );
+
+                    });
+
+
+                    /* Highlight selected */
+
+                    this.classList.add(
+                        "selected"
+                    );
+
+
+                    /* Update summary */
+
+                    updateSummary();
+
+                }
+            );
+
+        });
+
+
+
+        /* =====================================================
+           MANUAL AMOUNT INPUT
+        ===================================================== */
+
+        amount.addEventListener(
+            "input",
+            function () {
+
+                const enteredAmount =
+                    Number(this.value);
+
+
+                let matched = false;
+
+
+                amountButtons.forEach(button => {
+
+                    const buttonAmount =
+                        Number(
+                            button.dataset.amount
+                        );
+
+
+                    button.classList.remove(
+                        "selected"
+                    );
+
+
+                    if (
+                        enteredAmount ===
+                        buttonAmount
+                    ) {
+
+                        button.classList.add(
+                            "selected"
+                        );
+
+                        matched = true;
+
+                    }
+
+                });
+
+
+                updateSummary();
+
+            }
+        );
+
+
+
+        /* =====================================================
+           UPDATE PAYMENT SUMMARY
+        ===================================================== */
+
+        function updateSummary() {
+
+            const value =
+                Number(amount.value) || 0;
+
+
+            summaryAmount.textContent =
+                formatNaira(value);
+
+
+            summaryTotal.textContent =
+                formatNaira(value);
+
+        }
+
+
+
+        /* =====================================================
+           METER VERIFICATION
+        ===================================================== */
+
+        verifyBtn.addEventListener(
+            "click",
+            async () => {
+
+
+                const meter_provider =
+                    provider.value;
+
+                const meter_type =
+                    meterType.value;
+
+                const meter_number =
+                    meterNumber.value.trim();
+
+
+                /* ---------------------------------------------
+                   PROVIDER
+                --------------------------------------------- */
+
+                if (!meter_provider) {
+
+                    alert(
+                        "Select electricity provider"
+                    );
+
+                    return;
+                }
+
+                /* ---------------------------------------------
+                   METER TYPE
+                --------------------------------------------- */
+
+                if (!meter_type) {
+
+                    alert(
+                        "Select meter type"
+                    );
+
+                    return;
+                }
+
+
+                /* ---------------------------------------------
+                   METER NUMBER
+                --------------------------------------------- */
+
+                if (!meter_number) {
+
+                    alert(
+                        "Enter meter number"
+                    );
+
+                    return;
+                }
+
+
+                /* ---------------------------------------------
+                   DISABLE BUTTON
+                --------------------------------------------- */
+
+                verifyBtn.disabled = true;
+
+                verifyBtn.textContent =
+                    "Verifying...";
+
+
+                try {
+
+
+                    /* -----------------------------------------
+                       REQUEST
+                    ----------------------------------------- */
+
+                    const response =
+                        await fetch(
+                            "/verifing/electricity",
+                            {
+
+                                method: "POST",
+
+                                headers: {
+                                    "Content-Type":
+                                        "application/json"
+                                },
+
+                                body:
+                                    JSON.stringify({
+                                        meter_provider,
+                                        meter_type,
+                                        meter_number
+                                    })
+
+                            }
+                        );
+
+
+                    const data =
+                        await response.json();
+
+
+                    console.log(
+                        "Verification response:",
+                        data
+                    );
+
+
+                    /* -----------------------------------------
+                       SERVER ERROR
+                    ----------------------------------------- */
+
+                    if (!response.ok) {
+
+                        throw new Error(
+                            data.message ||
+                            "Unable to verify meter. Please try again."
+                        );
+
+                    }
+
+
+                    /* -----------------------------------------
+                       API ERROR
+                    ----------------------------------------- */
+
+                    if (
+                        data.content &&
+                        data.content.error
+                    ) {
+
+                        throw new Error(
+                            data.content.error
+                        );
+
+                    }
+
+
+                    /* -----------------------------------------
+                       CUSTOMER DATA CHECK
+                    ----------------------------------------- */
+
+                   /* if (
+                        !data.content ||
+                        !data.content.Customer_Name || 
+                        !data.content.MeterNumber
+                    ) {
+
+                        throw new Error(
+                            "Unable to verify meter. Please check your meter details."
+                        );
+
+                    }*/
+
+
+                    /* -----------------------------------------
+                       SUCCESS
+                    ----------------------------------------- */
+
+                    customerBox.style.display =
+                        "block";
+
+
+                    customerName.textContent =
+                        data.content.Customer_Name  ;
+
+
+                    verifiedMeter.textContent =
+                        data.content.MeterNumber || data.content.Meter_Number;
+
+
+                    meterNumber.readOnly =
+                        true;
+
+
+                    verifyBtn.disabled =
+                        true;
+
+
+                    verifyBtn.textContent =
+                        "Verified ✓";
+
+
+                } catch (error) {
+
+
+                    console.error(
+                        "Meter verification error:",
+                        error
+                    );
+
+
+                    /* Hide customer box */
+
+                    customerBox.style.display =
+                        "none";
+
+
+                    /* Reset button */
+
+                    verifyBtn.disabled =
+                        false;
+
+
+                    verifyBtn.textContent =
+                        "Verify";
+
+
+                    /* Show error */
+
+                    alert(
+                        error.message
+                    );
+
+                }
+
+            }
+        );
+
+
+
+        /* =====================================================
+           PURCHASE ELECTRICITY
+        ===================================================== */
+
+        electricityForm.addEventListener(
+            "submit",
+            function (event) {
+
+
+                /* ---------------------------------------------
+                   PREVENT DOUBLE SUBMISSION
+                --------------------------------------------- */
+
+                if (
+                    electricityForm.dataset.processing ===
+                    "true"
+                ) {
+
+                    event.preventDefault();
+
+                    return;
+
+                }
+
+
+                /* ---------------------------------------------
+                   BASIC AMOUNT CHECK
+                --------------------------------------------- */
+
+                const selectedAmount =
+                    Number(amount.value);
+
+
+                if (
+                    !selectedAmount ||
+                    selectedAmount < 2000   
+                ) {
+
+                    event.preventDefault();
+
+                    alert(
+                        "Enter an amount of at least ₦2000."
+                    );
+
+                    return;
+
+                }
+
+
+                /* ---------------------------------------------
+                   MAKE SURE METER WAS VERIFIED
+                --------------------------------------------- */
+
+                if (
+                    !meterNumber.readOnly
+                ) {
+
+                    event.preventDefault();
+
+                    alert(
+                        "Please verify your meter before making payment."
+                    );
+
+                    return;
+
+                }
+
+
+                /* ---------------------------------------------
+                   LOCK FORM
+                --------------------------------------------- */
+
+                electricityForm.dataset.processing =
+                    "true";
+
+
+                /* ---------------------------------------------
+                   DISABLE PURCHASE BUTTON
+                --------------------------------------------- */
+
+                payBtn.disabled = true;
+
+                payBtn.textContent =
+                    "Processing...";
+
+
+                /* ---------------------------------------------
+                   SHOW FULL SCREEN LOADER
+                --------------------------------------------- */
+
+                paymentLoader.classList.add(
+                    "show"
+                );
+
+
+                /*
+                -------------------------------------------------
+                IMPORTANT:
+
+                We DO NOT preventDefault() here.
+
+                The form will continue normally to:
+
+                /electricity/purchase
+
+                This means your existing backend logic
+                remains untouched.
+                -------------------------------------------------
+                */
+
+            }
+        );
+
+
+    </script>
+
+
+</body>
+
+</html>

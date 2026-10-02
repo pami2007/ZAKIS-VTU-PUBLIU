@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ZakiSub - Register</title>
+<link rel="stylesheet" href="/css/register.css">
+<link rel="stylesheet" href="/css/public.css">
+<link rel="icon" type="image/x-icon" href="/images/zaki_logo.png">
+<script src="/js/publicTheme.js"></script>
+</head>
+<body>
+<div class="container">
+
+    <div class="logo">
+        <h1>ZakiSub</h1>
+        <p>Create your account below.</p>
+    </div>
+
+    <div class="card">
+
+        <%- include('partials/alerts') %>
+
+        <h2 style="color: white;">Register</h2>
+
+        <form action="/register" method="post">
+
+            <label>Firstname</label>
+            <input type="text" name="fname" value="<%= oldInput.fname || '' %>" required>
+
+            <label>Lastname</label>
+            <input type="text" name="lname" value="<%= oldInput.lname || '' %>" required>
+
+            <label>Email</label>
+            <input type="email" name="email" value="<%= oldInput.email || '' %>" required>
+
+            <label>Phone Number</label>
+            <input type="number" name="phone" value="<%= oldInput.phone || '' %>" required>
+
+            <label>Create Password</label>
+            <input type="password" name="password" required>
+
+            <label>Confirm Password</label>
+            <input type="password" name="confirm_password" required>
+
+            <div class="terms">
+                <input type="checkbox" required>
+
+                <small>
+                    By creating an account, you agree to our
+                    <a href="/term_condition">Terms</a> and
+                    <a href="/term_condition">Conditions</a>.
+                </small>
+
+            </div>
+
+            <button class="btn">
+                REGISTER
+            </button>
+
+        </form>
+
+        <div class="links">
+            Already have an account?
+            <a href="/login">Login</a>
+        </div>
+
+    </div>
+
+    <div class="footer">
+        <a href="/term_condition">Terms</a> |
+        <a href="/term_condition">Conditions</a> |
+        <a href="/privacy_policy">Privacy Policy</a>
+    </div>
+
+</div>
+<script src="/js/pub.js"></script>
+</body>
+</html>

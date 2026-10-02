@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Data Plan</title>
+<link rel="icon" type="image/x-icon" href="/images/zaki_logo.png">
+<link rel="stylesheet" href="/css/diable.css">
+<script src="/js/publicTheme.js"></script>
+</head>
+<body>
+    <%-include('headerdata') %>
+    <div id="loader">
+    <div class="spinner"></div>
+    <p>Processing your airtime...</p>
+    </div>
+
+    <%- include('partials/alerts') %>
+
+    <div class="service-grid">
+
+        <% card.forEach(item => { %>
+
+                <div class="service-card">
+
+                    <form class="buyForm"  action="/<%= item.id %>/status/request" method="post">
+
+                        <div class="card-top">
+
+                            <div class="network">
+                                <!--<img src="" alt="">-->
+                                <span><%= item.id %></span>
+                            </div>
+
+                            <span class="plan-type" style="font-size: 20px;"><%= item.ser_type %></span>
+
+                        </div>
+
+                        <div class="card-body">
+                            <h2><%= item.status%></h2>
+                            <h3><%= item.dates %></h3>
+
+                            <div class="price">
+                                <%= item.ref_id %>
+                            </div>
+                            <button type="submit" class="buy-btn buyBtn">request status</button>
+
+                        </div>
+
+                    </form>
+
+                </div>
+
+        <% }) %>
+
+    </div>
+    <script src="/js/disable.js"></script>
+</body>
+</html>

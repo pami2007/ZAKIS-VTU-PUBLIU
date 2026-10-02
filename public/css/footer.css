@@ -1,0 +1,315 @@
+/* =========================================================
+   ZAKI SUB
+   BOTTOM NAVIGATION
+   GLOBAL THEME
+   DARK  : Brown + Gold
+   LIGHT : Emerald + Navy + Gold
+========================================================= */
+
+
+/* =========================================================
+   BOTTOM NAVIGATION
+========================================================= */
+
+.bottom-nav {
+
+    position: fixed;
+
+    bottom: 0;
+    left: 0;
+
+    width: 100%;
+    height: 75px;
+
+    /* Use the same surface as the rest of the website */
+    background: var(--surface);
+
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+
+    border-top: 1px solid var(--border);
+
+    display: flex;
+
+    justify-content: space-around;
+
+    align-items: center;
+
+    z-index: 1000;
+
+    box-shadow:
+        0 -10px 30px rgba(0, 0, 0, .18);
+
+    transition:
+        background .35s ease,
+        border-color .35s ease,
+        box-shadow .35s ease;
+}
+
+
+/* =========================================================
+   NAVIGATION LINKS
+========================================================= */
+
+.bottom-nav a {
+
+    flex: 1;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    align-items: center;
+
+    gap: 6px;
+
+    text-decoration: none;
+
+    color: var(--muted);
+
+    transition:
+        color .35s ease,
+        transform .35s ease;
+
+    height: 100%;
+
+    position: relative;
+}
+
+
+/* =========================================================
+   NAVIGATION ICON
+========================================================= */
+
+.bottom-nav a i {
+
+    font-size: 20px;
+
+    transition:
+        transform .35s ease,
+        color .35s ease;
+}
+
+
+/* =========================================================
+   NAVIGATION TEXT
+========================================================= */
+
+.bottom-nav a span {
+
+    font-size: 12px;
+
+    font-weight: 500;
+
+    transition: color .35s ease;
+}
+
+
+/* =========================================================
+   HOVER
+========================================================= */
+
+.bottom-nav a:hover {
+
+    color: var(--accent);
+}
+
+
+.bottom-nav a:hover i {
+
+    transform:
+        translateY(-4px)
+        scale(1.15);
+
+    color: var(--accent);
+}
+
+
+/* =========================================================
+   ACTIVE PAGE
+========================================================= */
+
+.bottom-nav a.active {
+
+    color: var(--accent);
+}
+
+
+/* Active icon */
+
+.bottom-nav a.active i {
+
+    color: var(--accent);
+
+    transform: translateY(-2px);
+}
+
+
+/* Active text */
+
+.bottom-nav a.active span {
+
+    color: var(--accent);
+
+    font-weight: 600;
+}
+
+
+/* =========================================================
+   ACTIVE PAGE INDICATOR
+========================================================= */
+
+.bottom-nav a.active::before {
+
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+
+    width: 45px;
+
+    height: 4px;
+
+    border-radius: 50px;
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--accent-dark),
+            var(--accent)
+        );
+
+    box-shadow:
+        0 3px 12px
+        color-mix(
+            in srgb,
+            var(--accent) 30%,
+            transparent
+        );
+}
+
+
+/* =========================================================
+   HOVER / ACTIVE SMOOTH EFFECT
+========================================================= */
+
+.bottom-nav a::after {
+
+    content: "";
+
+    position: absolute;
+
+    width: 35px;
+
+    height: 35px;
+
+    border-radius: 50%;
+
+    background: var(--accent);
+
+    opacity: 0;
+
+    filter: blur(20px);
+
+    transition: opacity .35s ease;
+
+    pointer-events: none;
+}
+
+
+.bottom-nav a:hover::after,
+.bottom-nav a.active::after {
+
+    opacity: .10;
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media(max-width:768px) {
+
+    .bottom-nav {
+
+        height: 70px;
+    }
+
+
+    .bottom-nav a i {
+
+        font-size: 18px;
+    }
+
+
+    .bottom-nav a span {
+
+        font-size: 11px;
+    }
+
+
+    .bottom-nav a.active::before {
+
+        width: 40px;
+
+        height: 3px;
+    }
+}
+
+
+/* =========================================================
+   SMALL PHONES
+========================================================= */
+
+@media(max-width:380px) {
+
+    .bottom-nav {
+
+        height: 68px;
+    }
+
+
+    .bottom-nav a {
+
+        gap: 4px;
+    }
+
+
+    .bottom-nav a i {
+
+        font-size: 17px;
+    }
+
+
+    .bottom-nav a span {
+
+        font-size: 10px;
+    }
+
+
+    .bottom-nav a.active::before {
+
+        width: 35px;
+    }
+}
+
+
+/* =========================================================
+   THEME TRANSITION
+========================================================= */
+
+.bottom-nav,
+.bottom-nav a,
+.bottom-nav a i,
+.bottom-nav a span {
+
+    transition:
+        background .35s ease,
+        color .35s ease,
+        border-color .35s ease,
+        box-shadow .35s ease,
+        transform .35s ease;
+}

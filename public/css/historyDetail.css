@@ -1,0 +1,822 @@
+
+/* =========================================================
+   ZAKI SUB — PROFESSIONAL TRANSACTION RECEIPT
+   DARK MODE  : Brown + Gold
+   LIGHT MODE : Emerald + Navy + Gold
+========================================================= */
+
+
+/* =========================================================
+   RESET
+========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+
+/* =========================================================
+   THEME VARIABLES
+========================================================= */
+
+:root {
+
+    /* PAGE */
+
+    --page-bg: #100909;
+
+    /* RECEIPT */
+
+    --receipt-bg: #1B1111;
+
+    --receipt-surface: #241616;
+
+    /* BRAND */
+
+    --brand: #250D0D;
+
+    --brand-light: #3A1818;
+
+    --brand-dark: #170707;
+
+    /* ACCENT */
+
+    --accent: #F5C451;
+
+    --accent-hover: #FFD66B;
+
+    --accent-dark: #D99A18;
+
+    /* TEXT */
+
+    --text-main: #FFFFFF;
+
+    --text-secondary: #D7CCCC;
+
+    --text-muted: #B5A6A6;
+
+    /* BORDERS */
+
+    --border: rgba(255,255,255,.09);
+
+    --border-strong: rgba(255,255,255,.15);
+
+    /* DIVIDER */
+
+    --divider: rgba(255,255,255,.09);
+
+    /* SHADOW */
+
+    --receipt-shadow:
+        0 20px 50px rgba(0,0,0,.40);
+
+    /* ROW */
+
+    --row-hover:
+        rgba(255,255,255,.035);
+
+    /* FOOTER */
+
+    --footer-bg: rgba(255,255,255,.025);
+}
+
+
+/* =========================================================
+   LIGHT MODE
+========================================================= */
+
+[data-theme="light"] {
+
+    /* PAGE */
+
+    --page-bg: #F4F8F6;
+
+    /* RECEIPT */
+
+    --receipt-bg: #FFFFFF;
+
+    --receipt-surface: #F7FAF9;
+
+    /* BRAND */
+
+    --brand: #0B1F33;
+
+    --brand-light: #163B5C;
+
+    --brand-dark: #071522;
+
+    /* ACCENT */
+
+    --accent: #0F766E;
+
+    --accent-hover: #159B90;
+
+    --accent-dark: #0B5F59;
+
+    /* TEXT */
+
+    --text-main: #10202F;
+
+    --text-secondary: #34495A;
+
+    --text-muted: #64748B;
+
+    /* BORDERS */
+
+    --border: rgba(11,31,51,.09);
+
+    --border-strong: rgba(11,31,51,.14);
+
+    /* DIVIDER */
+
+    --divider: rgba(11,31,51,.10);
+
+    /* SHADOW */
+
+    --receipt-shadow:
+        0 20px 50px rgba(11,31,51,.12);
+
+    /* ROW */
+
+    --row-hover:
+        rgba(11,31,51,.025);
+
+    /* FOOTER */
+
+    --footer-bg: #F8FAF9;
+}
+
+
+/* =========================================================
+   BODY
+========================================================= */
+
+body {
+
+    background:
+        radial-gradient(
+            circle at top left,
+            rgba(245,196,81,.07),
+            transparent 35%
+        ),
+
+        radial-gradient(
+            circle at bottom right,
+            rgba(15,118,110,.06),
+            transparent 35%
+        ),
+
+        var(--page-bg);
+
+    padding: 30px 20px;
+
+    min-height: 100vh;
+
+    color: var(--text-main);
+
+    transition:
+        background .35s ease,
+        color .35s ease;
+}
+
+
+/* =========================================================
+   RECEIPT
+========================================================= */
+
+.receipt {
+
+    max-width: 500px;
+
+    margin: auto;
+
+    background: var(--receipt-bg);
+
+    border-radius: 22px;
+
+    overflow: hidden;
+
+    border: 1px solid var(--border);
+
+    box-shadow: var(--receipt-shadow);
+
+    transition:
+        background .35s ease,
+        border-color .35s ease,
+        box-shadow .35s ease;
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.header {
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--brand),
+            var(--brand-light),
+            var(--brand-dark)
+        );
+
+    color: #FFFFFF;
+
+    padding: 34px 20px;
+
+    text-align: center;
+
+    position: relative;
+
+    overflow: hidden;
+}
+
+
+/* Decorative circle */
+
+.header::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 150px;
+
+    height: 150px;
+
+    border-radius: 50%;
+
+    background: rgba(245,196,81,.08);
+
+    top: -80px;
+
+    right: -50px;
+}
+
+
+/* Decorative circle */
+
+.header::after {
+
+    content: "";
+
+    position: absolute;
+
+    width: 100px;
+
+    height: 100px;
+
+    border-radius: 50%;
+
+    background: rgba(15,118,110,.08);
+
+    bottom: -60px;
+
+    left: -40px;
+}
+
+
+/* Logo */
+
+.header h2 {
+
+    font-size: 28px;
+
+    margin-bottom: 7px;
+
+    letter-spacing: 1px;
+
+    position: relative;
+
+    z-index: 2;
+
+    color: #FFFFFF;
+}
+
+
+/* Receipt title */
+
+.header p {
+
+    color: rgba(255,255,255,.75);
+
+    font-size: 14px;
+
+    position: relative;
+
+    z-index: 2;
+
+    letter-spacing: .4px;
+}
+
+
+/* =========================================================
+   AMOUNT SECTION
+========================================================= */
+
+.amount {
+
+    text-align: center;
+
+    padding: 30px 20px;
+
+    border-bottom: 1px dashed var(--divider);
+
+    background: var(--receipt-bg);
+}
+
+
+/* Amount */
+
+.amount h1 {
+
+    color: var(--accent);
+
+    font-size: 42px;
+
+    font-weight: 700;
+
+    margin-bottom: 7px;
+
+    letter-spacing: -.5px;
+}
+
+
+/* Service type */
+
+.amount span {
+
+    color: var(--text-muted);
+
+    font-size: 13px;
+
+    text-transform: uppercase;
+
+    letter-spacing: .8px;
+}
+
+
+/* =========================================================
+   DETAILS
+========================================================= */
+
+.details {
+
+    padding: 10px 22px 5px;
+
+    background: var(--receipt-bg);
+}
+
+
+/* =========================================================
+   DETAIL ROW
+========================================================= */
+
+.row {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    gap: 20px;
+
+    padding: 15px 3px;
+
+    border-bottom: 1px solid var(--divider);
+
+    transition:
+        background .25s ease,
+        padding .25s ease;
+}
+
+
+.row:hover {
+
+    background: var(--row-hover);
+
+    padding-left: 7px;
+
+    padding-right: 7px;
+}
+
+
+.row:last-child {
+
+    border-bottom: none;
+}
+
+
+/* =========================================================
+   LABEL
+========================================================= */
+
+.label {
+
+    color: var(--text-muted);
+
+    font-size: 13px;
+
+    line-height: 1.4;
+
+    flex-shrink: 0;
+}
+
+
+/* =========================================================
+   VALUE
+========================================================= */
+
+.value {
+
+    color: var(--text-main);
+
+    font-weight: 600;
+
+    font-size: 13px;
+
+    text-align: right;
+
+    word-break: break-word;
+
+    overflow-wrap: anywhere;
+
+    line-height: 1.5;
+
+    max-width: 62%;
+}
+
+
+/* =========================================================
+   STATUS
+========================================================= */
+
+.status {
+
+    text-align: center;
+
+    padding: 25px 20px 28px;
+
+    background: var(--receipt-bg);
+}
+
+
+/* =========================================================
+   STATUS BADGE
+========================================================= */
+
+.badge {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 6px;
+
+    padding: 11px 23px;
+
+    border-radius: 50px;
+
+    font-weight: bold;
+
+    color: #FFFFFF;
+
+    font-size: 13px;
+
+    text-transform: uppercase;
+
+    letter-spacing: .4px;
+
+    box-shadow: 0 6px 15px rgba(0,0,0,.12);
+}
+
+
+/* =========================================================
+   SUCCESS
+========================================================= */
+
+.success {
+
+    background: #16A34A;
+
+    box-shadow:
+        0 6px 18px rgba(22,163,74,.20);
+}
+
+
+/* =========================================================
+   FAILED
+========================================================= */
+
+.failed {
+
+    background: #DC2626;
+
+    box-shadow:
+        0 6px 18px rgba(220,38,38,.20);
+}
+
+
+/* =========================================================
+   PENDING
+========================================================= */
+
+.pending {
+
+    background: #D97706;
+
+    box-shadow:
+        0 6px 18px rgba(217,119,6,.20);
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.footer {
+
+    background: var(--footer-bg);
+
+    border-top: 1px solid var(--border);
+
+    text-align: center;
+
+    padding: 20px;
+
+    color: var(--text-muted);
+
+    font-size: 13px;
+
+    line-height: 1.6;
+}
+
+
+/* =========================================================
+   DOWNLOAD BUTTON
+========================================================= */
+
+.download {
+
+    display: block;
+
+    width: 220px;
+
+    margin: 20px auto;
+
+    text-decoration: none;
+
+    text-align: center;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--accent),
+            var(--accent-dark)
+        );
+
+    color: #FFFFFF;
+
+    padding: 14px;
+
+    border-radius: 10px;
+
+    font-weight: bold;
+
+    font-size: 14px;
+
+    border: none;
+
+    box-shadow:
+        0 8px 20px rgba(15,118,110,.16);
+
+    transition:
+        transform .3s ease,
+        box-shadow .3s ease,
+        opacity .3s ease;
+}
+
+
+.download:hover {
+
+    transform: translateY(-3px);
+
+    opacity: .95;
+
+    box-shadow:
+        0 12px 25px rgba(15,118,110,.22);
+}
+
+
+.download:active {
+
+    transform: translateY(0);
+}
+
+
+/* =========================================================
+   CASHBACK VALUE
+========================================================= */
+
+/*
+   Your existing:
+   + ₦<%= item.user_profit %>
+
+   will automatically look like a positive financial value
+*/
+
+.row .value:first-letter {
+    color: inherit;
+}
+
+
+/* =========================================================
+   STRONG VALUES
+========================================================= */
+
+.row strong.value {
+
+    color: var(--accent);
+
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   THEME TRANSITION
+========================================================= */
+
+body,
+.receipt,
+.header,
+.amount,
+.details,
+.row,
+.status,
+.footer,
+.download {
+
+    transition:
+        background .35s ease,
+        color .35s ease,
+        border-color .35s ease,
+        box-shadow .35s ease;
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media(max-width:250px) {
+
+    body {
+
+        padding: 15px 10px;
+    }
+
+
+    .receipt {
+
+        border-radius: 18px;
+    }
+
+
+    .header {
+
+        padding: 28px 18px;
+    }
+
+
+    .header h2 {
+
+        font-size: 24px;
+    }
+
+
+    .header p {
+
+        font-size: 13px;
+    }
+
+
+    .amount {
+
+        padding: 25px 18px;
+    }
+
+
+    .amount h1 {
+
+        font-size: 34px;
+    }
+
+
+    .details {
+
+        padding: 8px 17px;
+    }
+
+
+    .row {
+
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        gap: 5px;
+
+        padding: 13px 3px;
+    }
+
+
+    .value {
+
+        text-align: left;
+
+        max-width: 100%;
+
+        font-size: 13px;
+    }
+
+
+    .status {
+
+        padding: 22px 15px 25px;
+    }
+
+
+    .badge {
+
+        padding: 10px 20px;
+
+        font-size: 12px;
+    }
+
+
+    .footer {
+
+        padding: 18px 15px;
+
+        font-size: 12px;
+    }
+}
+
+
+/* =========================================================
+   VERY SMALL PHONES
+========================================================= */
+
+@media(max-width:380px) {
+
+    body {
+
+        padding: 10px 7px;
+    }
+
+
+    .header h2 {
+
+        font-size: 22px;
+    }
+
+
+    .amount h1 {
+
+        font-size: 31px;
+    }
+
+
+    .details {
+
+        padding-left: 14px;
+
+        padding-right: 14px;
+    }
+
+
+    .download {
+
+        width: 90%;
+    }
+}
+
+
+/* =========================================================
+   ACCESSIBILITY
+========================================================= */
+
+.download:focus-visible {
+
+    outline: 2px solid var(--accent);
+
+    outline-offset: 3px;
+}
+

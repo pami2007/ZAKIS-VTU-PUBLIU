@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Airtime Plan</title>
+<link rel="icon" type="image/x-icon" href="/images/zaki_logo.png">
+<link rel="stylesheet" href="/css/disables.css">
+ <link rel="stylesheet" href="/css/public.css">
+ <script src="/js/publicTheme.js"></script>
+</head>
+<body>
+    <%-include('partials/headerAirtime')%>
+
+    <%- include('partials/alerts') %>
+
+    <div class="data-page">
+
+    <div class="service-grid">
+
+        <% card.forEach(item => { %>
+
+            <div class="service-card">
+
+                <form
+                    class="buyForm"
+                    action="/<%= item.id %>/airtime/purchases"
+                    method="post"
+                >
+
+                    <div class="card-top">
+
+                        <div class="network">
+                        <!--<img src="" alt="">-->
+
+                           
+                            
+                                    <%if(item.network === 'MTN'){%>
+                                    <span>
+                                        <img src="/images/mtn.png">
+                                        <%= item.network %>
+                                    </span>
+                                    <%}else if(item.network === 'AIRTEL') {%>
+                                        <span>
+                                            <img src="/images/airtel.png">
+                                            <%= item.network %>
+                                        </span>
+                                    <%}else if(item.network === 'GLO'){%>
+                                        <span>
+                                            <img src="/images/glo.png">
+                                            <%= item.network %>
+                                        </span>
+                                    <%}%>
+                        </div>
+
+                        <span class="plan-type">
+                            <%= item.type %>
+                        </span>
+
+                    </div>
+
+
+                    <div class="card-body">
+
+
+                        <div class="price">₦<%= Number(item.amount).toLocaleString() %>.00</div>
+
+                        <input
+                            type="number"
+                            name="phone"
+                            placeholder="Enter phone number"
+                            value="<%= user.phone %>"
+                        >
+
+                        <button
+                            type="submit"
+                            class="buy-btn buyBtn"
+                        >
+                            BUY
+                        </button>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+        <% }) %>
+
+    </div>
+
+
+    <!-- =========================================
+         PURCHASE LOADER
+    ========================================== -->
+
+    <div id="loader">
+
+        <div class="spinner"></div>
+
+        <p>
+            Processing...
+        </p>
+
+    </div>
+
+</div>
+
+
+<script src="/js/disable.js" ></script>
+
+<%- include('footer.ejs') %>
+</body>
+</html>

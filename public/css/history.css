@@ -1,0 +1,1056 @@
+
+/* =========================================================
+   ZAKI SUB - TRANSACTION HISTORY
+   DARK MODE  : Brown + Gold
+   LIGHT MODE : Emerald + Navy + Gold
+========================================================= */
+
+
+/* =========================================================
+   RESET
+========================================================= */
+
+* {
+
+    margin: 0;
+
+    padding: 0;
+
+    box-sizing: border-box;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+}
+
+
+/* =========================================================
+   DARK MODE - DEFAULT
+========================================================= */
+
+:root {
+
+    --bg: #100909;
+
+    --surface: #1B1111;
+
+    --surface-2: #241616;
+
+    --surface-hover: #2C1A1A;
+
+
+    --brand: #250D0D;
+
+    --brand-light: #3A1818;
+
+    --brand-dark: #170707;
+
+
+    --accent: #F5C451;
+
+    --accent-hover: #FFD66B;
+
+    --accent-dark: #D99A18;
+
+
+    --text: #FFFFFF;
+
+    --text-soft: #F3EAEA;
+
+    --muted: #B9AFAF;
+
+
+    --border: rgba(255,255,255,.08);
+
+    --border-strong: rgba(255,255,255,.14);
+
+
+    --success: #22C55E;
+
+    --danger: #EF4444;
+
+    --warning: #F59E0B;
+
+
+    --shadow:
+        0 12px 35px rgba(0,0,0,.30);
+}
+
+
+/* =========================================================
+   LIGHT MODE
+========================================================= */
+
+[data-theme="light"] {
+
+    --bg: #F4F8F6;
+
+    --surface: #FFFFFF;
+
+    --surface-2: #F0F7F5;
+
+    --surface-hover: #E9F3F0;
+
+
+    --brand: #0B1F33;
+
+    --brand-light: #163B5C;
+
+    --brand-dark: #071522;
+
+
+    --accent: #0F766E;
+
+    --accent-hover: #159B90;
+
+    --accent-dark: #0B5F59;
+
+
+    --text: #10202F;
+
+    --text-soft: #243746;
+
+    --muted: #64748B;
+
+
+    --border: rgba(11,31,51,.09);
+
+    --border-strong: rgba(11,31,51,.14);
+
+
+    --success: #16A34A;
+
+    --danger: #DC2626;
+
+    --warning: #D97706;
+
+
+    --shadow:
+        0 12px 35px rgba(11,31,51,.09);
+}
+
+
+/* =========================================================
+   BODY
+========================================================= */
+
+body {
+
+    min-height: 100vh;
+
+    background:
+
+        radial-gradient(
+            circle at top left,
+            rgba(245,196,81,.05),
+            transparent 30%
+        ),
+
+        radial-gradient(
+            circle at bottom right,
+            rgba(15,118,110,.06),
+            transparent 35%
+        ),
+
+        var(--bg);
+
+    color: var(--text);
+
+    transition:
+        background .35s ease,
+        color .35s ease;
+}
+
+
+/* =========================================================
+   PAGE
+========================================================= */
+
+.history-page {
+
+    width: 100%;
+
+    max-width: 1100px;
+
+    margin: 0 auto;
+
+    padding: 30px 20px 60px;
+}
+
+
+/* =========================================================
+   PAGE HEADING
+========================================================= */
+
+.page-heading {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: flex-end;
+
+    margin-bottom: 22px;
+}
+
+
+.page-label {
+
+    display: inline-block;
+
+    color: var(--accent);
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+    letter-spacing: 1.5px;
+
+    margin-bottom: 7px;
+}
+
+
+.page-heading h1 {
+
+    color: var(--text);
+
+    font-size: 28px;
+
+    line-height: 1.2;
+
+    margin-bottom: 7px;
+}
+
+
+.page-heading p {
+
+    color: var(--muted);
+
+    font-size: 14px;
+}
+
+
+/* =========================================================
+   MAIN HISTORY CONTAINER
+========================================================= */
+
+.history {
+
+    background: var(--surface);
+
+    border: 1px solid var(--border);
+
+    border-radius: 22px;
+
+    overflow: hidden;
+
+    box-shadow: var(--shadow);
+
+    transition:
+        background .35s ease,
+        border-color .35s ease,
+        box-shadow .35s ease;
+}
+
+
+/* =========================================================
+   HISTORY HEADER
+========================================================= */
+
+.history-header {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    padding: 22px 24px;
+
+    border-bottom: 1px solid var(--border);
+}
+
+
+.history-header h2 {
+
+    color: var(--text);
+
+    font-size: 18px;
+
+    margin-bottom: 5px;
+}
+
+
+.history-header span {
+
+    color: var(--muted);
+
+    font-size: 12px;
+}
+
+
+.transaction-count {
+
+    background: rgba(245,196,81,.10);
+
+    color: var(--accent);
+
+    border: 1px solid rgba(245,196,81,.18);
+
+    border-radius: 10px;
+
+    padding: 8px 11px;
+
+    font-size: 13px;
+
+    font-weight: bold;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 5px;
+}
+
+
+[data-theme="light"] .transaction-count {
+
+    background: rgba(15,118,110,.08);
+
+    border-color: rgba(15,118,110,.15);
+}
+
+
+.transaction-count span {
+
+    color: var(--muted);
+
+    font-weight: normal;
+
+    font-size: 11px;
+}
+
+
+/* =========================================================
+   HISTORY LIST
+========================================================= */
+
+.history-list {
+
+    padding: 10px;
+}
+
+
+/* =========================================================
+   TRANSACTION CARD
+========================================================= */
+
+.transaction-card {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 14px;
+
+    padding: 15px;
+
+    margin-bottom: 8px;
+
+    border: 1px solid transparent;
+
+    border-radius: 15px;
+
+    background: var(--surface-2);
+
+    transition:
+        transform .25s ease,
+        background .25s ease,
+        border-color .25s ease,
+        box-shadow .25s ease;
+}
+
+
+.transaction-card:last-child {
+
+    margin-bottom: 0;
+}
+
+
+.transaction-card:hover {
+
+    transform: translateY(-2px);
+
+    background: var(--surface-hover);
+
+    border-color: var(--border-strong);
+
+    box-shadow:
+        0 8px 22px rgba(0,0,0,.07);
+}
+
+
+/* =========================================================
+   TRANSACTION ICON
+========================================================= */
+
+.transaction-icon {
+
+    width: 48px;
+
+    height: 48px;
+
+    min-width: 48px;
+
+    border-radius: 14px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+}
+
+
+.transaction-icon svg {
+
+    width: 22px;
+
+    height: 22px;
+}
+
+
+/* SUCCESS */
+
+.transaction-icon.successful {
+
+    color: var(--success);
+
+    background: rgba(34,197,94,.12);
+}
+
+
+/* FAILED */
+
+.transaction-icon.failed {
+
+    color: var(--danger);
+
+    background: rgba(239,68,68,.12);
+}
+
+
+/* PENDING */
+
+.transaction-icon.pending {
+
+    color: var(--warning);
+
+    background: rgba(245,158,11,.12);
+}
+
+
+/* =========================================================
+   TRANSACTION INFORMATION
+========================================================= */
+
+.transaction-info {
+
+    flex: 1;
+
+    min-width: 0;
+}
+
+
+/* =========================================================
+   TITLE
+========================================================= */
+
+.transaction-title {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 9px;
+
+    margin-bottom: 7px;
+
+    flex-wrap: wrap;
+}
+
+
+.transaction-title h3 {
+
+    color: var(--text);
+
+    font-size: 14px;
+
+    font-weight: 700;
+
+    margin: 0;
+}
+
+
+.transaction-title h3 span {
+
+    color: var(--muted);
+
+    font-weight: 500;
+
+    margin-left: 4px;
+}
+
+
+/* =========================================================
+   STATUS
+========================================================= */
+
+.status {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    padding: 4px 8px;
+
+    border-radius: 20px;
+
+    font-size: 9px;
+
+    font-weight: 700;
+
+    letter-spacing: .3px;
+}
+
+
+/* SUCCESS */
+
+.successful-status {
+
+    color: var(--success);
+
+    background: rgba(34,197,94,.12);
+}
+
+
+/* FAILED */
+
+.failed-status {
+
+    color: var(--danger);
+
+    background: rgba(239,68,68,.12);
+}
+
+
+/* PENDING */
+
+.pending-status {
+
+    color: var(--warning);
+
+    background: rgba(245,158,11,.12);
+}
+
+
+/* =========================================================
+   DATE
+========================================================= */
+
+.transaction-date {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 5px;
+
+    color: var(--muted);
+
+    font-size: 11px;
+}
+
+
+.transaction-date svg {
+
+    width: 14px;
+
+    height: 14px;
+
+    flex-shrink: 0;
+}
+
+
+/* =========================================================
+   RECEIPT BUTTON
+========================================================= */
+
+.transaction-action {
+
+    flex-shrink: 0;
+}
+
+
+.receipt-button {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 5px;
+
+    text-decoration: none;
+
+    color: var(--accent);
+
+    border: 1px solid rgba(245,196,81,.20);
+
+    background: rgba(245,196,81,.06);
+
+    padding: 8px 10px;
+
+    border-radius: 9px;
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+    transition:
+        background .25s ease,
+        color .25s ease,
+        border-color .25s ease,
+        transform .25s ease;
+}
+
+
+.receipt-button svg {
+
+    width: 14px;
+
+    height: 14px;
+}
+
+
+.receipt-button:hover {
+
+    background: var(--accent);
+
+    color: #111;
+
+    border-color: var(--accent);
+
+    transform: translateX(2px);
+}
+
+
+/* =========================================================
+   LIGHT MODE RECEIPT
+========================================================= */
+
+[data-theme="light"] .receipt-button {
+
+    color: var(--emerald, #0F766E);
+
+    border-color: rgba(15,118,110,.18);
+
+    background: rgba(15,118,110,.06);
+}
+
+
+[data-theme="light"] .receipt-button:hover {
+
+    color: #fff;
+
+    background: var(--accent);
+
+    border-color: var(--accent);
+}
+
+
+/* =========================================================
+   EMPTY STATE
+========================================================= */
+
+.empty {
+
+    padding: 55px 25px;
+
+    text-align: center;
+
+    border: 1px dashed var(--border-strong);
+
+    border-radius: 16px;
+
+    margin: 8px;
+}
+
+
+.empty-icon {
+
+    width: 65px;
+
+    height: 65px;
+
+    margin: 0 auto 15px;
+
+    border-radius: 18px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    color: var(--accent);
+
+    background: rgba(245,196,81,.10);
+
+    border: 1px solid rgba(245,196,81,.15);
+}
+
+
+[data-theme="light"] .empty-icon {
+
+    background: rgba(15,118,110,.08);
+
+    border-color: rgba(15,118,110,.15);
+}
+
+
+.empty-icon svg {
+
+    width: 30px;
+
+    height: 30px;
+}
+
+
+.empty h3 {
+
+    color: var(--text);
+
+    font-size: 17px;
+
+    margin-bottom: 7px;
+}
+
+
+.empty p {
+
+    color: var(--muted);
+
+    font-size: 13px;
+
+    max-width: 330px;
+
+    margin: 0 auto 20px;
+
+    line-height: 1.5;
+}
+
+
+.empty-button {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-decoration: none;
+
+    padding: 10px 16px;
+
+    border-radius: 10px;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--accent),
+            var(--accent-dark)
+        );
+
+    color: #fff;
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    transition: .3s ease;
+}
+
+
+.empty-button:hover {
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 8px 20px rgba(15,118,110,.15);
+}
+
+
+/* =========================================================
+   THEME TRANSITIONS
+========================================================= */
+
+.history,
+.transaction-card,
+.transaction-icon,
+.receipt-button,
+.empty,
+.transaction-count {
+
+    transition:
+        background .35s ease,
+        color .35s ease,
+        border-color .35s ease,
+        box-shadow .35s ease,
+        transform .25s ease;
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 900px) {
+
+    .history-page {
+
+        padding:
+            25px
+            18px
+            50px;
+    }
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+    .history-page {
+
+        padding:
+            20px
+            12px
+            40px;
+    }
+
+
+    .page-heading h1 {
+
+        font-size: 23px;
+    }
+
+
+    .page-heading p {
+
+        font-size: 12px;
+    }
+
+
+    .history {
+
+        border-radius: 18px;
+    }
+
+
+    .history-header {
+
+        padding: 17px;
+    }
+
+
+    .history-header h2 {
+
+        font-size: 16px;
+    }
+
+
+    .transaction-count {
+
+        padding: 7px 9px;
+
+        font-size: 11px;
+    }
+
+
+    .history-list {
+
+        padding: 7px;
+    }
+
+
+    .transaction-card {
+
+        gap: 10px;
+
+        padding: 12px;
+
+        border-radius: 13px;
+    }
+
+
+    .transaction-icon {
+
+        width: 42px;
+
+        height: 42px;
+
+        min-width: 42px;
+
+        border-radius: 12px;
+    }
+
+
+    .transaction-icon svg {
+
+        width: 19px;
+
+        height: 19px;
+    }
+
+
+    .transaction-title {
+
+        gap: 5px;
+    }
+
+
+    .transaction-title h3 {
+
+        font-size: 12px;
+
+        max-width: 100%;
+    }
+
+
+    .transaction-title h3 span {
+
+        margin-left: 2px;
+    }
+
+
+    .status {
+
+        font-size: 8px;
+
+        padding: 3px 6px;
+    }
+
+
+    .transaction-date {
+
+        font-size: 9px;
+    }
+
+
+    .transaction-date svg {
+
+        width: 12px;
+
+        height: 12px;
+    }
+
+
+    .receipt-button {
+
+        padding: 7px;
+
+        border-radius: 8px;
+    }
+
+
+    .receipt-button span {
+
+        display: none;
+    }
+
+
+    .receipt-button svg {
+
+        width: 16px;
+
+        height: 16px;
+    }
+
+
+    .empty {
+
+        padding: 40px 18px;
+    }
+}
+
+
+/* =========================================================
+   VERY SMALL PHONES
+========================================================= */
+
+@media (max-width: 380px) {
+
+    .transaction-card {
+
+        gap: 8px;
+
+        padding: 10px;
+    }
+
+
+    .transaction-icon {
+
+        width: 38px;
+
+        height: 38px;
+
+        min-width: 38px;
+    }
+
+
+    .transaction-icon svg {
+
+        width: 17px;
+
+        height: 17px;
+    }
+
+
+    .transaction-title h3 {
+
+        font-size: 11px;
+    }
+
+
+    .transaction-date {
+
+        font-size: 8px;
+    }
+
+
+    .history-header span {
+
+        display: none;
+    }
+
+
+    .transaction-count span {
+
+        display: none;
+    }
+}
+
+
+/* =========================================================
+   ACCESSIBILITY
+========================================================= */
+
+a:focus-visible {
+
+    outline: 2px solid var(--accent);
+
+    outline-offset: 3px;
+}

@@ -1,0 +1,362 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<link rel="icon" type="image/x-icon" href="/images/zaki_logo.png">
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Transaction History</title>
+
+    <link
+        rel="stylesheet"
+        href="/css/history.css"
+    >
+<link rel="stylesheet" href="/css/public.css">
+<script src="/js/publicTheme.js"></script>
+</head>
+
+
+<body>
+
+    <%- include('partials/header_history') %>
+
+
+    <main class="history-page">
+
+        <!-- PAGE HEADER -->
+
+        <div class="page-heading">
+
+            <div>
+                <span class="page-label">
+                    ACCOUNT
+                </span>
+
+                <h1>
+                    Transaction History
+                </h1>
+
+                <p>
+                    View and manage your recent transactions.
+                </p>
+            </div>
+
+        </div>
+
+
+        <!-- HISTORY CONTAINER -->
+
+        <section class="history">
+
+            <div class="history-header">
+
+                <div>
+
+                    <h2>
+                        Recent Transactions
+                    </h2>
+
+                    <span>
+                        Your transaction activity
+                    </span>
+
+                </div>
+
+                <div class="transaction-count">
+
+                    <%= history.length %>
+
+                    <span>
+                        Transactions
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <!-- TRANSACTION LIST -->
+
+            <div class="history-list">
+
+
+                <% if(history.length === 0){ %>
+
+
+                    <!-- EMPTY STATE -->
+
+                    <div class="empty">
+
+                        <div class="empty-icon">
+
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                                stroke-width="1.7"
+                            >
+
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h7l5 5v11a2 2 0 01-2 2z"
+                                />
+
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    d="M14 3v5h5"
+                                />
+
+                            </svg>
+
+                        </div>
+
+
+                        <h3>
+                            No Transactions Yet
+                        </h3>
+
+                        <p>
+                            Your purchases and wallet activities
+                            will appear here.
+                        </p>
+
+
+                        <a
+                            href="/"
+                            class="empty-button"
+                        >
+                            Start Using Zaki Sub
+                        </a>
+
+                    </div>
+
+
+                <% } %>
+
+
+
+                <% history.forEach(item => { %>
+
+
+                    <!-- TRANSACTION -->
+
+                    <article class="transaction-card">
+
+
+                        <!-- STATUS ICON -->
+
+                        <div class="transaction-icon
+
+                            <% if(item.status === 'SUCCESSFUL'){ %>
+                                successful
+                            <% }else if(item.status === 'FAILED'){ %>
+                                failed
+                            <% }else{ %>
+                                pending
+                            <% } %>
+
+                        ">
+
+
+                            <% if(item.status === 'SUCCESSFUL'){ %>
+
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke="currentColor"
+                                    stroke-width="2"
+                                >
+
+                                    <path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        d="M5 13l4 4L19 7"
+                                    />
+
+                                </svg>
+
+
+                            <% }else if(item.status === 'FAILED'){ %>
+
+
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke="currentColor"
+                                    stroke-width="2"
+                                >
+
+                                    <path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        d="M6 18L18 6M6 6l12 12"
+                                    />
+
+                                </svg>
+
+
+                            <% }else{ %>
+
+
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke="currentColor"
+                                    stroke-width="2"
+                                >
+
+                                    <path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        d="M12 6v6l4 2"
+                                    />
+
+                                    <circle
+                                        cx="12"
+                                        cy="12"
+                                        r="9"
+                                    />
+
+                                </svg>
+
+
+                            <% } %>
+
+
+                        </div>
+
+
+
+                        <!-- TRANSACTION INFORMATION -->
+
+                        <div class="transaction-info">
+
+
+                            <div class="transaction-title">
+
+                                <h3>
+
+                                    <%= item.network %>
+
+                                    <span>
+                                        <%= item.description %>
+                                    </span>
+
+                                </h3>
+
+
+                                <% if(item.status === 'SUCCESSFUL'){ %>
+
+                                    <span class="status successful-status">
+                                        SUCCESSFUL
+                                    </span>
+
+
+                                <% }else if(item.status === 'FAILED'){ %>
+
+                                    <span class="status failed-status">
+                                        FAILED
+                                    </span>
+
+
+                                <% }else{ %>
+
+                                    <span class="status pending-status">
+                                        PENDING
+                                    </span>
+
+                                <% } %>
+
+                            </div>
+
+
+                            <p class="transaction-date">
+
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke="currentColor"
+                                    stroke-width="1.8"
+                                >
+
+                                    <path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+                                    />
+
+                                </svg>
+
+                                <%= new Date(item.dates).toLocaleString() %>
+
+                            </p>
+
+
+                        </div>
+
+
+
+                        <!-- RECEIPT -->
+
+                        <div class="transaction-action">
+
+                            <a
+                                href="/<%= item.id %>/history/details"
+                                class="receipt-button"
+                            >
+
+                                <span>
+                                    Receipt
+                                </span>
+
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke="currentColor"
+                                    stroke-width="2"
+                                >
+
+                                    <path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        d="M9 5l7 7-7 7"
+                                    />
+
+                                </svg>
+
+                            </a>
+
+                        </div>
+
+
+                    </article>
+
+
+                <% }) %>
+
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+</body>
+
+</html>
+

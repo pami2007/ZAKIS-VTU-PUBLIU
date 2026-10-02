@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>404 - Page Not Found</title>
+
+    <link
+        rel="icon"
+        type="image/x-icon"
+        href="/images/zaki_logo.png"
+    >
+
+
+    <style>
+
+        /* =====================================================
+           RESET
+        ===================================================== */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+
+        /* =====================================================
+           DARK MODE
+        ===================================================== */
+
+        :root {
+
+            --bg: #100909;
+
+            --bg-secondary: #250D0D;
+
+            --card: rgba(255,255,255,.07);
+
+            --card-border: rgba(255,255,255,.12);
+
+            --text: #ffffff;
+
+            --muted: #c7bbbb;
+
+            --accent: #F5C451;
+
+            --accent-dark: #D99A18;
+
+            --brand: #250D0D;
+
+            --shadow:
+                0 20px 60px rgba(0,0,0,.35);
+        }
+
+
+        /* =====================================================
+           LIGHT MODE
+        ===================================================== */
+
+        [data-theme="light"] {
+
+            --bg: #F4F8F6;
+
+            --bg-secondary: #E8F1EE;
+
+            --card: rgba(255,255,255,.85);
+
+            --card-border: rgba(11,31,51,.10);
+
+            --text: #10202F;
+
+            --muted: #64748B;
+
+            --accent: #0F766E;
+
+            --accent-dark: #0B5F59;
+
+            --brand: #0B1F33;
+
+            --shadow:
+                0 20px 60px rgba(11,31,51,.10);
+        }
+
+
+        /* =====================================================
+           BODY
+        ===================================================== */
+
+        body {
+
+            min-height: 100vh;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            padding: 20px;
+
+            color: var(--text);
+
+            background:
+
+                radial-gradient(
+                    circle at 10% 10%,
+                    rgba(245,196,81,.10),
+                    transparent 30%
+                ),
+
+                radial-gradient(
+                    circle at 90% 90%,
+                    rgba(15,118,110,.10),
+                    transparent 30%
+                ),
+
+                var(--bg);
+
+            overflow: hidden;
+
+            transition:
+                background .3s ease,
+                color .3s ease;
+        }
+
+
+        /* =====================================================
+           THEME BUTTON
+        ===================================================== */
+
+        .theme-toggle {
+
+            position: fixed;
+
+            top: 20px;
+
+            right: 20px;
+
+            width: 44px;
+
+            height: 44px;
+
+            border-radius: 50%;
+
+            border: 1px solid var(--card-border);
+
+            background: var(--card);
+
+            color: var(--text);
+
+            cursor: pointer;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            font-size: 18px;
+
+            backdrop-filter: blur(10px);
+
+            transition: .3s ease;
+
+            z-index: 10;
+        }
+
+
+        .theme-toggle:hover {
+
+            background: var(--accent);
+
+            color: #111;
+
+            transform: rotate(15deg) scale(1.08);
+        }
+
+
+        /* =====================================================
+           MAIN
+        ===================================================== */
+
+        .error-container {
+
+            width: 100%;
+
+            max-width: 600px;
+
+            text-align: center;
+
+            position: relative;
+
+            z-index: 2;
+        }
+
+
+        /* =====================================================
+           BRAND
+        ===================================================== */
+
+        .brand {
+
+            font-size: 25px;
+
+            font-weight: 800;
+
+            letter-spacing: .5px;
+
+            margin-bottom: 20px;
+        }
+
+
+        .brand span {
+
+            color: var(--accent);
+        }
+
+
+        /* =====================================================
+           ERROR NUMBER
+        ===================================================== */
+
+        .error-number {
+
+            font-size: clamp(110px, 25vw, 190px);
+
+            line-height: .85;
+
+            font-weight: 900;
+
+            letter-spacing: -10px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    var(--accent),
+                    var(--accent-dark)
+                );
+
+            -webkit-background-clip: text;
+
+            -webkit-text-fill-color: transparent;
+
+            background-clip: text;
+
+            filter:
+                drop-shadow(
+                    0 10px 20px
+                    rgba(0,0,0,.15)
+                );
+
+            animation:
+                float 4s ease-in-out infinite;
+        }
+
+
+        /* =====================================================
+           FLOAT ANIMATION
+        ===================================================== */
+
+        @keyframes float {
+
+            0%,
+            100% {
+
+                transform: translateY(0);
+            }
+
+            50% {
+
+                transform: translateY(-8px);
+            }
+        }
+
+
+        /* =====================================================
+           CARD
+        ===================================================== */
+
+        .error-card {
+
+            margin-top: 25px;
+
+            background: var(--card);
+
+            border: 1px solid var(--card-border);
+
+            border-radius: 24px;
+
+            padding: 35px 30px;
+
+            backdrop-filter: blur(15px);
+
+            -webkit-backdrop-filter: blur(15px);
+
+            box-shadow: var(--shadow);
+        }
+
+
+        /* =====================================================
+           ICON
+        ===================================================== */
+
+        .error-icon {
+
+            width: 65px;
+
+            height: 65px;
+
+            margin: 0 auto 20px;
+
+            border-radius: 18px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    var(--brand),
+                    var(--accent-dark)
+                );
+
+            color: var(--accent);
+
+            font-size: 30px;
+
+            font-weight: bold;
+
+            box-shadow:
+                0 10px 25px
+                rgba(0,0,0,.18);
+        }
+
+
+        /* =====================================================
+           TITLE
+        ===================================================== */
+
+        .error-card h1 {
+
+            font-size: 27px;
+
+            margin-bottom: 12px;
+
+            color: var(--text);
+        }
+
+
+        /* =====================================================
+           DESCRIPTION
+        ===================================================== */
+
+        .error-card p {
+
+            max-width: 430px;
+
+            margin: 0 auto;
+
+            color: var(--muted);
+
+            font-size: 15px;
+
+            line-height: 1.7;
+        }
+
+
+        /* =====================================================
+           BUTTON
+        ===================================================== */
+
+        .home-btn {
+
+            display: inline-flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            gap: 8px;
+
+            min-width: 200px;
+
+            height: 48px;
+
+            margin-top: 25px;
+
+            padding: 0 25px;
+
+            border-radius: 12px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    var(--accent),
+                    var(--accent-dark)
+                );
+
+            color: #fff;
+
+            text-decoration: none;
+
+            font-size: 15px;
+
+            font-weight: bold;
+
+            box-shadow:
+                0 8px 25px
+                rgba(15,118,110,.18);
+
+            transition: .3s ease;
+        }
+
+
+        .home-btn:hover {
+
+            transform: translateY(-3px);
+
+            box-shadow:
+                0 12px 30px
+                rgba(15,118,110,.25);
+        }
+
+
+        /* =====================================================
+           FOOTER
+        ===================================================== */
+
+        .footer {
+
+            margin-top: 25px;
+
+            color: var(--muted);
+
+            font-size: 12px;
+        }
+
+
+        /* =====================================================
+           DECORATIVE CIRCLES
+        ===================================================== */
+
+        .circle {
+
+            position: fixed;
+
+            border-radius: 50%;
+
+            pointer-events: none;
+
+            opacity: .5;
+        }
+
+
+        .circle-one {
+
+            width: 180px;
+
+            height: 180px;
+
+            top: -90px;
+
+            left: -70px;
+
+            border: 1px solid var(--accent);
+
+            opacity: .08;
+        }
+
+
+        .circle-two {
+
+            width: 250px;
+
+            height: 250px;
+
+            right: -120px;
+
+            bottom: -120px;
+
+            border: 1px solid var(--accent);
+
+            opacity: .08;
+        }
+
+
+        /* =====================================================
+           MOBILE
+        ===================================================== */
+
+        @media (max-width: 600px) {
+
+            body {
+
+                padding: 15px;
+            }
+
+
+            .error-number {
+
+                font-size: 120px;
+
+                letter-spacing: -6px;
+            }
+
+
+            .error-card {
+
+                padding: 30px 20px;
+
+                border-radius: 20px;
+            }
+
+
+            .error-card h1 {
+
+                font-size: 23px;
+            }
+
+
+            .error-card p {
+
+                font-size: 14px;
+            }
+
+
+            .home-btn {
+
+                width: 100%;
+            }
+
+
+            .theme-toggle {
+
+                top: 15px;
+
+                right: 15px;
+
+                width: 40px;
+
+                height: 40px;
+            }
+        }
+
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- DECORATION -->
+
+    <div class="circle circle-one"></div>
+
+    <div class="circle circle-two"></div>
+
+
+    <!-- THEME -->
+
+    <button
+        class="theme-toggle"
+        id="themeToggle"
+        type="button"
+        aria-label="Change theme"
+    >
+        ◐
+    </button>
+
+
+    <!-- ERROR -->
+
+    <main class="error-container">
+
+
+        <div class="brand">
+
+            ZAKI <span>SUB</span>
+
+        </div>
+
+
+        <div class="error-number">
+
+            404
+
+        </div>
+
+
+        <section class="error-card">
+
+
+            <div class="error-icon">
+
+                ?
+
+            </div>
+
+
+            <h1>
+                Oops! Page Not Found
+            </h1>
+
+
+            <p>
+                The page you're looking for doesn't exist,
+                may have been moved, or the link you followed
+                might be incorrect.
+            </p>
+
+
+            <a
+                href="/"
+                class="home-btn"
+            >
+
+                ← Back to Home
+
+            </a>
+
+
+        </section>
+
+
+        <div class="footer">
+
+            © <%= new Date().getFullYear() %> Zaki Sub.
+            All rights reserved.
+
+        </div>
+
+
+    </main>
+
+
+    <script>
+
+        /* =====================================================
+           LOAD SAVED THEME
+        ===================================================== */
+
+        const savedTheme =
+            localStorage.getItem("zaki-theme") || "dark";
+
+
+        document.documentElement.setAttribute(
+            "data-theme",
+            savedTheme
+        );
+
+
+        /* =====================================================
+           THEME SWITCH
+        ===================================================== */
+
+        const themeToggle =
+            document.getElementById("themeToggle");
+
+
+        themeToggle.addEventListener(
+            "click",
+            function () {
+
+                const currentTheme =
+                    document.documentElement.getAttribute(
+                        "data-theme"
+                    ) || "dark";
+
+
+                const newTheme =
+                    currentTheme === "dark"
+                        ? "light"
+                        : "dark";
+
+
+                document.documentElement.setAttribute(
+                    "data-theme",
+                    newTheme
+                );
+
+
+                localStorage.setItem(
+                    "zaki-theme",
+                    newTheme
+                );
+
+            }
+        );
+
+    </script>
+
+
+</body>
+
+</html>

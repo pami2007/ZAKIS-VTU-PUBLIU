@@ -1,0 +1,925 @@
+/* =========================================================
+   ZAKI SUB
+   DATA / DETAIL LISTING PAGE
+
+   DARK MODE  : Brown + Gold
+   LIGHT MODE : Emerald + Navy + Gold
+
+   IMPORTANT:
+   All data-page styles are scoped to .data-page
+   so they don't conflict with the footer, dashboard,
+   or other pages.
+========================================================= */
+
+
+/* ========================================================
+   RESET
+========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+
+/* =========================================================
+   DATA PAGE VARIABLES
+   These are intentionally page-specific.
+   They will NOT overwrite your global footer variables.
+========================================================= */
+
+.data-page {
+
+    --data-bg: rgba(0, 0, 0, .15);
+
+    --data-card: #170707;
+
+    --data-card-header-1: #250D0D;
+    --data-card-header-2: #3A1616;
+    --data-card-header-3: #170707;
+
+    --data-text: #333333;
+
+    --data-muted: #777777;
+
+    --data-border: rgba(37, 13, 13, .10);
+
+    --data-input-bg: #FFFFFF;
+
+    --data-input-border: #D9D9D9;
+
+    --data-accent: #F5C451;
+
+    --data-button: #250D0D;
+
+    --data-button-hover: #3C1616;
+
+    --data-shadow:
+        0 5px 18px rgba(0, 0, 0, .15);
+}
+
+
+/* =========================================================
+   LIGHT MODE
+========================================================= */
+
+[data-theme="light"] .data-page {
+
+    --data-bg: #F4F8F6;
+
+    --data-card: #FFFFFF;
+
+    --data-card-header-1: #0B1F33;
+    --data-card-header-2: #0F766E;
+    --data-card-header-3: #071522;
+
+    --data-text: #10202F;
+
+    --data-muted: #64748B;
+
+    --data-border: rgba(11, 31, 51, .10);
+
+    --data-input-bg: #FFFFFF;
+
+    --data-input-border: #CBD5E1;
+
+    --data-accent: #D99A18;
+
+    --data-button: #0F766E;
+
+    --data-button-hover: #0B5F59;
+
+    --data-shadow:
+        0 5px 18px rgba(11, 31, 51, .10);
+}
+
+
+/* =========================================================
+   PAGE BACKGROUND
+========================================================= */
+
+body {
+
+    background: var(--data-bg);
+
+}
+
+
+/*
+   We give the listing its own background wrapper.
+   This prevents the data page from changing the global
+   body/background used by your footer and other pages.
+*/
+
+.data-page {
+
+    width: 100%;
+
+    min-height: 100vh;
+
+    padding: 15px;
+
+    background: var(--data-bg);
+
+    transition:
+        background .35s ease;
+}
+
+
+/* =========================================================
+   GRID
+========================================================= */
+
+.data-page .service-grid {
+
+    width: 100%;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+
+    gap: 15px;
+
+    margin-bottom: 100px;
+}
+
+
+/* =========================================================
+   CARD
+========================================================= */
+
+.data-page .service-card {
+
+    width: 100%;
+
+    min-width: 0;
+
+    background: var(--data-card);
+
+    border-radius: 14px;
+
+    overflow: hidden;
+
+    border: 1px solid var(--data-border);
+
+    box-shadow: var(--data-shadow);
+
+    transition:
+        transform .25s ease,
+        box-shadow .25s ease,
+        background .35s ease,
+        border-color .35s ease;
+
+    text-align: center;
+
+    color: var(--data-text);
+}
+
+
+/* =========================================================
+   CARD HOVER
+========================================================= */
+
+.data-page .service-card:hover {
+
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 8px 22px rgba(0, 0, 0, .18);
+}
+
+
+/* =========================================================
+   FORM
+========================================================= */
+
+.data-page .service-card form {
+
+    display: flex;
+
+    flex-direction: column;
+
+    width: 100%;
+
+    height: 100%;
+}
+
+
+/* =========================================================
+   CARD HEADER
+   FULL WIDTH
+========================================================= */
+
+.data-page .card-top {
+
+    width: 100%;
+
+    min-height: 58px;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--data-card-header-1) 0%,
+            var(--data-card-header-2) 55%,
+            var(--data-card-header-3) 100%
+        );
+
+    color: #FFFFFF;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    padding: 10px 12px;
+
+    border: none;
+
+    box-shadow: none;
+
+    position: relative;
+
+    overflow: hidden;
+
+    flex-shrink: 0;
+}
+
+
+/* =========================================================
+   HEADER DECORATIVE CIRCLE
+========================================================= */
+
+.data-page .card-top::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 150px;
+
+    height: 150px;
+
+    background:
+        rgba(255, 255, 255, .06);
+
+    border-radius: 50%;
+
+    right: -70px;
+
+    top: -80px;
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   SECOND HEADER DECORATION
+========================================================= */
+
+.data-page .card-top::after {
+
+    content: "";
+
+    position: absolute;
+
+    width: 70px;
+
+    height: 70px;
+
+    background:
+        rgba(245, 196, 81, .08);
+
+    border-radius: 50%;
+
+    left: -30px;
+
+    bottom: -40px;
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   NETWORK
+========================================================= */
+
+.data-page .network {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    position: relative;
+
+    z-index: 2;
+
+    min-width: 0;
+}
+
+
+/* =========================================================
+   NETWORK IMAGE
+========================================================= */
+
+.data-page .network img {
+
+    width: 32px;
+
+    height: 32px;
+
+    border-radius: 50%;
+
+    background: #FFFFFF;
+
+    object-fit: cover;
+
+    flex-shrink: 0;
+}
+
+
+/* =========================================================
+   NETWORK NAME
+========================================================= */
+
+.data-page .network span {
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    color: #FFFFFF;
+
+    white-space: nowrap;
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+}
+
+
+/* =========================================================
+   PLAN TYPE
+========================================================= */
+
+.data-page .plan-type {
+
+    font-size: 11px;
+
+    padding: 5px 8px;
+
+    border-radius: 20px;
+
+    background:
+        rgba(255, 255, 255, .15);
+
+    color: #FFFFFF;
+
+    position: relative;
+
+    z-index: 3;
+
+    white-space: nowrap;
+
+    margin-left: 8px;
+
+    flex-shrink: 0;
+}
+
+
+/* =========================================================
+   CARD BODY
+========================================================= */
+
+.data-page .card-body {
+
+    width: 100%;
+
+    padding: 14px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    flex: 1;
+
+    background: var(--data-card);
+
+    color: var(--data-text);
+
+    transition:
+        background .35s ease,
+        color .35s ease;
+}
+
+
+/* =========================================================
+   PLAN NAME
+========================================================= */
+
+.data-page .card-body h2 {
+
+    width: 100%;
+
+    font-size: 16px;
+
+    color: var(--data-accent);
+
+    margin-bottom: 6px;
+
+    line-height: 1.3;
+
+    font-weight: 700;
+
+    word-break: break-word;
+}
+
+
+/* =========================================================
+   DURATION / DESCRIPTION
+========================================================= */
+
+.data-page .card-body h3 {
+
+    width: 100%;
+
+    font-size: 14px;
+
+    color: var(--data-muted);
+
+    margin-bottom: 8px;
+
+    line-height: 1.3;
+
+    font-weight: 500;
+}
+
+
+/* =========================================================
+   PRICE
+========================================================= */
+
+.data-page .price {
+
+    width: 100%;
+
+    font-size: 24px;
+
+    font-weight: bold;
+
+    color: var(--data-accent);
+
+    margin-bottom: 12px;
+
+    line-height: 1.2;
+}
+
+
+/* =========================================================
+   PHONE INPUT
+========================================================= */
+
+.data-page .card-body input {
+
+    width: 100%;
+
+    height: 42px;
+
+    padding: 10px;
+
+    border: 1px solid var(--data-input-border);
+
+    border-radius: 8px;
+
+    outline: none;
+
+    margin-bottom: 12px;
+
+    background: var(--data-input-bg);
+
+    color: var(--data-text);
+
+    font-size: 14px;
+
+    transition:
+        border-color .3s ease,
+        box-shadow .3s ease,
+        background .3Ls ease;
+}
+
+
+/* =========================================================
+   INPUT PLACEHOLDER
+========================================================= */
+
+.data-page .card-body input::placeholder {
+
+    color: var(--data-muted);
+
+    opacity: .8;
+}
+
+
+/* =========================================================
+   INPUT FOCUS
+========================================================= */
+
+.data-page .card-body input:focus {
+
+    border-color: var(--data-accent);
+
+    box-shadow:
+        0 0 0 3px
+        rgba(245, 196, 81, .12);
+}
+
+
+/* =========================================================
+   BUY BUTTON
+========================================================= */
+
+.data-page .buy-btn {
+
+    width: 100%;
+
+    min-height: 42px;
+
+    padding: 11px;
+
+    border: none;
+
+    border-radius: 8px;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--data-button),
+            var(--data-button-hover)
+        );
+
+    color: #FFFFFF;
+
+    cursor: pointer;
+
+    font-weight: bold;
+
+    margin-top: auto;
+
+    transition:
+        background .3s ease,
+        transform .3s ease,
+        box-shadow .3s ease;
+
+    box-shadow:
+        0 5px 12px rgba(0, 0, 0, .12);
+}
+
+
+/* =========================================================
+   BUY BUTTON HOVER
+========================================================= */
+
+.data-page .buy-btn:hover {
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 8px 18px rgba(0, 0, 0, .18);
+}
+
+
+/* =========================================================
+   BUY BUTTON ACTIVE
+========================================================= */
+
+.data-page .buy-btn:active {
+
+    transform: translateY(0);
+}
+
+
+/* =========================================================
+   DISABLED BUTTON
+========================================================= */
+
+.data-page .buy-btn:disabled {
+
+    background: #777777;
+
+    color: #FFFFFF;
+
+    cursor: not-allowed;
+
+    opacity: .8;
+
+    transform: none;
+
+    box-shadow: none;
+}
+
+
+/* =========================================================
+   LOADER
+========================================================= */
+
+.data-page #loader {
+
+    position: fixed;
+
+    top: 0;
+
+    left: 0;
+
+    width: 100%;
+
+    height: 100%;
+
+    background:
+        rgba(0, 0, 0, .65);
+
+    display: none;
+
+    justify-content: center;
+
+    align-items: center;
+
+    flex-direction: column;
+
+    z-index: 99999;
+}
+
+
+/* =========================================================
+   SHOW LOADER
+========================================================= */
+
+.data-page #loader.show {
+
+    display: flex;
+}
+
+
+/* =========================================================
+   LOADER SPINNER
+========================================================= */
+
+.data-page .spinner {
+
+    width: 60px;
+
+    height: 60px;
+
+    border: 6px solid
+        rgba(255, 255, 255, .30);
+
+    border-top: 6px solid
+        var(--data-accent);
+
+    border-radius: 50%;
+
+    animation:
+        dataSpin .8s linear infinite;
+}
+
+
+/* =========================================================
+   LOADER TEXT
+========================================================= */
+
+.data-page #loader p {
+
+    margin-top: 18px;
+
+    color: #FFFFFF;
+
+    font-size: 18px;
+
+    font-weight: bold;
+}
+
+
+/* =========================================================
+   SPINNER ANIMATION
+========================================================= */
+
+@keyframes dataSpin {
+
+    from {
+
+        transform: rotate(0deg);
+    }
+
+    to {
+
+        transform: rotate(360deg);
+    }
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 900px) {
+
+    .data-page {
+
+        padding: 15px;
+    }
+
+
+    .data-page .service-grid {
+
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+
+        gap: 15px;
+    }
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+    .data-page {
+
+        padding: 15px;
+    }
+
+
+    .data-page .service-grid {
+
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+
+        gap: 12px;
+
+        margin-bottom: 100px;
+    }
+
+
+    .data-page .card-top {
+
+        width: 100%;
+
+        min-height: 55px;
+
+        padding: 10px;
+    }
+
+
+    .data-page .network {
+
+        gap: 6px;
+    }
+
+
+    .data-page .network img {
+
+        width: 28px;
+
+        height: 28px;
+    }
+
+
+    .data-page .network span {
+
+        font-size: 12px;
+    }
+
+
+    .data-page .plan-type {
+
+        font-size: 10px;
+
+        padding: 4px 6px;
+    }
+
+
+    .data-page .card-body {
+
+        width: 100%;
+
+        padding: 10px;
+    }
+
+
+    .data-page .card-body h2 {
+
+        font-size: 14px;
+
+        margin-bottom: 5px;
+    }
+
+
+    .data-page .card-body h3 {
+
+        font-size: 12px;
+
+        margin-bottom: 7px;
+    }
+
+
+    .data-page .price {
+
+        font-size: 18px;
+
+        margin-bottom: 10px;
+    }
+
+
+    .data-page .card-body input {
+
+        height: 38px;
+
+        padding: 8px;
+
+        font-size: 12px;
+
+        margin-bottom: 10px;
+    }
+
+
+    .data-page .buy-btn {
+
+        min-height: 38px;
+
+        padding: 9px;
+
+        font-size: 12px;
+    }
+}
+
+
+/* =========================================================
+   VERY SMALL PHONES
+========================================================= */
+
+@media (max-width: 380px) {
+
+    .data-page .service-grid {
+
+        gap: 10px;
+    }
+
+
+    .data-page .card-top {
+
+        padding: 8px;
+    }
+
+
+    .data-page .card-body {
+
+        padding: 9px;
+    }
+
+
+    .data-page .network span {
+
+        font-size: 11px;
+    }
+
+
+    .data-page .plan-type {
+
+        font-size: 9px;
+
+        padding: 3px 5px;
+    }
+
+
+    .data-page .price {
+
+        font-size: 17px;
+    }
+}
+
+
+/* =========================================================
+   THEME TRANSITION
+========================================================= */
+
+.data-page,
+.data-page .service-card,
+.data-page .card-top,
+.data-page .card-body,
+.data-page .card-body input,
+.data-page .buy-btn {
+
+    transition:
+        background .35s ease,
+        background-color .35s ease,
+        color .35s ease,
+        border-color .35s ease,
+        box-shadow .35s ease,
+        transform .25s ease;
+}

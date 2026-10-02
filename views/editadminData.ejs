@@ -1,0 +1,1090 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <%- include('./partials/sidebar') %>
+<link rel="icon" type="image/x-icon" href="/images/zaki_logo.png">
+<style>
+    /* =====================================================
+       DATA MANAGEMENT PAGE
+       Sidebar is handled by sidebar.ejs
+    ===================================================== */
+
+    .data-admin-page {
+        width: 100%;
+        max-width: 1400px;
+        margin: 0 auto;
+    }
+
+
+    /* =====================================================
+       PAGE HEADER
+    ===================================================== */
+
+    .data-page-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+        margin-bottom: 25px;
+    }
+
+    .data-page-title h1 {
+        font-size: 28px;
+        margin-bottom: 6px;
+    }
+
+    .data-page-title p {
+        color: var(--admin-muted);
+        font-size: 14px;
+    }
+
+
+    /* =====================================================
+       STAT CARDS
+    ===================================================== */
+
+    .data-stats {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 15px;
+        margin-bottom: 25px;
+    }
+
+    .data-stat-card {
+        background: var(--admin-sidebar);
+        border: 1px solid var(--admin-border);
+        border-radius: 16px;
+        padding: 20px;
+        box-shadow: var(--admin-shadow);
+    }
+
+    .data-stat-card span {
+        color: var(--admin-muted);
+        font-size: 13px;
+    }
+
+    .data-stat-card h2 {
+        margin-top: 8px;
+        font-size: 25px;
+        color: var(--admin-text);
+    }
+
+    .data-stat-card .green {
+        color: #22C55E;
+    }
+
+    .data-stat-card .gold {
+        color: var(--admin-accent);
+    }
+
+
+    /* =====================================================
+       MAIN DATA LAYOUT
+    ===================================================== */
+
+    .data-management-layout {
+        display: grid;
+        grid-template-columns: 330px minmax(0, 1fr);
+        gap: 20px;
+        align-items: start;
+    }
+
+
+    /* =====================================================
+       FORM CARD
+    ===================================================== */
+
+    .data-form-card {
+        background: var(--admin-sidebar);
+        border: 1px solid var(--admin-border);
+        border-radius: 18px;
+        padding: 22px;
+        box-shadow: var(--admin-shadow);
+        position: sticky;
+        top: 20px;
+    }
+
+    .data-form-card h2 {
+        font-size: 19px;
+        margin-bottom: 5px;
+        color: var(--admin-text);
+    }
+
+    .data-form-card > p {
+        color: var(--admin-muted);
+        font-size: 12px;
+        margin-bottom: 20px;
+    }
+
+
+    /* =====================================================
+       FORM
+    ===================================================== */
+
+    .data-form-group {
+        margin-bottom: 15px;
+    }
+
+    .data-form-group label {
+        display: block;
+        color: var(--admin-text);
+        font-size: 13px;
+        font-weight: bold;
+        margin-bottom: 7px;
+    }
+
+    .data-form-group input,
+    .data-form-group select {
+        width: 100%;
+        height: 43px;
+        padding: 0 12px;
+        border-radius: 9px;
+        border: 1px solid var(--admin-border);
+        background: var(--admin-sidebar-2);
+        color: var(--admin-text);
+        outline: none;
+        transition: .3s ease;
+    }
+
+    .data-form-group input:focus,
+    .data-form-group select:focus {
+        border-color: var(--admin-accent);
+        box-shadow: 0 0 0 3px rgba(15, 118, 110, .10);
+    }
+
+    .data-form-group select option {
+        background: var(--admin-sidebar);
+        color: var(--admin-text);
+    }
+
+
+    /* =====================================================
+       FORM BUTTONS
+    ===================================================== */
+
+    .data-form-buttons {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+        margin-top: 20px;
+    }
+
+    .data-btn {
+        height: 43px;
+        border: none;
+        border-radius: 9px;
+        cursor: pointer;
+        font-weight: bold;
+        transition: .3s ease;
+    }
+
+    .data-btn-primary {
+        background:
+            linear-gradient(
+                135deg,
+                var(--admin-accent),
+                var(--admin-brand-light)
+            );
+
+        color: #fff;
+    }
+
+    .data-btn-secondary {
+        background: var(--admin-sidebar-2);
+        border: 1px solid var(--admin-border);
+        color: var(--admin-text);
+    }
+
+    .data-btn:hover {
+        transform: translateY(-2px);
+    }
+
+
+    /* =====================================================
+       TABLE CARD
+    ===================================================== */
+
+    .data-table-card {
+        background: var(--admin-sidebar);
+        border: 1px solid var(--admin-border);
+        border-radius: 18px;
+        box-shadow: var(--admin-shadow);
+        overflow: hidden;
+        min-width: 0;
+    }
+
+
+    /* =====================================================
+       TABLE HEADER
+    ===================================================== */
+
+    .data-table-header {
+        padding: 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 15px;
+        border-bottom: 1px solid var(--admin-border);
+    }
+
+    .data-table-header h2 {
+        font-size: 19px;
+        color: var(--admin-text);
+    }
+
+    .data-search {
+        width: 220px;
+        height: 40px;
+        padding: 0 12px;
+        border-radius: 9px;
+        border: 1px solid var(--admin-border);
+        background: var(--admin-sidebar-2);
+        color: var(--admin-text);
+        outline: none;
+    }
+
+    .data-search:focus {
+        border-color: var(--admin-accent);
+    }
+
+
+    /* =====================================================
+       TABLE
+    ===================================================== */
+
+    .data-table-wrapper {
+        width: 100%;
+        overflow-x: auto;
+    }
+
+    .data-table {
+        width: 100%;
+        border-collapse: collapse;
+        min-width: 850px;
+    }
+
+    .data-table th {
+        text-align: left;
+        padding: 14px;
+        font-size: 12px;
+        color: var(--admin-muted);
+        background: var(--admin-sidebar-2);
+        white-space: nowrap;
+    }
+
+    .data-table td {
+        padding: 15px 14px;
+        border-top: 1px solid var(--admin-border);
+        font-size: 13px;
+        white-space: nowrap;
+        color: var(--admin-text);
+    }
+
+    .data-table tbody tr {
+        transition: .2s ease;
+    }
+
+    .data-table tbody tr:hover {
+        background: var(--admin-sidebar-2);
+    }
+
+    .data-network {
+        font-weight: bold;
+    }
+
+    .data-plan-name {
+        color: var(--admin-text);
+    }
+
+    .data-profit {
+        color: #22C55E;
+        font-weight: bold;
+    }
+
+
+    /* =====================================================
+       STATUS
+    ===================================================== */
+
+    .data-status {
+        display: inline-block;
+        padding: 5px 9px;
+        border-radius: 20px;
+        font-size: 10px;
+        font-weight: bold;
+    }
+
+    .data-status-active {
+        background: rgba(34, 197, 94, .12);
+        color: #22C55E;
+    }
+
+    .data-status-inactive {
+        background: rgba(239, 68, 68, .12);
+        color: #EF4444;
+    }
+
+
+    /* =====================================================
+       ACTIONS
+    ===================================================== */
+
+    .data-actions {
+        display: flex;
+        gap: 7px;
+    }
+
+    .data-action-btn {
+        border: 1px solid var(--admin-border);
+        background: var(--admin-sidebar-2);
+        color: var(--admin-text);
+        padding: 7px 10px;
+        border-radius: 7px;
+        cursor: pointer;
+        font-size: 11px;
+        transition: .2s ease;
+    }
+
+    .data-action-btn:hover {
+        border-color: var(--admin-accent);
+        color: var(--admin-accent);
+    }
+
+    .data-delete-btn:hover {
+        border-color: #EF4444;
+        color: #EF4444;
+    }
+
+
+    /* =====================================================
+       EMPTY
+    ===================================================== */
+
+    .data-empty {
+        padding: 50px 20px;
+        text-align: center;
+        color: var(--admin-muted);
+    }
+
+    .data-empty h3 {
+        color: var(--admin-text);
+        margin-bottom: 7px;
+    }
+
+
+    /* =====================================================
+       TABLET
+    ===================================================== */
+
+    @media (max-width: 1100px) {
+
+        .data-stats {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        .data-management-layout {
+            grid-template-columns: 280px minmax(0, 1fr);
+        }
+    }
+
+
+    /* =====================================================
+       SMALL TABLET
+    ===================================================== */
+
+    @media (max-width: 800px) {
+
+        .data-management-layout {
+            grid-template-columns: 1fr;
+        }
+
+        .data-form-card {
+            position: static;
+        }
+    }
+
+
+    /* =====================================================
+       PHONE
+    ===================================================== */
+
+    @media (max-width: 600px) {
+
+        .data-page-header {
+            align-items: flex-start;
+        }
+
+        .data-page-title h1 {
+            font-size: 23px;
+        }
+
+        .data-stats {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+        }
+
+        .data-stat-card {
+            padding: 15px;
+        }
+
+        .data-stat-card h2 {
+            font-size: 20px;
+        }
+
+        .data-table-header {
+            align-items: stretch;
+            flex-direction: column;
+        }
+
+        .data-search {
+            width: 100%;
+        }
+
+        .data-form-buttons {
+            grid-template-columns: 1fr;
+        }
+    }
+
+
+    /* =====================================================
+       VERY SMALL PHONE
+    ===================================================== */
+
+    @media (max-width: 380px) {
+
+        .data-stats {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>
+
+<%- include('partials/alerts') %>
+<main class="admin-main">
+
+    <div class="data-admin-page">
+
+
+        <!-- =================================================
+             HEADER
+        ================================================= -->
+
+        <header class="data-page-header">
+
+            <div class="data-page-title">
+
+                <h1>
+                    Data Management
+                </h1>
+
+                <p>
+                    Manage your data plans, prices and availability.
+                </p>
+
+            </div>
+
+        </header>
+
+
+        <!-- =================================================
+             STATISTICS
+        ================================================= -->
+
+        <section class="data-stats">
+
+            <div class="data-stat-card">
+
+                <span>
+                    Total Plans
+                </span>
+
+                <h2>
+                    <%=TD.tc%>
+                </h2>
+
+            </div>
+
+
+            <div class="data-stat-card">
+
+                <span>
+                    Active Plans
+                </span>
+
+                <h2 class="green">
+                    <%=AD.tc%>
+                </h2>
+
+            </div>
+
+
+            <div class="data-stat-card">
+
+                <span>
+                    Inactive Plans
+                </span>
+
+                <h2>
+                    <%=ID.tc%>
+                </h2>
+
+            </div>
+
+
+            <div class="data-stat-card">
+
+                <span>
+                    Total Profit
+                </span>
+
+                <h2 class="gold">
+                    ₦<%= Number(TP.tp).toLocaleString() %>.00
+                </h2>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             DATA MANAGEMENT
+        ================================================= -->
+
+        <section class="data-management-layout">
+
+
+            <!-- =================================================
+                 ADD / UPDATE FORM
+            ================================================= -->
+
+            <div class="data-form-card">
+
+                <h2>
+                    Update Data Plan
+                </h2>
+
+                <p>
+                    Update an existing data plan.
+                </p>
+
+
+                <form
+                    action="/admin/data/<%=items.id%>/edits"
+                    method="POST"
+                    id="dataForm"
+                >
+
+
+                    <div class="data-form-group">
+
+                        <label for="network">
+                            Network
+                        </label>
+                        <input
+                            type="text"
+                            id="plan"
+                            value="<%=items.network%>"
+                            
+                            name="network"
+                            placeholder="e.g. 1GB"
+                            required
+                        >
+                    </div>
+
+
+                    <div class="data-form-group">
+
+                        <label for="plan">
+                            Plan
+                        </label>
+
+                        <input
+                            type="text"
+                            id="plan"
+                            value="<%=items.plan%>"
+                            
+                            name="plan"
+                            placeholder="e.g. 1GB"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="data-form-group">
+
+                        <label for="validity">
+                            Duration                     
+                        </label>
+
+                        <input
+                            type="text"
+                            id="validity"
+                            name="duration"
+                            value="<%=items.duration%>"
+                            placeholder="e.g. 30 Days"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="data-form-group">
+
+                        <label for="providerPrice">
+                            Provider Price
+                        </label>
+
+                        <input
+                            type="number"
+                            id="providerPrice"
+                            name="amount"
+                            value="<%=items.amount%>"
+                            placeholder="e.g. 250"
+                            min="0"
+                            step="0.01"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="data-form-group">
+
+                        <label for="sellingPrice">
+                            Selling Price
+                        </label>
+
+                        <input
+                            type="number"
+                            id="sellingPrice"
+                            name="zd_price"
+                            value="<%=items.zd_price%>"
+                            placeholder="e.g. 300"
+                            min="0"
+                            step="0.01"
+                            required
+                        >
+
+                    </div>
+
+                    <div class="data-form-group">
+
+                        <label for="validity">
+                            Data Id
+                        </label>
+
+                        <input
+                            type="text"
+                            id="validity"
+                            name="data_id"
+                            value="<%=items.data_id%>"
+                            placeholder="e.g. 1,3"
+                            required
+                        >
+
+                    </div>
+
+                    <div class="data-form-group">
+
+                        <label for="validity">
+                            Network id
+                        </label>
+
+                        <input
+                            type="text"
+                            id="validity"
+                            name="networkID"
+                            value="<%=items.networkID%>"
+                            placeholder="e.g. mtn 1, airtel 2, glo 3"
+                            required
+                        >
+
+                    </div>
+
+                    <div class="data-form-group">
+
+                        <label for="validity">
+                            variation_Code
+                        </label>
+
+                        <input
+                            type="text"
+                            id="validity"
+                            name="variation_Code"
+                            value="<%=items.variation_Code%>"
+                            placeholder="e.g. mtn-50mb-200, mtn-100mb-1000"
+                            required
+                        >
+
+                    </div>
+
+
+
+                    <!--<div class="data-form-group">
+
+                        <label for="status">
+                            Status
+                        </label>
+
+                        <select
+                            id="status"
+                            name="status"
+                        >
+
+                            <option value="active">
+                                Active
+                            </option>
+
+                            <option value="inactive">
+                                Inactive
+                            </option>
+
+                        </select>
+
+                    </div>-->
+
+
+                    <div class="data-form-buttons">
+
+                        <button
+                            type="submit"
+                            class="data-btn data-btn-primary"
+                        >
+                            Update Plan
+                        </button>
+
+
+                        <button
+                            type="reset"
+                            class="data-btn data-btn-secondary"
+                            id="clearBtn"
+                        >
+                            Clear
+                        </button>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+
+            <!-- =================================================
+                 DATA TABLE
+            ================================================= -->
+
+            <div class="data-table-card">
+
+
+                <div class="data-table-header">
+
+                    <h2>
+                        Data Plans
+                    </h2>
+
+
+                    <input
+                        type="search"
+                        class="data-search"
+                        id="searchInput"
+                        placeholder="Search data plan..."
+                    >
+
+                </div>
+
+
+                <div class="data-table-wrapper">
+
+                    <table class="data-table">
+
+                        <thead>
+
+                            <tr>
+
+                                <th>
+                                    NETWORK
+                                </th>
+
+                                <th>
+                                    PLAN
+                                </th>
+
+                                <th>
+                                    VALIDITY
+                                </th>
+
+                                <th>
+                                    PROVIDER
+                                </th>
+
+                                <th>
+                                    SELLING
+                                </th>
+
+                                <th>
+                                    PROFIT
+                                </th>
+
+                                <th>
+                                    STATUS
+                                </th>
+
+                                <th>
+                                    ACTION
+                                </th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody id="dataTable">
+                            <% view.slice(0,50).forEach(item => { %>
+                                <tr>
+
+                                <td class="data-network">
+                                    <%=item.network%>
+                                </td>
+
+                                <td class="data-plan-name">
+                                    <%=item.plan%>
+                                </td>
+
+                                <td>
+                                    <%=item.duration%>
+                                </td>
+
+                                <td>
+                                    ₦<%= Number(item.amount).toLocaleString() %>.00
+                                </td>
+
+                                <td>
+                                    ₦<%= Number(item.zd_price).toLocaleString() %>.00
+                                </td>
+
+                                <td class="data-profit">
+                                    ₦<%= Number(item.zd_price) - Number(item.amount) %>.00
+                                </td>
+
+                                <td>
+                                    <%if(item.active_status === 'active') {%>
+                                    <span class="data-status data-status-active">
+                                        <%=item.active_status%>
+                                    </span>
+                                    <%}else{%>
+                                        <span class="data-status data-status-inactive">
+                                        <%=item.active_status%>
+                                    </span>
+                                    <%}%>
+                                </td>
+
+                                <td>
+
+                                    <div class="data-actions">
+
+                                        <a href="/admin/data/<%=item.id%>/edit"><button
+                                            class="data-action-btn"
+                                            type="button"
+                                        >
+                                            Edit
+                                        </button></a>
+                                        <%if(item.active_status === 'active'){%>
+                                        <a href="/admin/data/<%=item.id%>/disable"><button
+                                            class="data-action-btn data-delete-btn"
+                                            type="button"
+                                        >
+                                            Disable
+                                        </button></a>
+                                        <%}else{%>
+                                            <a href="/admin/data/<%=item.id%>/enable"><button
+                                            class="data-action-btn data-delete-btn"
+                                            type="button"
+                                        >
+                                            Enable
+                                        </button></a>
+                                        <%}%>
+                                    </div>
+
+                                </td>
+
+                            </tr>
+                            <%})%>
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </div>
+
+</main>
+
+
+<script>
+
+    /* =====================================================
+       SEARCH
+    ===================================================== */
+
+    const searchInput =
+        document.getElementById("searchInput");
+
+
+    if (searchInput) {
+
+        searchInput.addEventListener(
+            "input",
+            function () {
+
+                const value =
+                    this.value.toLowerCase().trim();
+
+
+                const rows =
+                    document.querySelectorAll(
+                        "#dataTable tr"
+                    );
+
+
+                rows.forEach(function (row) {
+
+                    const text =
+                        row.textContent.toLowerCase();
+
+
+                    row.style.display =
+                        text.includes(value)
+                            ? ""
+                            : "none";
+
+                });
+
+            }
+        );
+
+    }
+
+
+    /* =====================================================
+       CLEAR FORM
+    ===================================================== */
+
+    const clearBtn =
+        document.getElementById("clearBtn");
+
+
+    if (clearBtn) {
+
+        clearBtn.addEventListener(
+            "click",
+            function () {
+
+                const form =
+                    document.getElementById("dataForm");
+
+
+                if (form) {
+
+                    form.reset();
+
+                }
+
+            }
+        );
+
+    }
+
+
+    /* =====================================================
+       PROFIT CALCULATION
+    ===================================================== */
+
+    const providerPrice =
+        document.getElementById(
+            "providerPrice"
+        );
+
+
+    const sellingPrice =
+        document.getElementById(
+            "sellingPrice"
+        );
+
+
+    function calculateProfit() {
+
+        const provider =
+            Number(providerPrice?.value) || 0;
+
+
+        const selling =
+            Number(sellingPrice?.value) || 0;
+
+
+        const profit =
+            selling - provider;
+
+        /*
+            Do not trust frontend profit
+            when saving to the database.
+
+            Calculate the real profit
+            again on the server.
+        */
+
+    }
+
+
+    if (providerPrice) {
+
+        providerPrice.addEventListener(
+            "input",
+            calculateProfit
+        );
+
+    }
+
+
+    if (sellingPrice) {
+
+        sellingPrice.addEventListener(
+            "input",
+            calculateProfit
+        );
+
+    }
+
+
+    /* =====================================================
+       EDIT BUTTON
+    ===================================================== */
+
+    document
+        .querySelectorAll(".edit-btn")
+        .forEach(function (button) {
+
+            button.addEventListener(
+                "click",
+                function () {
+
+                    alert(
+                        "Connect this button to your update route."
+                    );
+
+                }
+            );
+
+        });
+
+</script>
+</body>
+</html>

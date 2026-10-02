@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <link rel="icon" type="image/x-icon" href="/images/zaki_logo.png">
+
+    <meta charset="utf-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1"
+    >
+
+    <title>Data Plans</title>
+
+    <link rel="stylesheet" href="/css/diable.css">
+
+    <script src="/js/publicTheme.js"></script>
+
+</head>
+
+<body>
+
+    <%- include('headerdata') %>
+
+    <%- include('partials/alerts') %>
+
+
+    <div class="data-page">
+
+        <!-- PAGE INTRO -->
+
+        <div class="data-heading">
+
+            <div>
+                <span class="data-eyebrow">
+                    ZAKI SUB
+                </span>
+
+                <h1>
+                    Data Plans
+                </h1>
+
+                <p>
+                    Choose a plan that works best for you.
+                </p>
+            </div>
+            <div class="cashback">
+
+                                <div class="cashback-icon">
+                                    %
+                                </div>
+
+                                <div>
+
+                                    <strong>
+                                        Cashback Available
+                                    </strong>
+
+                                    <small>
+                                        Get cashback after purchase
+                                    </small>
+
+                                </div>
+
+                            </div>
+
+        </div>
+
+
+        <!-- DATA GRID -->
+
+        <div class="service-grid">
+
+            <% card.forEach(item => { %>
+
+                <div class="service-card">
+
+                    <form
+                        class="buyForm"
+                        action="/<%= item.id %>/data/purchase"
+                        method="post"
+                    >
+
+                        <!-- CARD HEADER -->
+
+                        <div class="card-top">
+
+                            <div class="network">
+
+                                <% if(item.network === 'MTN'){ %>
+
+                                    <span>
+                                        <img
+                                            src="/images/mtn.png"
+                                            alt="MTN"
+                                        >
+
+                                        <b>MTN</b>
+                                    </span>
+
+                                <% } else if(item.network === 'AIRTEL') { %>
+
+                                    <span>
+                                        <img
+                                            src="/images/airtel.png"
+                                            alt="Airtel"
+                                        >
+
+                                        <b>Airtel</b>
+                                    </span>
+
+                                <% } else if(item.network === 'GLO'){ %>
+
+                                    <span>
+                                        <img
+                                            src="/images/glo.png"
+                                            alt="Glo"
+                                        >
+
+                                        <b>Glo</b>
+                                    </span>
+
+                                <% } %>
+
+                            </div>
+
+
+                            <span class="plan-type">
+                                <%= item.type %>
+                            </span>
+
+                        </div>
+
+
+                        <!-- CARD BODY -->
+
+                        <div class="card-body">
+
+
+                            <!-- PLAN -->
+
+                            <div class="plan-name">
+
+                                <span>
+                                    DATA PLAN
+                                </span>
+
+                                <h2>
+                                    <%= item.plan %>
+                                </h2>
+
+                            </div>
+
+
+                            <!-- VALIDITY -->
+
+                            <div class="validity">
+
+                                <span>
+                                    Valid for
+                                </span>
+
+                                <strong>
+                                    <%= item.duration %>
+                                </strong>
+
+                            </div>
+
+                            
+
+                            <!-- CASHBACK 
+
+                            <div class="cashback">
+
+                                <div class="cashback-icon">
+                                    %
+                                </div>
+
+                                <div>
+
+                                    <strong>
+                                        Cashback Available
+                                    </strong>
+
+                                    <small>
+                                        Get cashback after purchase
+                                    </small>
+
+                                </div>
+
+                            </div>-->
+
+
+                            <!-- PRICE -->
+
+                            <div class="price-section">
+
+                                <span>
+                                    Price
+                                </span>
+
+                                <div class="price">
+
+                                    ₦<%= Number(item.zd_price).toLocaleString() %>.00
+
+                                </div>
+
+                            </div>
+
+
+                            <!-- PHONE -->
+
+                            <div class="phone-input">
+
+                                <span>
+                                    Phone Number
+                                </span>
+
+                                <input
+                                    type="tel"
+                                    name="phone"
+                                    placeholder="08012345678"
+                                    value="<%= user.phone %>"
+                                    required
+                                    inputmode="numeric"
+                                >
+
+                            </div>
+
+
+                            <!-- BUY -->
+
+                            <button
+                                type="submit"
+                                class="buy-btn buyBtn"
+                            >
+
+                                <span>
+                                    BUY DATA
+                                </span>
+
+                                <b>
+                                    →
+                                </b>
+
+                            </button>
+
+                        </div>
+
+                    </form>
+
+                </div>
+
+            <% }) %>
+
+        </div>
+
+
+        <!-- PURCHASE LOADER -->
+
+        <div id="loader">
+
+            <div class="spinner"></div>
+
+            <p>
+                Processing...
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <script src="/js/disable.js"></script>
+
+    <%- include('footer') %>
+
+</body>
+
+</html>

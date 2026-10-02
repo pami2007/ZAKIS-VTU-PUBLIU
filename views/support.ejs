@@ -1,0 +1,941 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Contact Support - Zaki Sub</title>
+    <link rel="stylesheet" href="/css/public.css">
+    <link rel="icon" type="image/x-icon" href="/images/zaki_logo.png">
+    <script src="/js/publicTheme.js"></script>
+
+
+    <style>
+
+        /* =====================================================
+           THEME
+        ===================================================== */
+
+        :root {
+
+            --bg: #100909;
+
+            --card: #1b1111;
+
+            --card2: #241616;
+
+            --brand: #250d0d;
+
+            --brand-light: #3a1818;
+
+            --accent: #f5c451;
+
+            --accent-dark: #d99a18;
+
+            --text: #ffffff;
+
+            --muted: #b9afaf;
+
+            --border: rgba(255,255,255,.08);
+
+            --shadow:
+                0 15px 40px rgba(0,0,0,.30);
+        }
+
+
+        /* =====================================================
+           LIGHT MODE
+        ===================================================== */
+
+        [data-theme="light"] {
+
+            --bg: #f4f8f6;
+
+            --card: #ffffff;
+
+            --card2: #f0f7f5;
+
+            --brand: #0b1f33;
+
+            --brand-light: #163b5c;
+
+            --accent: #0f766e;
+
+            --accent-dark: #0b5f59;
+
+            --text: #10202f;
+
+            --muted: #64748b;
+
+            --border: rgba(11,31,51,.10);
+
+            --shadow:
+                0 15px 40px rgba(11,31,51,.10);
+        }
+
+
+        /* =====================================================
+           RESET
+        ===================================================== */
+
+        * {
+
+            margin: 0;
+
+            padding: 0;
+
+            box-sizing: border-box;
+
+            font-family:
+                Arial,
+                Helvetica,
+                sans-serif;
+        }
+
+
+        body {
+
+            background: var(--bg);
+
+            color: var(--text);
+
+            min-height: 100vh;
+
+            transition:
+                background .3s ease,
+                color .3s ease;
+        }
+
+
+        /* =====================================================
+           PAGE
+        ===================================================== */
+
+        .support-page {
+
+            width: 100%;
+
+            max-width: 1100px;
+
+            margin: auto;
+
+            padding: 50px 20px;
+        }
+
+
+        /* =====================================================
+           HEADER
+        ===================================================== */
+
+        .support-header {
+
+            text-align: center;
+
+            margin-bottom: 40px;
+        }
+
+
+        .support-header .badge {
+
+            display: inline-block;
+
+            padding: 7px 14px;
+
+            border-radius: 30px;
+
+            background:
+                rgba(245,196,81,.10);
+
+            color: var(--accent);
+
+            border:
+                1px solid rgba(245,196,81,.20);
+
+            font-size: 12px;
+
+            font-weight: bold;
+
+            margin-bottom: 15px;
+        }
+
+
+        .support-header h1 {
+
+            font-size: 36px;
+
+            margin-bottom: 12px;
+        }
+
+
+        .support-header p {
+
+            max-width: 600px;
+
+            margin: auto;
+
+            color: var(--muted);
+
+            font-size: 15px;
+
+            line-height: 1.7;
+        }
+
+
+        /* =====================================================
+           CONTACT GRID
+        ===================================================== */
+
+        .contact-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 18px;
+
+            margin-bottom: 25px;
+        }
+
+
+        /* =====================================================
+           CONTACT CARD
+        ===================================================== */
+
+        .contact-card {
+
+            background: var(--card);
+
+            border:
+                1px solid var(--border);
+
+            border-radius: 18px;
+
+            padding: 25px;
+
+            text-align: center;
+
+            box-shadow: var(--shadow);
+
+            transition:
+                transform .3s ease,
+                border-color .3s ease,
+                background .3s ease;
+        }
+
+
+        .contact-card:hover {
+
+            transform: translateY(-5px);
+
+            border-color:
+                rgba(245,196,81,.30);
+        }
+
+
+        /* =====================================================
+           ICON
+        ===================================================== */
+
+        .contact-icon {
+
+            width: 58px;
+
+            height: 58px;
+
+            margin: 0 auto 15px;
+
+            border-radius: 16px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    var(--brand),
+                    var(--brand-light)
+                );
+
+            color: var(--accent);
+
+            font-size: 25px;
+
+            border:
+                1px solid var(--border);
+        }
+
+
+        .contact-card h3 {
+
+            font-size: 17px;
+
+            margin-bottom: 8px;
+        }
+
+
+        .contact-card p {
+
+            color: var(--muted);
+
+            font-size: 13px;
+
+            line-height: 1.6;
+
+            margin-bottom: 12px;
+        }
+
+
+        .contact-card a {
+
+            color: var(--accent);
+
+            text-decoration: none;
+
+            font-size: 14px;
+
+            font-weight: bold;
+
+            word-break: break-word;
+        }
+
+
+        .contact-card a:hover {
+
+            text-decoration: underline;
+        }
+
+
+        /* =====================================================
+           MAIN SUPPORT CARD
+        ===================================================== */
+
+        .support-card {
+
+            background:
+                linear-gradient(
+                    135deg,
+                    var(--brand),
+                    var(--brand-light)
+                );
+
+            border:
+                1px solid var(--border);
+
+            border-radius: 22px;
+
+            padding: 35px;
+
+            display: grid;
+
+            grid-template-columns:
+                1.4fr 1fr;
+
+            gap: 30px;
+
+            position: relative;
+
+            overflow: hidden;
+
+            box-shadow: var(--shadow);
+        }
+
+
+        .support-card::after {
+
+            content: "";
+
+            position: absolute;
+
+            width: 220px;
+
+            height: 220px;
+
+            border-radius: 50%;
+
+            background:
+                rgba(245,196,81,.08);
+
+            right: -80px;
+
+            top: -90px;
+        }
+
+
+        /* =====================================================
+           SUPPORT MESSAGE
+        ===================================================== */
+
+        .support-message {
+
+            position: relative;
+
+            z-index: 2;
+        }
+
+
+        .support-message h2 {
+
+            font-size: 25px;
+
+            margin-bottom: 12px;
+        }
+
+
+        .support-message p {
+
+            color:
+                rgba(255,255,255,.75);
+
+            line-height: 1.7;
+
+            font-size: 14px;
+
+            margin-bottom: 20px;
+        }
+
+
+        /* =====================================================
+           SUPPORT BUTTONS
+        ===================================================== */
+
+        .support-buttons {
+
+            display: flex;
+
+            flex-wrap: wrap;
+
+            gap: 10px;
+        }
+
+
+        .support-button {
+
+            display: inline-flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            padding: 12px 18px;
+
+            border-radius: 10px;
+
+            text-decoration: none;
+
+            font-size: 13px;
+
+            font-weight: bold;
+
+            transition: .3s;
+        }
+
+
+        .support-button.primary {
+
+            background: var(--accent);
+
+            color: #fff;
+        }
+
+
+        .support-button.secondary {
+
+            background:
+                rgba(255,255,255,.08);
+
+            color: #fff;
+
+            border:
+                1px solid rgba(255,255,255,.15);
+        }
+
+
+        .support-button:hover {
+
+            transform:
+                translateY(-2px);
+        }
+
+
+        /* =====================================================
+           SUPPORT HOURS
+        ===================================================== */
+
+        .support-hours {
+
+            position: relative;
+
+            z-index: 2;
+
+            background:
+                rgba(0,0,0,.15);
+
+            border:
+                1px solid rgba(255,255,255,.10);
+
+            border-radius: 15px;
+
+            padding: 22px;
+        }
+
+
+        .support-hours h3 {
+
+            font-size: 16px;
+
+            margin-bottom: 15px;
+        }
+
+
+        .hours-row {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            gap: 15px;
+
+            padding: 10px 0;
+
+            border-bottom:
+                1px solid
+                rgba(255,255,255,.08);
+
+            font-size: 13px;
+        }
+
+
+        .hours-row:last-child {
+
+            border-bottom: none;
+        }
+
+
+        .hours-row span:first-child {
+
+            color:
+                rgba(255,255,255,.65);
+        }
+
+
+        .hours-row span:last-child {
+
+            font-weight: bold;
+        }
+
+
+        /* =====================================================
+           ADDRESS
+        ===================================================== */
+
+        .address-box {
+
+            margin-top: 18px;
+
+            background: var(--card);
+
+            border:
+                1px solid var(--border);
+
+            border-radius: 16px;
+
+            padding: 20px;
+
+            text-align: center;
+        }
+
+
+        .address-box h3 {
+
+            font-size: 16px;
+
+            margin-bottom: 8px;
+        }
+
+
+        .address-box p {
+
+            color: var(--muted);
+
+            font-size: 13px;
+
+            line-height: 1.6;
+        }
+
+
+        /* =====================================================
+           MOBILE
+        ===================================================== */
+
+        @media(max-width: 850px) {
+
+            .contact-grid {
+
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+
+
+            .support-card {
+
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+
+        @media(max-width: 600px) {
+
+            .support-page {
+
+                padding: 30px 15px;
+            }
+
+
+            .support-header h1 {
+
+                font-size: 28px;
+            }
+
+
+            .contact-grid {
+
+                grid-template-columns: 1fr;
+            }
+
+
+            .contact-card {
+
+                padding: 22px;
+            }
+
+
+            .support-card {
+
+                padding: 25px 20px;
+
+                border-radius: 18px;
+            }
+
+
+            .support-message h2 {
+
+                font-size: 21px;
+            }
+
+
+            .support-buttons {
+
+                flex-direction: column;
+            }
+
+
+            .support-button {
+
+                width: 100%;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<!--
+    CHANGE THIS TO:
+
+    data-theme="light"
+
+    IF YOU WANT TO PREVIEW LIGHT MODE.
+-->
+
+<body data-theme="dark">
+
+    <%-include('partials/supportHeader')%>
+
+    <main class="support-page">
+
+
+        <!-- =================================================
+             HEADER
+        ================================================== -->
+
+        <header class="support-header">
+
+            <span class="badge">
+                CUSTOMER SUPPORT
+            </span>
+
+
+            <h1>
+                How Can We Help?
+            </h1>
+
+
+            <p>
+                Need help with your account, wallet,
+                airtime, data purchase, or a transaction?
+                Our support team is here to help.
+            </p>
+
+        </header>
+
+
+
+        <!-- =================================================
+             CONTACT INFORMATION
+        ================================================== -->
+
+        <section class="contact-grid">
+
+
+            <!-- PHONE -->
+
+            <div class="contact-card">
+
+                <div class="contact-icon">
+                    ☎
+                </div>
+
+
+                <h3>
+                    Phone
+                </h3>
+
+
+                <p>
+                    Call us directly if you need
+                    immediate assistance.
+                </p>
+
+
+                <!-- CHANGE PHONE NUMBER -->
+
+                <a href="tel:+23408108206074">
+                    +234 810 820 6074
+                </a>
+
+            </div>
+
+
+
+            <!-- EMAIL -->
+
+            <div class="contact-card">
+
+                <div class="contact-icon">
+                    ✉
+                </div>
+
+
+                <h3>
+                    Email
+                </h3>
+
+
+                <p>
+                    Send us an email and our support
+                    team will get back to you.
+                </p>
+
+
+                <!-- CHANGE EMAIL -->
+
+                <a href="mailto:support@example.com">
+                    pamilerinsamuellegit@gmail.com
+                </a>
+
+            </div>
+
+
+
+            <!-- WHATSAPP -->
+
+            <div class="contact-card">
+
+                <div class="contact-icon">
+                    ◉
+                </div>
+
+
+                <h3>
+                    WhatsApp
+                </h3>
+
+
+                <p>
+                    Chat with our support team
+                    through WhatsApp.
+                </p>
+
+
+                <!-- CHANGE WHATSAPP LINK -->
+
+                <a href="https://wa.me/2348108206074">
+                    Chat on WhatsApp
+                </a>
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =================================================
+             MAIN SUPPORT SECTION
+        ================================================== -->
+
+        <section class="support-card">
+
+
+            <div class="support-message">
+
+                <h2>
+                    Need Help With a Transaction?
+                </h2>
+
+
+                <p>
+                    If you are experiencing a problem with
+                    an airtime purchase, data purchase,
+                    wallet funding, or any other service,
+                    please contact our support team.
+                </p>
+
+
+                <p>
+                    When contacting us about a transaction,
+                    kindly provide your transaction reference
+                    or other relevant details so we can
+                    investigate the issue quickly.
+                </p>
+
+
+                <div class="support-buttons">
+
+
+                    <!-- CHANGE EMAIL -->
+
+                    <a
+                        href="mailto:pamilerinsamuellegit@gmail.com"
+                        class="support-button primary"
+                    >
+                        Email Support
+                    </a>
+
+
+                    <!-- CHANGE WHATSAPP -->
+
+                    <a
+                        href="https://wa.me/2348108206074"
+                        class="support-button secondary"
+                    >
+                        WhatsApp Support
+                    </a>
+
+
+                </div>
+
+            </div>
+
+
+
+            <!-- SUPPORT HOURS
+
+            <div class="support-hours">
+
+                <h3>
+                    Support Hours
+                </h3>
+
+
+                
+
+                <div class="hours-row">
+
+                    <span>
+                        Monday - Friday
+                    </span>
+
+                    <span>
+                        8:00 AM - 6:00 PM
+                    </span>
+
+                </div>
+
+
+                <div class="hours-row">
+
+                    <span>
+                        Saturday
+                    </span>
+
+                    <span>
+                        9:00 AM - 4:00 PM
+                    </span>
+
+                </div>
+
+
+                <div class="hours-row">
+
+                    <span>
+                        Sunday
+                    </span>
+
+                    <span>
+                        Closed
+                    </span>
+
+                </div>
+
+            </div>
+
+
+        </section> -->
+
+
+
+        <!-- =================================================
+             BUSINESS ADDRESS
+        ================================================== -->
+
+        <section class="address-box">
+
+            <h3>
+                Our Address
+            </h3>
+
+
+            <!--
+                REPLACE THIS WITH YOUR REAL
+                BUSINESS ADDRESS.
+            -->
+
+            <p>
+                Zaki Sub<br>
+                <br>
+                Kaduna, Nigeria
+            </p>
+
+        </section>
+
+
+    </main>
+
+
+</body>
+
+</html>
